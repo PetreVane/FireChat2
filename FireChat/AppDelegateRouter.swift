@@ -21,7 +21,7 @@ class AppDelegateRouter {
     func configureWindow() {
         
         //init tabbar
-        window.rootViewController = initTabBar()
+        window.rootViewController = WelcomeVC() //initTabBar()
         // show the ViewController
         window.makeKeyAndVisible()
         // navBar
