@@ -19,9 +19,9 @@ class FireButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-   convenience init(color: UIColor, title: String) {
+   convenience init(backgroundColor: UIColor, title: String) {
         self.init(frame: .zero)
-        self.backgroundColor = color
+        self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
     }
     
