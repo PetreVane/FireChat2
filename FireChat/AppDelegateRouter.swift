@@ -11,6 +11,7 @@ import UIKit
 class AppDelegateRouter {
     
     let window: UIWindow
+    var authenticationCoordinator: AuthenticationCoordinator? // keeps a reference to AuthCoordinator
     
     init(window: UIWindow) {
         self.window = window
@@ -39,9 +40,9 @@ class AppDelegateRouter {
     
     func startAuthentication() -> UIViewController {
         let navigationRouter = NavigationRouter()
-        let authenticationCoordinator = AuthenticationCoordinator(router: navigationRouter)
-        let startVC = authenticationCoordinator.startWelcomeVC()
-        return startVC
+        authenticationCoordinator = AuthenticationCoordinator(router: navigationRouter)
+        let startVC = authenticationCoordinator?.startWelcomeVC()
+        return startVC ?? UIViewController()
     }
     
     /// Configures NavigationBar Appearance
