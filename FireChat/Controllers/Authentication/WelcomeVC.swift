@@ -9,22 +9,27 @@
 import UIKit
 
 class WelcomeVC: UIViewController {
+    
+    let welcomeLabel = FireLabel(textAlignment: .right, fontSize: 30)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureWelcomeLabel()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configureWelcomeLabel() {
+        view.addSubview(welcomeLabel)
+        welcomeLabel.text = "Welcome to FireChat"
+        let padding: CGFloat = 20
+        
+        NSLayoutConstraint.activate([
+        
+            welcomeLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: padding),
+            welcomeLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: padding),
+            welcomeLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: -padding),
+            welcomeLabel.heightAnchor.constraint(equalToConstant: padding * 5)
+        ])
     }
-    */
 
 }

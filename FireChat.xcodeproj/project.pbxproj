@@ -21,6 +21,9 @@
 		0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */; };
 		0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95C240FF79200310F1E /* WelcomeVC.swift */; };
 		0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */; };
+		0BD7B968240FFF3900310F1E /* CoreAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */; };
+		0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */; };
+		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0BD7B95C240FF79200310F1E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
+		0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppCoordinator.swift; sourceTree = "<group>"; };
+		0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 				0BD7B964240FF86A00310F1E /* Models */,
 				0BD7B962240FF83000310F1E /* Controllers */,
 				0BD7B963240FF85900310F1E /* Coordinators */,
+				0BD7B96B240FFF8900310F1E /* CustomViews */,
 				0BD7B966240FF8F600310F1E /* Protocols */,
 				0BD7B965240FF8A600310F1E /* Helpers */,
 				0BD7B949240FE12700310F1E /* Resources */,
@@ -177,6 +184,8 @@
 		0BD7B963240FF85900310F1E /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
+				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -200,6 +209,22 @@
 			children = (
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0BD7B96B240FFF8900310F1E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B96C240FFFCB00310F1E /* Labels */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		0BD7B96C240FFFCB00310F1E /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B96D2410000200310F1E /* FireLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +334,12 @@
 				0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */,
 				0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */,
 				0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */,
+				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
 				0BD7B950240FE5BC00310F1E /* AppDelegateRouter.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
+				0BD7B968240FFF3900310F1E /* CoreAppCoordinator.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
+				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
 				0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
