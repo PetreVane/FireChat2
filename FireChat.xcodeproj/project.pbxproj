@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B3241007D300E35794 /* Coordinator.swift */; };
+		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
 		0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B924240FDF7600310F1E /* SceneDelegate.swift */; };
 		0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ChannelVC.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B08D1B3241007D300E35794 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD7B922240FDF7600310F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD7B924240FDF7600310F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,8 +188,8 @@
 		0BD7B963240FF85900310F1E /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
 				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
+				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -207,6 +211,8 @@
 		0BD7B966240FF8F600310F1E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				0B08D1B3241007D300E35794 /* Coordinator.swift */,
+				0B08D1B5241007FC00E35794 /* Router.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -329,11 +335,13 @@
 			files = (
 				0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
+				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */,
 				0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */,
 				0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */,
+				0B08D1B6241007FC00E35794 /* Router.swift in Sources */,
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
 				0BD7B950240FE5BC00310F1E /* AppDelegateRouter.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,

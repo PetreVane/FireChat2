@@ -9,3 +9,7 @@
 import UIKit
 
 
+class AuthenticationCoordinator {
+    
+    
+}
