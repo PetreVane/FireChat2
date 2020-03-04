@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
 		0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B924240FDF7600310F1E /* SceneDelegate.swift */; };
-		0BD7B927240FDF7600310F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ViewController.swift */; };
-		0BD7B92A240FDF7600310F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BD7B928240FDF7600310F1E /* Main.storyboard */; };
+		0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ChannelVC.swift */; };
 		0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BD7B92B240FDF7C00310F1E /* Assets.xcassets */; };
 		0BD7B92F240FDF7C00310F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BD7B92D240FDF7C00310F1E /* LaunchScreen.storyboard */; };
 		0BD7B93A240FDF7D00310F1E /* FireChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B939240FDF7D00310F1E /* FireChatTests.swift */; };
+		0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B94D240FE4C500310F1E /* TabBar.swift */; };
+		0BD7B950240FE5BC00310F1E /* AppDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B94F240FE5BC00310F1E /* AppDelegateRouter.swift */; };
+		0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B953240FF64B00310F1E /* ChatVC.swift */; };
+		0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B955240FF66700310F1E /* UserAccountVC.swift */; };
+		0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B958240FF69400310F1E /* LoginVC.swift */; };
+		0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */; };
+		0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95C240FF79200310F1E /* WelcomeVC.swift */; };
+		0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +37,7 @@
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD7B922240FDF7600310F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD7B924240FDF7600310F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0BD7B926240FDF7600310F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0BD7B929240FDF7600310F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0BD7B926240FDF7600310F1E /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		0BD7B92B240FDF7C00310F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BD7B92E240FDF7C00310F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BD7B930240FDF7C00310F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +45,14 @@
 		0BD7B939240FDF7D00310F1E /* FireChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireChatTests.swift; sourceTree = "<group>"; };
 		0BD7B93B240FDF7D00310F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BD7B944240FDFA700310F1E /* FireChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChat.entitlements; sourceTree = "<group>"; };
+		0BD7B94D240FE4C500310F1E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		0BD7B94F240FE5BC00310F1E /* AppDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouter.swift; sourceTree = "<group>"; };
+		0BD7B953240FF64B00310F1E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		0BD7B955240FF66700310F1E /* UserAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountVC.swift; sourceTree = "<group>"; };
+		0BD7B958240FF69400310F1E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		0BD7B95C240FF79200310F1E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,14 +94,14 @@
 		0BD7B921240FDF7600310F1E /* FireChat */ = {
 			isa = PBXGroup;
 			children = (
-				0BD7B944240FDFA700310F1E /* FireChat.entitlements */,
-				0BD7B922240FDF7600310F1E /* AppDelegate.swift */,
-				0BD7B924240FDF7600310F1E /* SceneDelegate.swift */,
-				0BD7B926240FDF7600310F1E /* ViewController.swift */,
-				0BD7B928240FDF7600310F1E /* Main.storyboard */,
-				0BD7B92B240FDF7C00310F1E /* Assets.xcassets */,
-				0BD7B92D240FDF7C00310F1E /* LaunchScreen.storyboard */,
-				0BD7B930240FDF7C00310F1E /* Info.plist */,
+				0BD7B945240FE00E00310F1E /* AppDelegate */,
+				0BD7B964240FF86A00310F1E /* Models */,
+				0BD7B962240FF83000310F1E /* Controllers */,
+				0BD7B963240FF85900310F1E /* Coordinators */,
+				0BD7B966240FF8F600310F1E /* Protocols */,
+				0BD7B965240FF8A600310F1E /* Helpers */,
+				0BD7B949240FE12700310F1E /* Resources */,
+				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
 			);
 			path = FireChat;
 			sourceTree = "<group>";
@@ -99,6 +113,93 @@
 				0BD7B93B240FDF7D00310F1E /* Info.plist */,
 			);
 			path = FireChatTests;
+			sourceTree = "<group>";
+		};
+		0BD7B945240FE00E00310F1E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B944240FDFA700310F1E /* FireChat.entitlements */,
+				0BD7B922240FDF7600310F1E /* AppDelegate.swift */,
+				0BD7B924240FDF7600310F1E /* SceneDelegate.swift */,
+				0BD7B94F240FE5BC00310F1E /* AppDelegateRouter.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		0BD7B949240FE12700310F1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B930240FDF7C00310F1E /* Info.plist */,
+				0BD7B92B240FDF7C00310F1E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0BD7B94A240FE18B00310F1E /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B92D240FDF7C00310F1E /* LaunchScreen.storyboard */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		0BD7B960240FF7C300310F1E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B95C240FF79200310F1E /* WelcomeVC.swift */,
+				0BD7B958240FF69400310F1E /* LoginVC.swift */,
+				0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */,
+				0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0BD7B961240FF7EF00310F1E /* CoreApp */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B926240FDF7600310F1E /* ChannelVC.swift */,
+				0BD7B953240FF64B00310F1E /* ChatVC.swift */,
+				0BD7B955240FF66700310F1E /* UserAccountVC.swift */,
+			);
+			path = CoreApp;
+			sourceTree = "<group>";
+		};
+		0BD7B962240FF83000310F1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BD7B94D240FE4C500310F1E /* TabBar.swift */,
+				0BD7B961240FF7EF00310F1E /* CoreApp */,
+				0BD7B960240FF7C300310F1E /* Authentication */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0BD7B963240FF85900310F1E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		0BD7B964240FF86A00310F1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0BD7B965240FF8A600310F1E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0BD7B966240FF8F600310F1E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +285,6 @@
 			files = (
 				0BD7B92F240FDF7C00310F1E /* LaunchScreen.storyboard in Resources */,
 				0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */,
-				0BD7B92A240FDF7600310F1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +302,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BD7B927240FDF7600310F1E /* ViewController.swift in Sources */,
+				0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */,
+				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
+				0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */,
+				0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */,
+				0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */,
+				0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */,
+				0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */,
+				0BD7B950240FE5BC00310F1E /* AppDelegateRouter.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
+				0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +335,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0BD7B928240FDF7600310F1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0BD7B929240FDF7600310F1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0BD7B92D240FDF7C00310F1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -368,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 9W3WH25P2R;
-				INFOPLIST_FILE = FireChat/Info.plist;
+				INFOPLIST_FILE = FireChat/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 9W3WH25P2R;
-				INFOPLIST_FILE = FireChat/Info.plist;
+				INFOPLIST_FILE = FireChat/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
