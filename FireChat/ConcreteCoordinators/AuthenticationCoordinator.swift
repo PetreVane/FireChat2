@@ -24,9 +24,17 @@ class AuthenticationCoordinator: Coordinator {
     
     
     func startWelcomeVC() -> UIViewController {
-        let welcomeVC = WelcomeVC.instantiate(parentCoordinator: self)
+        let welcomeVC = WelcomeVC.instantiate(delegate: self)
         childControllers.append(welcomeVC)
         return welcomeVC
+    }
+    
+}
+
+extension AuthenticationCoordinator: welcomeVCDelegate {
+    
+    func didPressEmailButton() {
+        print("AuthCoord: Email Button pressed")
     }
     
 }

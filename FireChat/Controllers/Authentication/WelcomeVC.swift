@@ -8,15 +8,23 @@
 
 import UIKit
 
+// adopted by AuthenticationCoordinator
+protocol welcomeVCDelegate: AnyObject {
+    
+    func didPressEmailButton()
+}
+
 class WelcomeVC: UIViewController {
     
-    weak var coordinator: AuthenticationCoordinator?
+    weak var delegate: welcomeVCDelegate?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
+    let emailButton = FireButton(backgroundColor: .systemRed, title: "Log in with email")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureWelcomeLabel()
+        configureButtons()
     }
     
 
@@ -34,14 +42,33 @@ class WelcomeVC: UIViewController {
             welcomeLabel.heightAnchor.constraint(equalToConstant: padding * 2)
         ])
     }
+    
+    private func configureButtons() {
+        view.addSubview(emailButton)
+        emailButton.addTarget(self, action: #selector(didPressEmailButton), for: .touchUpInside)
+        let padding: CGFloat = 50
+        
+        NSLayoutConstraint.activate([
+        
+            emailButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            emailButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding / 2),
+            emailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding / 2),
+            emailButton.heightAnchor.constraint(equalToConstant: padding)
+        ])
+    }
+    
+    @objc func didPressEmailButton() {
+        delegate?.didPressEmailButton()
+        print("didPressEmailButton")
+    }
 
 }
 
 extension WelcomeVC {
     
-    class func instantiate(parentCoordinator: AuthenticationCoordinator) -> WelcomeVC {
+    class func instantiate(delegate: welcomeVCDelegate) -> WelcomeVC {
         let viewController = WelcomeVC()
-        viewController.coordinator = parentCoordinator
+        viewController.delegate = delegate
         return viewController
         
     }
