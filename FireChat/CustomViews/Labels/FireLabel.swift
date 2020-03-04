@@ -34,8 +34,8 @@ class FireLabel: UILabel {
         numberOfLines = 1
         lineBreakMode = .byWordWrapping
         minimumScaleFactor = 0.9
-        backgroundColor = .secondarySystemBackground
-        layer.cornerRadius = 15
+        backgroundColor = .systemBackground
+        layer.cornerRadius = 25
     }
     
 }

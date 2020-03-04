@@ -10,10 +10,11 @@ import UIKit
 
 class WelcomeVC: UIViewController {
     
-    let welcomeLabel = FireLabel(textAlignment: .right, fontSize: 30)
+    let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         configureWelcomeLabel()
     }
     
@@ -21,14 +22,15 @@ class WelcomeVC: UIViewController {
     private func configureWelcomeLabel() {
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "Welcome to FireChat"
-        let padding: CGFloat = 20
+        welcomeLabel.backgroundColor = .systemBackground
+        let padding: CGFloat = 50
         
         NSLayoutConstraint.activate([
         
-            welcomeLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: padding),
-            welcomeLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: padding),
-            welcomeLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: -padding),
-            welcomeLabel.heightAnchor.constraint(equalToConstant: padding * 5)
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 2),
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            welcomeLabel.heightAnchor.constraint(equalToConstant: padding * 2)
         ])
     }
 
