@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B3241007D300E35794 /* Coordinator.swift */; };
 		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
+		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
 		0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B924240FDF7600310F1E /* SceneDelegate.swift */; };
 		0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ChannelVC.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0B08D1B3241007D300E35794 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD7B922240FDF7600310F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD7B924240FDF7600310F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,10 +109,10 @@
 				0BD7B945240FE00E00310F1E /* AppDelegate */,
 				0BD7B964240FF86A00310F1E /* Models */,
 				0BD7B962240FF83000310F1E /* Controllers */,
-				0BD7B963240FF85900310F1E /* Coordinators */,
+				0BD7B963240FF85900310F1E /* ConcreteCoordinators */,
 				0BD7B96B240FFF8900310F1E /* CustomViews */,
 				0BD7B966240FF8F600310F1E /* Protocols */,
-				0BD7B965240FF8A600310F1E /* Helpers */,
+				0BD7B965240FF8A600310F1E /* ConcreteRouters */,
 				0BD7B949240FE12700310F1E /* Resources */,
 				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
 			);
@@ -185,13 +187,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		0BD7B963240FF85900310F1E /* Coordinators */ = {
+		0BD7B963240FF85900310F1E /* ConcreteCoordinators */ = {
 			isa = PBXGroup;
 			children = (
 				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
 				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = ConcreteCoordinators;
 			sourceTree = "<group>";
 		};
 		0BD7B964240FF86A00310F1E /* Models */ = {
@@ -201,11 +203,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0BD7B965240FF8A600310F1E /* Helpers */ = {
+		0BD7B965240FF8A600310F1E /* ConcreteRouters */ = {
 			isa = PBXGroup;
 			children = (
+				0B08D1B724101CDB00E35794 /* NavigationRouter.swift */,
 			);
-			path = Helpers;
+			path = ConcreteRouters;
 			sourceTree = "<group>";
 		};
 		0BD7B966240FF8F600310F1E /* Protocols */ = {
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */,
+				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */,
