@@ -11,6 +11,7 @@ import UIKit
 class AppDelegateRouter {
     
     let window: UIWindow
+    var authenticationCoordinator: AuthenticationCoordinator?
     
     init(window: UIWindow) {
         self.window = window
@@ -35,6 +36,10 @@ class AppDelegateRouter {
         // change general appearance
         UITabBar.appearance().tintColor = .systemRed
         return tabBar
+    }
+    
+    func startAuthentication() {
+//        authenticationCoordinator = AuthenticationCoordinator(router: <#T##Router#>)
     }
     
     /// Configures NavigationBar Appearance

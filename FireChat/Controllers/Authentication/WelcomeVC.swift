@@ -10,6 +10,7 @@ import UIKit
 
 class WelcomeVC: UIViewController {
     
+    weak var coordinator: AuthenticationCoordinator?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
 
     override func viewDidLoad() {
@@ -34,4 +35,15 @@ class WelcomeVC: UIViewController {
         ])
     }
 
+}
+
+extension WelcomeVC {
+    
+    class func instantiate(parentCoordinator: AuthenticationCoordinator) -> WelcomeVC {
+        let viewController = WelcomeVC()
+        viewController.coordinator = parentCoordinator
+        return viewController
+        
+    }
+    
 }
