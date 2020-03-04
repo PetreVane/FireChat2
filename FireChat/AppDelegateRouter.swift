@@ -11,7 +11,6 @@ import UIKit
 class AppDelegateRouter {
     
     let window: UIWindow
-    var authenticationCoordinator: AuthenticationCoordinator?
     
     init(window: UIWindow) {
         self.window = window
@@ -22,7 +21,7 @@ class AppDelegateRouter {
     func configureWindow() {
         
         //init tabbar
-        window.rootViewController = WelcomeVC() //initTabBar()
+        window.rootViewController = startAuthentication() //initTabBar()
         // show the ViewController
         window.makeKeyAndVisible()
         // navBar
@@ -38,8 +37,11 @@ class AppDelegateRouter {
         return tabBar
     }
     
-    func startAuthentication() {
-//        authenticationCoordinator = AuthenticationCoordinator(router: <#T##Router#>)
+    func startAuthentication() -> UIViewController {
+        let navigationRouter = NavigationRouter()
+        let authenticationCoordinator = AuthenticationCoordinator(router: navigationRouter)
+        let startVC = authenticationCoordinator.startWelcomeVC()
+        return startVC
     }
     
     /// Configures NavigationBar Appearance
