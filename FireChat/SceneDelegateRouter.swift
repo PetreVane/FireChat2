@@ -12,26 +12,43 @@ class SceneDelegateRouter: UIViewController {
     
     var authenticationCoordinator: AuthenticationCoordinator?
     var coreAppCoordinator: CoreAppCoordinator?
+    var isUserLogged = false
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        determineFLow()
         configureNavigationBar()
+        
     }
     
+    func determineFLow() {
+        if isUserLogged {
+            perform(#selector(startMainTab), with: nil, afterDelay: 0.01)
+        } else {
+            perform(#selector(startAuthFlow), with: nil, afterDelay: 0.01)
+        }
+    }
+    
+      
     /// Starts authentication flow
-    func startViewController() {
+    @objc func startAuthFlow() {
         let welcomeVC = WelcomeVC()
         let navigationController = UINavigationController.init(rootViewController: welcomeVC)
         let router = NavigationRouter(navigationController: navigationController)
         authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
         authenticationCoordinator?.presentWelcomeVC()
+        navigationController.modalPresentationStyle = .overCurrentContext
+        self.present(navigationController, animated: true, completion: nil)
     }
     
-    /// Instantiates a TabBar controller & sets a general color
-       func tabBarController() {
-        _ = TabBar()
-           UITabBar.appearance().tintColor = .systemRed
-       }
+     /// Instantiates a TabBar controller & sets a general color
+    @objc func startMainTab() {
+        let tabBar = TabBar()
+        tabBar.modalPresentationStyle = .overCurrentContext
+        present(tabBar, animated: true, completion: nil)
+        UITabBar.appearance().tintColor = .systemOrange
+    }
     
     /// Configures NavigationBar Appearance
     func configureNavigationBar() {
