@@ -20,13 +20,12 @@ class AppDelegateRouter {
     
     /// Assigns tabBar to window
     func configureWindow() {
-        
-        //init tabbar
-        window.rootViewController = startAuthentication() //initTabBar()
-        // show the ViewController
-        window.makeKeyAndVisible()
         // navBar
         configureNavigationBar()
+        //init authCoordinator
+        window.rootViewController = startAuthentication() //initTabBar()
+        // shows start ViewController
+        window.makeKeyAndVisible()
     }
     
     /// Instantiates a TabBar controller & sets a general color
@@ -52,7 +51,7 @@ class AppDelegateRouter {
     func configureNavigationBar() {
         
         // change general appearance
-        UINavigationBar.appearance().tintColor = .systemRed
+        UINavigationBar.appearance().tintColor = .systemOrange
     }
     
 }
