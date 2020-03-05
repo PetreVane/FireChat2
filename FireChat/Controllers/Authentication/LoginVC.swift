@@ -16,30 +16,82 @@ class LoginVC: UIViewController {
     
     weak var delegate: LoginVCDelegate?
     let label = FireLabel(textAlignment: .center, fontSize: 25)
+    let userNameTextField = FireTextField()
+    let passwordTextField = FireTextField()
+    let loginButton = FireButton(backgroundColor: .systemGreen, title: "Login")
+    let forgotPasswdButton = FireButton(backgroundColor: .systemRed, title: "I forgot my password")
+    private let padding: CGFloat = 50
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureLabel()
+        configureTextFields()
+        configureButtons()
+        dismissKeyboardOnTap()
     }
     
     
     private func configureLabel() {
         view.addSubview(label)
         label.text = "Sign in with Email"
-        label.backgroundColor = .secondarySystemBackground
-        let padding: CGFloat = 50
+        label.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
         
-            label.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 2),
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             label.heightAnchor.constraint(equalToConstant: padding)
         ])
     }
     
+    private func configureTextFields() {
+        passwordTextField.placeholder = "Type in your password"
+        passwordTextField.isSecureTextEntry = true
+        let textFields = [userNameTextField, passwordTextField]
+        
+        for textField in textFields {
+            view.addSubview(textField)
+            NSLayoutConstraint.activate([
+                textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+                textField.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
+        
+        NSLayoutConstraint.activate([
+            userNameTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: padding),
+            passwordTextField.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 10)
+        ])
+    }
+    
+    private func configureButtons() {
+        let buttons = [loginButton, forgotPasswdButton]
+        for button in buttons {
+            view.addSubview(button)
+            
+            NSLayoutConstraint.activate([
+            
+                button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+                button.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
+        
+        NSLayoutConstraint.activate([
+        
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 25),
+            forgotPasswdButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10)
+        ])
+    }
+    
 
+    private func dismissKeyboardOnTap() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
 
 }
 
