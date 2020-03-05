@@ -9,14 +9,14 @@
 import UIKit
 
 // adopted by AuthenticationCoordinator
-protocol welcomeVCDelegate: AnyObject {
+protocol WelcomeVCDelegate: AnyObject {
     
     func didPressEmailButton()
 }
 
 class WelcomeVC: UIViewController {
     
-    weak var delegate: welcomeVCDelegate?
+    weak var delegate: WelcomeVCDelegate?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
     let emailButton = FireButton(backgroundColor: .systemRed, title: "Log in with email")
 
@@ -59,18 +59,15 @@ class WelcomeVC: UIViewController {
     
     @objc func didPressEmailButton() {
         delegate?.didPressEmailButton()
-        print("didPressEmailButton")
     }
 
 }
 
 extension WelcomeVC {
     
-    class func instantiate(delegate: welcomeVCDelegate) -> WelcomeVC {
+    class func instantiate(delegate: WelcomeVCDelegate) -> WelcomeVC {
         let viewController = WelcomeVC()
         viewController.delegate = delegate
         return viewController
-        
     }
-    
 }

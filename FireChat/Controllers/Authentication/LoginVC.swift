@@ -8,23 +8,48 @@
 
 import UIKit
 
+protocol LoginVCDelegate: AnyObject {
+    func remove(_ viewController: LoginVC)
+}
+
 class LoginVC: UIViewController {
+    
+    weak var delegate: LoginVCDelegate?
+    let label = FireLabel(textAlignment: .center, fontSize: 25)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        configureLabel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func configureLabel() {
+        view.addSubview(label)
+        label.text = "Sign in with Email"
+        label.backgroundColor = .secondaryLabel
+        let padding: CGFloat = 50
+        
+        NSLayoutConstraint.activate([
+        
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 2),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            label.heightAnchor.constraint(equalToConstant: padding * 2)
+        ])
     }
-    */
+    
+    func onDismissAction() {
+        delegate?.remove(self)
+    }
 
+}
+
+extension LoginVC {
+    
+    class func instantiate(delegate: LoginVCDelegate) -> LoginVC {
+        let viewController = LoginVC()
+        viewController.delegate = delegate
+        return viewController
+    }
 }

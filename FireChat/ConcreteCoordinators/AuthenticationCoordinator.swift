@@ -12,29 +12,50 @@ import UIKit
 class AuthenticationCoordinator: Coordinator {
     
     var router: Router
-    var childControllers: [UIViewController] = []
-    init(router: Router) {
-        self.router = router
+    var childControllers: [UIViewController] = [] // not sure if this is usefull in this case
+    
+    init(navigationRouter: Router) {
+        self.router = navigationRouter
     }
+    
+  
     
     
     func onDismissAction() {
         // does nothing; Authentication coordinator is own by AppDelegateRouter
     }
     
-    
-    func startWelcomeVC() -> UIViewController {
-        let welcomeVC = WelcomeVC.instantiate(delegate: self)
-        childControllers.append(welcomeVC)
-        return welcomeVC
+    func removeChild(_ viewController: UIViewController) {
+        for (index, child) in childControllers.enumerated() {
+            if child === viewController {
+                childControllers.remove(at: index)
+            }
+        }
     }
     
+    
+    func startWelcomeVC() {
+        guard let viewController = router.navigationController.viewControllers.first as? WelcomeVC else { return }
+        viewController.delegate = self
+    }
+    
+    func presentLoginVC() {
+        let loginVC = LoginVC.instantiate(delegate: self)
+        router.present(loginVC, animated: true)
+    }
 }
 
-extension AuthenticationCoordinator: welcomeVCDelegate {
+extension AuthenticationCoordinator: WelcomeVCDelegate {
     
     func didPressEmailButton() {
-        print("AuthCoord: Email Button pressed")
+        presentLoginVC()
     }
+}
+
+extension AuthenticationCoordinator: LoginVCDelegate {
+    func remove(_ viewController: LoginVC) {
+        removeChild(viewController)
+    }
+    
     
 }
