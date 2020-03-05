@@ -31,13 +31,11 @@ extension NavigationRouter: Router {
 
         onDismissForViewController[viewController] = onDismiss
 
-        if baseViewController != nil {
-            //calls presentModally, if there is a new instance of NavigationRouter, which has the 'baseViewController' set.
-            print("Called NavigationRouter presentModally method for vc: \(viewController)")
-            presentModally(viewController, animated: animated, onDismiss: onDismiss)
+        if baseViewController == nil {
+            navigationController.pushViewController(viewController, animated: animated)
         } else {
-           print("Called NavigationRouter present method for vc: \(viewController)")
-           navigationController.pushViewController(viewController, animated: animated)
+           //calls presentModally, if there is a new instance of NavigationRouter, which has the 'baseViewController' set.
+           presentModally(viewController, animated: animated, onDismiss: onDismiss)
         }
     }
 
