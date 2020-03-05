@@ -8,12 +8,28 @@
 
 import UIKit
 
-class SignUpVC: UIViewController {
+protocol SignUPDelegate: AnyObject {
+    
+}
 
+class SignUpVC: UIViewController {
+    
+    weak var delegate: SignUPDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
     }
     
 }
+
+extension SignUpVC {
+    
+    class func instantiate(delegate: SignUPDelegate) -> SignUpVC {
+        let viewController = SignUpVC()
+        viewController.delegate = delegate
+        return viewController
+    }
+}
+
+
