@@ -51,7 +51,7 @@ class WelcomeVC: UIViewController {
         let buttons = [newAccountButton, googleButton, emailButton]
         for button in buttons {
             view.addSubview(button)
-            button.setTitleColor(.label, for: .normal)
+            button.setTitleColor(.systemBlue, for: .normal)
             
             NSLayoutConstraint.activate([
             
