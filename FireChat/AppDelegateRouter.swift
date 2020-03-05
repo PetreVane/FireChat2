@@ -39,10 +39,13 @@ class AppDelegateRouter {
     }
     
     func startAuthentication() -> UIViewController {
-        let navigationRouter = NavigationRouter()
-        authenticationCoordinator = AuthenticationCoordinator(router: navigationRouter)
-        let startVC = authenticationCoordinator?.startWelcomeVC()
-        return startVC ?? UIViewController()
+        let welcomeVC = WelcomeVC()
+        let navigationController = UINavigationController.init(rootViewController: welcomeVC)
+        let router = NavigationRouter(navigationController: navigationController)
+        authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
+        authenticationCoordinator?.startWelcomeVC()
+        
+        return navigationController
     }
     
     /// Configures NavigationBar Appearance
