@@ -19,9 +19,9 @@ class WelcomeVC: UIViewController {
     
     weak var delegate: WelcomeVCDelegate?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
-    let emailButton = FireButton(backgroundColor: .systemRed, title: "Sign in with email account")
-    let googleButton = FireButton(backgroundColor: .systemRed, title: "Sign in with Google account")
-    let newAccountButton = FireButton(backgroundColor: .systemRed, title: "Create new account")
+    let emailButton = FireButton(backgroundColor: .systemYellow, title: "Sign in with email account")
+    let googleButton = FireButton(backgroundColor: .systemYellow, title: "Sign in with Google account")
+    let newAccountButton = FireButton(backgroundColor: .systemYellow, title: "Create new account")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,7 @@ class WelcomeVC: UIViewController {
         let buttons = [newAccountButton, googleButton, emailButton]
         for button in buttons {
             view.addSubview(button)
+            button.setTitleColor(.label, for: .normal)
             
             NSLayoutConstraint.activate([
             

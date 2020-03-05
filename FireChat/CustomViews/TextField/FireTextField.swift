@@ -36,7 +36,7 @@ class FireTextField: UITextField {
         clearButtonMode = .whileEditing
         
         //font
-        font = UIFont.preferredFont(forTextStyle: .title3)
+        font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 9
         
@@ -46,6 +46,7 @@ class FireTextField: UITextField {
         //placeHolder + autocorrect
         autocorrectionType = .no
         placeholder = "Type in your user name"
+        
         
         // custom return key
         keyboardType = .default
