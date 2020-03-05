@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appDelegateRouter: AppDelegateRouter?
+    var presenter: Presenter?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -23,9 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         guard let window = window else { return }
-        appDelegateRouter = AppDelegateRouter(window: window)
+        window.rootViewController = SceneDelegateRouter()
+        window.makeKeyAndVisible()
     }
-
-
 }
 
