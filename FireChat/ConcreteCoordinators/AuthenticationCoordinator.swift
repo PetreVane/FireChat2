@@ -13,6 +13,7 @@ class AuthenticationCoordinator: Coordinator {
     
     var router: Router
     var childControllers: [UIViewController] = [] // not sure if this is usefull in this case
+    var tabBar: TabBar?
     
     init(navigationRouter: Router) {
         self.router = navigationRouter
@@ -59,6 +60,10 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 }
 
 extension AuthenticationCoordinator: LoginVCDelegate {
+    func didPressLoginButton() {
+        prepateTabBar()
+    }
+    
     func didPressForgotPasswordButton() {
         presentPasswordResetVC()
     }
@@ -68,8 +73,6 @@ extension AuthenticationCoordinator: SignUPDelegate {
     func signUpButtonPressed() {
         router.navigationController.popToRootViewController(animated: true)
     }
-    
-    
 }
 
 extension AuthenticationCoordinator: PasswordResetDelegate {
@@ -77,5 +80,24 @@ extension AuthenticationCoordinator: PasswordResetDelegate {
     func didPressPasswordResetButton() {
         router.navigationController.popToRootViewController(animated: true)
     }
+}
 
+extension AuthenticationCoordinator {
+    
+    func prepareChannelRouter() -> UINavigationController {
+        let channelVC = ChannelVC()
+        channelVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        return UINavigationController(rootViewController: channelVC)
+    }
+    
+    func prepareUserRouter() -> UINavigationController {
+        let userAccount = UserAccountVC()
+        userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+        return UINavigationController(rootViewController: userAccount)
+    }
+    
+    func prepateTabBar() {
+        tabBar = TabBar()
+        tabBar?.viewControllers = [prepareChannelRouter(), prepareUserRouter()]
+    }
 }
