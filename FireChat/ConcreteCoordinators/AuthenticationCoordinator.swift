@@ -18,23 +18,11 @@ class AuthenticationCoordinator: Coordinator {
         self.router = navigationRouter
     }
     
-  
-    
-    
     func onDismissAction() {
         // does nothing; Authentication coordinator is own by AppDelegateRouter
     }
     
-    func removeChild(_ viewController: UIViewController) {
-        for (index, child) in childControllers.enumerated() {
-            if child === viewController {
-                childControllers.remove(at: index)
-            }
-        }
-    }
-    
-    
-    func startWelcomeVC() {
+    func presentWelcomeVC() {
         guard let viewController = router.navigationController.viewControllers.first as? WelcomeVC else { return }
         viewController.delegate = self
     }
@@ -43,9 +31,23 @@ class AuthenticationCoordinator: Coordinator {
         let loginVC = LoginVC.instantiate(delegate: self)
         router.present(loginVC, animated: true)
     }
+    
+    func presentSignUPVC() {
+        let signUpVC = SignUpVC.instantiate(delegate: self)
+        router.present(signUpVC, animated: true)
+    }
+    
 }
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
+    func didPressGoogleButton() {
+        print("Google button pressed")
+    }
+    
+    func didPressNewAccountButton() {
+        print("New account button pressed")
+        presentSignUPVC()
+    }
     
     func didPressEmailButton() {
         presentLoginVC()
@@ -53,9 +55,11 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 }
 
 extension AuthenticationCoordinator: LoginVCDelegate {
-    func remove(_ viewController: LoginVC) {
-        removeChild(viewController)
+    func didPressForgotPasswordButton() {
+        print("LoginVC pressed fogot password button")
     }
-    
+}
+
+extension AuthenticationCoordinator: SignUPDelegate {
     
 }
