@@ -15,4 +15,9 @@ extension UIView {
             addSubview(customView)
         }
     }
+    
+    func dismissKeyboardOnTap() {
+          let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:)))
+          self.addGestureRecognizer(tapGesture)
+      }
 }
