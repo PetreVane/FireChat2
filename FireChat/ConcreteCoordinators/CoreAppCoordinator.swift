@@ -8,3 +8,18 @@
 
 import UIKit
 
+
+class CoreAppCoordinator: Coordinator {
+    
+    var router: Router
+    
+    init(router: NavigationRouter) {
+        self.router = router
+    }
+    
+    func onDismissAction() {
+        print("CoreAppCoordinator dismissed")
+    }
+    
+    
+}
