@@ -13,14 +13,14 @@ class AuthenticationCoordinator: Coordinator {
     
     var router: Router
     var childControllers: [UIViewController] = [] // not sure if this is usefull in this case
-    var tabBar: TabBar?
+    
     
     init(navigationRouter: Router) {
         self.router = navigationRouter
     }
     
     func onDismissAction() {
-        // does nothing; Authentication coordinator is own by AppDelegateRouter
+        // does nothing; Authentication coordinator is own by AuthenticationRouter
     }
     
     func presentWelcomeVC() {
@@ -84,20 +84,7 @@ extension AuthenticationCoordinator: PasswordResetDelegate {
 
 extension AuthenticationCoordinator {
     
-    func prepareChannelRouter() -> UINavigationController {
-        let channelVC = ChannelVC()
-        channelVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        return UINavigationController(rootViewController: channelVC)
-    }
-    
-    func prepareUserRouter() -> UINavigationController {
-        let userAccount = UserAccountVC()
-        userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
-        return UINavigationController(rootViewController: userAccount)
-    }
-    
     func prepateTabBar() {
-        tabBar = TabBar()
-        tabBar?.viewControllers = [prepareChannelRouter(), prepareUserRouter()]
+//        SceneDelegate.shared.presenter = 
     }
 }

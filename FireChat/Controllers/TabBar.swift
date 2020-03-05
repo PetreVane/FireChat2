@@ -12,6 +12,19 @@ class TabBar: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewControllers = [prepareChannelRouter(), prepareUserRouter()]
     }
     
+    
+    func prepareChannelRouter() -> UINavigationController {
+         let channelVC = ChannelVC()
+         channelVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+         return UINavigationController(rootViewController: channelVC)
+     }
+     
+     func prepareUserRouter() -> UINavigationController {
+         let userAccount = UserAccountVC()
+         userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+         return UINavigationController(rootViewController: userAccount)
+     }
 }
