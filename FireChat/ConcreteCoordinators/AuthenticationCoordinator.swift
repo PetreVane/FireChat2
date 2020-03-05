@@ -37,6 +37,11 @@ class AuthenticationCoordinator: Coordinator {
         router.present(signUpVC, animated: true)
     }
     
+    func presentPasswordResetVC() {
+        let passwordResetVC = PasswordResetVC.instantiate(delegate: self)
+        router.present(passwordResetVC, animated: true)
+    }
+    
 }
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
@@ -57,9 +62,19 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 extension AuthenticationCoordinator: LoginVCDelegate {
     func didPressForgotPasswordButton() {
         print("LoginVC pressed fogot password button")
+        presentPasswordResetVC()
     }
 }
 
 extension AuthenticationCoordinator: SignUPDelegate {
     
+}
+
+extension AuthenticationCoordinator: PasswordResetDelegate {
+    
+    func didPressPasswordResetButton() {
+        print("Reset passwd button pressed")
+        router.navigationController.popToRootViewController(animated: true)
+    }
+
 }
