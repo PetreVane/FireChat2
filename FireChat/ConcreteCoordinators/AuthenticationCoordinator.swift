@@ -46,11 +46,10 @@ class AuthenticationCoordinator: Coordinator {
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
     func didPressGoogleButton() {
-        print("Google button pressed")
+        
     }
     
     func didPressNewAccountButton() {
-        print("New account button pressed")
         presentSignUPVC()
     }
     
@@ -61,19 +60,21 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 
 extension AuthenticationCoordinator: LoginVCDelegate {
     func didPressForgotPasswordButton() {
-        print("LoginVC pressed fogot password button")
         presentPasswordResetVC()
     }
 }
 
 extension AuthenticationCoordinator: SignUPDelegate {
+    func signUpButtonPressed() {
+        router.navigationController.popToRootViewController(animated: true)
+    }
+    
     
 }
 
 extension AuthenticationCoordinator: PasswordResetDelegate {
     
     func didPressPasswordResetButton() {
-        print("Reset passwd button pressed")
         router.navigationController.popToRootViewController(animated: true)
     }
 
