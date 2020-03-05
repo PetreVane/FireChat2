@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginVCDelegate: AnyObject {
-    func remove(_ viewController: LoginVC)
+    func didPressForgotPasswordButton()
 }
 
 class LoginVC: UIViewController {
@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
     private func configureLabel() {
         view.addSubview(label)
         label.text = "Sign in with Email"
-        label.backgroundColor = .secondaryLabel
+        label.backgroundColor = .secondarySystemBackground
         let padding: CGFloat = 50
         
         NSLayoutConstraint.activate([
@@ -35,13 +35,11 @@ class LoginVC: UIViewController {
             label.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 2),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            label.heightAnchor.constraint(equalToConstant: padding * 2)
+            label.heightAnchor.constraint(equalToConstant: padding)
         ])
     }
     
-    func onDismissAction() {
-        delegate?.remove(self)
-    }
+
 
 }
 
