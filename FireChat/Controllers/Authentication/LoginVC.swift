@@ -18,8 +18,8 @@ class LoginVC: UIViewController {
     let label = FireLabel(textAlignment: .center, fontSize: 25)
     let userNameTextField = FireTextField()
     let passwordTextField = FireTextField()
-    let loginButton = FireButton(backgroundColor: .systemGreen, title: "Login")
-    let forgotPasswdButton = FireButton(backgroundColor: .systemRed, title: "I forgot my password")
+    let loginButton = FireButton(backgroundColor: .systemYellow, title: "Login")
+    let forgotPasswdButton = FireButton(backgroundColor: .systemOrange, title: "I forgot my password")
     private let padding: CGFloat = 50
 
     override func viewDidLoad() {
@@ -28,9 +28,8 @@ class LoginVC: UIViewController {
         configureLabel()
         configureTextFields()
         configureButtons()
-        dismissKeyboardOnTap()
+        view.dismissKeyboardOnTap()
     }
-    
     
     private func configureLabel() {
         view.addSubview(label)
@@ -67,12 +66,15 @@ class LoginVC: UIViewController {
     }
     
     private func configureButtons() {
+        loginButton.setTitleColor(.systemBlue, for: .normal)
+        forgotPasswdButton.setTitleColor(.label, for: .normal)
+        loginButton.addTarget(self, action: #selector(didPressLoginButton), for: .touchUpInside)
+        forgotPasswdButton.addTarget(self, action: #selector(didPressforgotPasswdButton), for: .touchUpInside)
+        
         let buttons = [loginButton, forgotPasswdButton]
         for button in buttons {
             view.addSubview(button)
-            
             NSLayoutConstraint.activate([
-            
                 button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
                 button.heightAnchor.constraint(equalToConstant: 30)
@@ -80,17 +82,21 @@ class LoginVC: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-        
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 25),
             forgotPasswdButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10)
         ])
     }
     
-
-    private func dismissKeyboardOnTap() {
-        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tapGesture)
+    @objc private func didPressforgotPasswdButton() {
+        delegate?.didPressForgotPasswordButton()
     }
+    
+    @objc private func didPressLoginButton() {
+        print("Login button pressed")
+    }
+    
+  
+    
     
 
 }

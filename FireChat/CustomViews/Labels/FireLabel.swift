@@ -29,7 +29,7 @@ class FireLabel: UILabel {
     /// Configures basic settings each label should have
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        textColor = .label
+        textColor = .secondaryLabel
         adjustsFontSizeToFitWidth = true
         numberOfLines = 1
         lineBreakMode = .byWordWrapping
