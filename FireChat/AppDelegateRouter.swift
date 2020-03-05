@@ -43,7 +43,7 @@ class AppDelegateRouter {
         let navigationController = UINavigationController.init(rootViewController: welcomeVC)
         let router = NavigationRouter(navigationController: navigationController)
         authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
-        authenticationCoordinator?.startWelcomeVC()
+        authenticationCoordinator?.presentWelcomeVC()
         
         return navigationController
     }
