@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginVCDelegate: AnyObject {
     func didPressForgotPasswordButton()
+    func didPressLoginButton()
 }
 
 class LoginVC: UIViewController {
@@ -92,7 +93,7 @@ class LoginVC: UIViewController {
     }
     
     @objc private func didPressLoginButton() {
-        print("Login button pressed")
+        delegate?.didPressLoginButton()
     }
     
   
