@@ -27,7 +27,7 @@ class FireButton: UIButton {
     
     private func configureButton() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 15
+        layer.cornerRadius = 10
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     }
