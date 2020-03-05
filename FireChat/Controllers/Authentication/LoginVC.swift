@@ -55,7 +55,7 @@ class LoginVC: UIViewController {
             NSLayoutConstraint.activate([
                 textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-                textField.heightAnchor.constraint(equalToConstant: 30)
+                textField.heightAnchor.constraint(equalToConstant: 40)
             ])
         }
         
@@ -77,7 +77,7 @@ class LoginVC: UIViewController {
             NSLayoutConstraint.activate([
                 button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-                button.heightAnchor.constraint(equalToConstant: 30)
+                button.heightAnchor.constraint(equalToConstant: 40)
             ])
         }
         

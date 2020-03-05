@@ -39,6 +39,7 @@ class FireTextField: UITextField {
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 9
+        autocapitalizationType = .none
         
         //background
         backgroundColor = .tertiarySystemBackground

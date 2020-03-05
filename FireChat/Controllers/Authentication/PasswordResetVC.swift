@@ -44,7 +44,7 @@ class PasswordResetVC: UIViewController {
             
                 customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-                customView.heightAnchor.constraint(equalToConstant: 30)
+                customView.heightAnchor.constraint(equalToConstant: 40)
             ])
         }
         
