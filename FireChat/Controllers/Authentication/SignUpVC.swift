@@ -27,6 +27,11 @@ class SignUpVC: UIViewController {
         view.dismissKeyboardOnTap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     private func configureUIElements() {
         let padding: CGFloat = 50
         nameTextField.placeholder = "Type in your name"

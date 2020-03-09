@@ -22,6 +22,11 @@ class WelcomeVC: UIViewController {
     let emailButton = FireButton(backgroundColor: .systemYellow, title: "Sign in with email account")
     let googleButton = FireButton(backgroundColor: .systemYellow, title: "Sign in with Google account")
     let newAccountButton = FireButton(backgroundColor: .systemYellow, title: "Create new account")
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

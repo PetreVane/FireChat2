@@ -22,6 +22,11 @@ class LoginVC: UIViewController {
     let loginButton = FireButton(backgroundColor: .systemYellow, title: "Login")
     let forgotPasswdButton = FireButton(backgroundColor: .systemOrange, title: "I forgot my password")
     private let padding: CGFloat = 50
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
