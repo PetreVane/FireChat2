@@ -30,6 +30,7 @@
 		0BD7B968240FFF3900310F1E /* CoreAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */; };
 		0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */; };
 		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
+		0BD93C6824179CF20007F8D0 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
+		0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			children = (
 				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
 				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
+				0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */,
 			);
 			path = ConcreteCoordinators;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
+				0BD93C6824179CF20007F8D0 /* BaseCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */,
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
