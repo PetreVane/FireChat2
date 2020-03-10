@@ -22,12 +22,12 @@
 		0BD7B93A240FDF7D00310F1E /* FireChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B939240FDF7D00310F1E /* FireChatTests.swift */; };
 		0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B94D240FE4C500310F1E /* TabBar.swift */; };
 		0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B953240FF64B00310F1E /* ChatVC.swift */; };
-		0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B955240FF66700310F1E /* UserAccountVC.swift */; };
+		0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B955240FF66700310F1E /* ProfileViewController.swift */; };
 		0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B958240FF69400310F1E /* LoginVC.swift */; };
 		0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */; };
 		0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95C240FF79200310F1E /* WelcomeVC.swift */; };
 		0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */; };
-		0BD7B968240FFF3900310F1E /* CoreAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */; };
+		0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */; };
 		0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */; };
 		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
 		0BD93C6824179CF20007F8D0 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */; };
@@ -64,12 +64,12 @@
 		0BD7B944240FDFA700310F1E /* FireChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChat.entitlements; sourceTree = "<group>"; };
 		0BD7B94D240FE4C500310F1E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0BD7B953240FF64B00310F1E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		0BD7B955240FF66700310F1E /* UserAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountVC.swift; sourceTree = "<group>"; };
+		0BD7B955240FF66700310F1E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BD7B958240FF69400310F1E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0BD7B95C240FF79200310F1E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
-		0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppCoordinator.swift; sourceTree = "<group>"; };
+		0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
 		0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				0BD7B945240FE00E00310F1E /* AppDelegate */,
 				0BD7B964240FF86A00310F1E /* Models */,
-				0BD7B962240FF83000310F1E /* Controllers */,
+				0BD7B962240FF83000310F1E /* Scenes */,
 				0BD7B963240FF85900310F1E /* ConcreteCoordinators */,
 				0BD7B965240FF8A600310F1E /* ConcreteRouters */,
 				0BD7B96B240FFF8900310F1E /* CustomViews */,
@@ -200,31 +200,31 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		0BD7B961240FF7EF00310F1E /* CoreApp */ = {
+		0BD7B961240FF7EF00310F1E /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				0BD7B926240FDF7600310F1E /* ChannelVC.swift */,
 				0BD7B953240FF64B00310F1E /* ChatVC.swift */,
-				0BD7B955240FF66700310F1E /* UserAccountVC.swift */,
+				0BD7B955240FF66700310F1E /* ProfileViewController.swift */,
 			);
-			path = CoreApp;
+			path = Main;
 			sourceTree = "<group>";
 		};
-		0BD7B962240FF83000310F1E /* Controllers */ = {
+		0BD7B962240FF83000310F1E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				0BD7B94D240FE4C500310F1E /* TabBar.swift */,
-				0BD7B961240FF7EF00310F1E /* CoreApp */,
+				0BD7B961240FF7EF00310F1E /* Main */,
 				0BD7B960240FF7C300310F1E /* Authentication */,
 			);
-			path = Controllers;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		0BD7B963240FF85900310F1E /* ConcreteCoordinators */ = {
 			isa = PBXGroup;
 			children = (
 				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
-				0BD7B967240FFF3900310F1E /* CoreAppCoordinator.swift */,
+				0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */,
 				0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */,
 			);
 			path = ConcreteCoordinators;
@@ -372,7 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BD7B956240FF66700310F1E /* UserAccountVC.swift in Sources */,
+				0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */,
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
@@ -389,7 +389,7 @@
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
 				0B90D01F241179C800BF997F /* SceneDelegateRouter.swift in Sources */,
-				0BD7B968240FFF3900310F1E /* CoreAppCoordinator.swift in Sources */,
+				0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
 				0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */,

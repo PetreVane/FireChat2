@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CoreAppCoordinator: Coordinator {
+class MainAppCoordinator: Coordinator {
     
     var router: Router
     

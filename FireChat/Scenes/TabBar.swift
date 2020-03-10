@@ -23,7 +23,7 @@ class TabBar: UITabBarController {
      }
      
      func prepareUserRouter() -> UINavigationController {
-         let userAccount = UserAccountVC()
+        let userAccount = ProfileViewController()
          userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
          return UINavigationController(rootViewController: userAccount)
      }

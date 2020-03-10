@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegateRouter: UIViewController {
     
     var authenticationCoordinator: AuthenticationCoordinator?
-    var coreAppCoordinator: CoreAppCoordinator?
+    var coreAppCoordinator: MainAppCoordinator?
     var isUserLogged = false
     
 

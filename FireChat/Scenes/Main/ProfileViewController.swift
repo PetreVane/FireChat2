@@ -1,5 +1,5 @@
 //
-//  UserAccountVC.swift
+//  ProfileViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserAccountVC: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
