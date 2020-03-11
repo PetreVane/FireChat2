@@ -10,7 +10,7 @@ import UIKit
 
 ///  Defines the methods and properties all concrete coordinators must implement
 protocol Coordinator: AnyObject {
-    
+    func start()
     var router: Router { get set }
-    func onDismissAction()
+    func removeCoordinator(_ coordinator: Coordinator)
 }

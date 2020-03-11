@@ -10,18 +10,23 @@ import UIKit
 
 
 class AuthenticationCoordinator: Coordinator {
-    
+
     var router: Router
-    var childControllers: [UIViewController] = [] // not sure if this is usefull in this case
-    
+    var childControllers: [UIViewController] = []
+    weak var parentCoordinator: BaseCoordinator?
     
     init(navigationRouter: Router) {
-        self.router = navigationRouter
+          self.router = navigationRouter
+      }
+    
+    func start() {
+        // starts this coordinator
     }
     
-    func onDismissAction() {
-        // does nothing; Authentication coordinator is own by AuthenticationRouter
+    func removeCoordinator(_ coordinator: Coordinator) {
+        parentCoordinator?.removeCoordinator(self)
     }
+    
     
     func presentWelcomeVC() {
         guard let viewController = router.navigationController.viewControllers.first as? WelcomeVC else { return }

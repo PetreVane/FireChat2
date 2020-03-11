@@ -10,16 +10,18 @@ import UIKit
 
 
 class MainAppCoordinator: Coordinator {
-    
+
     var router: Router
-    
+    weak var parentCoordinator: BaseCoordinator?
     init(router: NavigationRouter) {
         self.router = router
     }
     
-    func onDismissAction() {
-        print("CoreAppCoordinator dismissed")
+    func start() {
+        // starts this coordinator
     }
-    
-    
+ 
+    func removeCoordinator(_ coordinator: Coordinator) {
+        parentCoordinator?.removeCoordinator(self)
+    }
 }

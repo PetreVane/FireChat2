@@ -12,13 +12,14 @@ class BaseCoordinator: Coordinator {
     
     var router: Router
     var childCoordinators: [Coordinator] = []
-    func onDismissAction() {
-        //does somethind
-    }
-    
+        
     init(router: Router) {
         self.router = router
     }
+    
+    func start() {
+         //starts this coordinator
+     }
     
     func addCoordinator(_ coordinator: Coordinator) {
         for element in childCoordinators {
