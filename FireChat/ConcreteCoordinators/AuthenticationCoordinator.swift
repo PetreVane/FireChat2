@@ -17,10 +17,12 @@ class AuthenticationCoordinator: Coordinator {
     
     init(navigationRouter: Router) {
           self.router = navigationRouter
+        start()
       }
     
     func start() {
         // starts this coordinator
+        presentWelcomeVC()
     }
     
     func removeCoordinator(_ coordinator: Coordinator) {
@@ -29,8 +31,9 @@ class AuthenticationCoordinator: Coordinator {
     
     
     func presentWelcomeVC() {
-        guard let viewController = router.navigationController.viewControllers.first as? WelcomeViewController else { return }
-        viewController.delegate = self
+        let welcomeScreen = WelcomeViewController.instantiate(delegate: self)
+        router.present(welcomeScreen, animated: true)
+        childControllers.append(welcomeScreen)
     }
     
     func presentLoginVC() {
