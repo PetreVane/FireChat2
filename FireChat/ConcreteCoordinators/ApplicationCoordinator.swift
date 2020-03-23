@@ -8,18 +8,36 @@
 
 import UIKit
 
-class ApplicationCoordinator: Coordinator {
+class ApplicationCoordinator {
     
-    var router: Router
+    var window: UIWindow?
+    let router = NavigationRouter(navigationController: UINavigationController())
     var childCoordinators: [Coordinator] = []
         
-    init(router: Router) {
-        self.router = router
+    init(window: UIWindow) {
+        self.window = window
+        start()
     }
     
     func start() {
-         //starts this coordinator
+        // remember to include a Launch Instructor of some logic, to determine which flow to launch
+//        startAuthenticationFlow()
+        startMainFlow()
      }
+    
+    func startAuthenticationFlow() {
+        let authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
+        authenticationCoordinator.start()
+        addCoordinator(authenticationCoordinator)
+        window?.rootViewController = authenticationCoordinator.router.navigationController
+    }
+    
+    func startMainFlow() {
+        let mainAppCoordinator = MainAppCoordinator(router: router)
+        mainAppCoordinator.start()
+        childCoordinators.append(mainAppCoordinator)
+        window?.rootViewController = TabBar()
+    }
     
     func addCoordinator(_ coordinator: Coordinator) {
         for element in childCoordinators {
