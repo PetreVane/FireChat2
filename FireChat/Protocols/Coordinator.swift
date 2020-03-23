@@ -12,5 +12,4 @@ import UIKit
 protocol Coordinator: AnyObject {
     func start()
     var router: Router { get set }
-    func removeCoordinator(_ coordinator: Coordinator)
 }

@@ -29,7 +29,7 @@ class AuthenticationCoordinator: Coordinator {
     
     
     func presentWelcomeVC() {
-        guard let viewController = router.navigationController.viewControllers.first as? WelcomeVC else { return }
+        guard let viewController = router.navigationController.viewControllers.first as? WelcomeViewController else { return }
         viewController.delegate = self
     }
     

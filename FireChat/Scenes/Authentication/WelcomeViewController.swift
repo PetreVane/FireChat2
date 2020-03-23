@@ -1,5 +1,5 @@
 //
-//  WelcomeVC.swift
+//  WelcomeViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -15,7 +15,7 @@ protocol WelcomeVCDelegate: AnyObject {
     func didPressNewAccountButton()
 }
 
-class WelcomeVC: UIViewController {
+class WelcomeViewController: UIViewController {
     
     weak var delegate: WelcomeVCDelegate?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
@@ -92,10 +92,10 @@ class WelcomeVC: UIViewController {
 
 }
 
-extension WelcomeVC {
+extension WelcomeViewController {
     
-    class func instantiate(delegate: WelcomeVCDelegate) -> WelcomeVC {
-        let viewController = WelcomeVC()
+    class func instantiate(delegate: WelcomeVCDelegate) -> WelcomeViewController {
+        let viewController = WelcomeViewController()
         viewController.delegate = delegate
         return viewController
     }

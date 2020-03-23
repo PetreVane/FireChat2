@@ -33,7 +33,7 @@ class SceneDelegateRouter: UIViewController {
       
     /// Starts authentication flow
     @objc func startAuthFlow() {
-        let welcomeVC = WelcomeVC()
+        let welcomeVC = WelcomeViewController()
         let navigationController = UINavigationController.init(rootViewController: welcomeVC)
         let router = NavigationRouter(navigationController: navigationController)
         authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
