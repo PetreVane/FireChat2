@@ -1,5 +1,5 @@
 //
-//  PasswordResetVC.swift
+//  PasswordResetViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -12,7 +12,7 @@ protocol PasswordResetDelegate: AnyObject {
     func didPressPasswordResetButton()
 }
 
-class PasswordResetVC: UIViewController {
+class PasswordResetViewController: UIViewController {
 
     weak var delegate: PasswordResetDelegate?
     let label = FireLabel(textAlignment: .center, fontSize: 25)
@@ -60,10 +60,10 @@ class PasswordResetVC: UIViewController {
     }
 }
 
-extension PasswordResetVC {
+extension PasswordResetViewController {
     
-    class func instantiate(delegate: PasswordResetDelegate) -> PasswordResetVC {
-        let viewController = PasswordResetVC()
+    class func instantiate(delegate: PasswordResetDelegate) -> PasswordResetViewController {
+        let viewController = PasswordResetViewController()
         viewController.delegate = delegate
         return viewController
     }

@@ -44,7 +44,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func presentPasswordResetVC() {
-        let passwordResetVC = PasswordResetVC.instantiate(delegate: self)
+        let passwordResetVC = PasswordResetViewController.instantiate(delegate: self)
         router.present(passwordResetVC, animated: true)
     }
     
