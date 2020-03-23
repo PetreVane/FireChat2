@@ -9,7 +9,7 @@
 import UIKit
 
 class TabBar: UITabBarController {
-    
+                
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [prepareChannelRouter(), prepareUserRouter()]
@@ -23,7 +23,7 @@ class TabBar: UITabBarController {
      
      func prepareUserRouter() -> UINavigationController {
         let userAccount = ProfileViewController()
-         userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
-         return UINavigationController(rootViewController: userAccount)
+        userAccount.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+        return UINavigationController(rootViewController: userAccount)
      }
 }

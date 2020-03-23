@@ -19,6 +19,7 @@ class MainAppCoordinator: Coordinator {
     
     func start() {
         // starts this coordinator
+        _ = TabBar()
     }
  
     func removeCoordinator(_ coordinator: Coordinator) {
