@@ -12,7 +12,7 @@ class SceneDelegateRouter: UIViewController {
     
     var authenticationCoordinator: AuthenticationCoordinator?
     var coreAppCoordinator: MainAppCoordinator?
-    var isUserLogged = false
+    var isUserLogged = true
     
 
     override func viewDidLoad() {

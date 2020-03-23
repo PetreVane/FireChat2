@@ -101,10 +101,6 @@ class LoginVC: UIViewController {
         delegate?.didPressLoginButton()
     }
     
-  
-    
-    
-
 }
 
 extension LoginVC {
