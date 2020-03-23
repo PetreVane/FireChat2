@@ -39,7 +39,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func presentSignUPVC() {
-        let signUpVC = SignUpVC.instantiate(delegate: self)
+        let signUpVC = SignUpViewController.instantiate(delegate: self)
         router.present(signUpVC, animated: true)
     }
     

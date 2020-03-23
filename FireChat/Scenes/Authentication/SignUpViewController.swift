@@ -1,5 +1,5 @@
 //
-//  SignUpVC.swift
+//  SignUpViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -12,7 +12,7 @@ protocol SignUPDelegate: AnyObject {
     func signUpButtonPressed()
 }
 
-class SignUpVC: UIViewController {
+class SignUpViewController: UIViewController {
     
     weak var delegate: SignUPDelegate?
     let nameTextField = FireTextField()
@@ -67,10 +67,10 @@ class SignUpVC: UIViewController {
     
 }
 
-extension SignUpVC {
+extension SignUpViewController {
     
-    class func instantiate(delegate: SignUPDelegate) -> SignUpVC {
-        let viewController = SignUpVC()
+    class func instantiate(delegate: SignUPDelegate) -> SignUpViewController {
+        let viewController = SignUpViewController()
         viewController.delegate = delegate
         return viewController
     }
