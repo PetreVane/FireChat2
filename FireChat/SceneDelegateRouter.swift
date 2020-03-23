@@ -44,10 +44,10 @@ class SceneDelegateRouter: UIViewController {
     
      /// Instantiates a TabBar controller & sets a general color
     @objc func startMainTab() {
-        let tabBar = TabBar()
-        tabBar.modalPresentationStyle = .overCurrentContext
-        present(tabBar, animated: true, completion: nil)
-        UITabBar.appearance().tintColor = .systemOrange
+//        let tabBar = TabBar()
+//        tabBar.modalPresentationStyle = .overCurrentContext
+//        present(tabBar, animated: true, completion: nil)
+//        UITabBar.appearance().tintColor = .systemOrange
     }
     
     /// Configures NavigationBar Appearance
