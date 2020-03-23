@@ -1,5 +1,5 @@
 //
-//  BaseCoordinator.swift
+//  ApplicationCoordinator.swift
 //  FireChat
 //
 //  Created by Petre Vane on 10/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCoordinator: Coordinator {
+class ApplicationCoordinator: Coordinator {
     
     var router: Router
     var childCoordinators: [Coordinator] = []

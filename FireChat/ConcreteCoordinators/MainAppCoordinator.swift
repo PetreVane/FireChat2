@@ -12,7 +12,7 @@ import UIKit
 class MainAppCoordinator: Coordinator {
 
     var router: Router
-    weak var parentCoordinator: BaseCoordinator?
+    weak var parentCoordinator: ApplicationCoordinator?
     init(router: NavigationRouter) {
         self.router = router
     }

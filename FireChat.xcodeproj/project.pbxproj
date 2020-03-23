@@ -12,7 +12,6 @@
 		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1BA241029AA00E35794 /* FireButton.swift */; };
 		0B76FF0E2418F7F300890205 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B76FF0D2418F7F300890205 /* CoordinatorFactory.swift */; };
-		0B76FF102418FAF200890205 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B76FF0F2418FAF200890205 /* ApplicationCoordinator.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0B90D01F241179C800BF997F /* SceneDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D01E241179C800BF997F /* SceneDelegateRouter.swift */; };
@@ -33,7 +32,7 @@
 		0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */; };
 		0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */; };
 		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
-		0BD93C6824179CF20007F8D0 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */; };
+		0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0B08D1BA241029AA00E35794 /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
 		0B76FF0D2418F7F300890205 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
-		0B76FF0F2418FAF200890205 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0B90D01E241179C800BF997F /* SceneDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateRouter.swift; sourceTree = "<group>"; };
@@ -78,7 +76,7 @@
 		0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
-		0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,10 +236,9 @@
 		0BD7B963240FF85900310F1E /* ConcreteCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				0BD93C6724179CF20007F8D0 /* BaseCoordinator.swift */,
+				0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */,
 				0BD7B969240FFF5000310F1E /* AuthenticationCoordinator.swift */,
 				0BD7B967240FFF3900310F1E /* MainAppCoordinator.swift */,
-				0B76FF0F2418FAF200890205 /* ApplicationCoordinator.swift */,
 			);
 			path = ConcreteCoordinators;
 			sourceTree = "<group>";
@@ -393,7 +390,7 @@
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeVC.swift in Sources */,
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
-				0BD93C6824179CF20007F8D0 /* BaseCoordinator.swift in Sources */,
+				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B76FF0E2418F7F300890205 /* CoordinatorFactory.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */,
@@ -412,7 +409,6 @@
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
 				0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */,
-				0B76FF102418FAF200890205 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

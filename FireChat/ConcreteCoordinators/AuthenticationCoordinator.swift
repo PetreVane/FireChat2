@@ -13,7 +13,7 @@ class AuthenticationCoordinator: Coordinator {
 
     var router: Router
     var childControllers: [UIViewController] = []
-    weak var parentCoordinator: BaseCoordinator?
+    weak var parentCoordinator: ApplicationCoordinator?
     
     init(navigationRouter: Router) {
           self.router = navigationRouter
