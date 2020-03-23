@@ -17,12 +17,13 @@ class ApplicationCoordinator {
     init(window: UIWindow) {
         self.window = window
         start()
+        configureNavigationBar()
     }
     
     func start() {
         // remember to include a Launch Instructor of some logic, to determine which flow to launch
-//        startAuthenticationFlow()
-        startMainFlow()
+        startAuthenticationFlow()
+//        startMainFlow()
      }
     
     func startAuthenticationFlow() {
@@ -56,5 +57,11 @@ class ApplicationCoordinator {
                 break
             }
         }
+    }
+    
+    // Configures NavigationBar Appearance
+    func configureNavigationBar() {
+        // changes general appearance
+        UINavigationBar.appearance().tintColor = .systemOrange
     }
 }
