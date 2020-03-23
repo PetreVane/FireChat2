@@ -1,5 +1,5 @@
 //
-//  LoginVC.swift
+//  LoginViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -13,7 +13,7 @@ protocol LoginVCDelegate: AnyObject {
     func didPressLoginButton()
 }
 
-class LoginVC: UIViewController {
+class LoginViewController: UIViewController {
     
     weak var delegate: LoginVCDelegate?
     let label = FireLabel(textAlignment: .center, fontSize: 25)
@@ -103,10 +103,10 @@ class LoginVC: UIViewController {
     
 }
 
-extension LoginVC {
+extension LoginViewController {
     
-    class func instantiate(delegate: LoginVCDelegate) -> LoginVC {
-        let viewController = LoginVC()
+    class func instantiate(delegate: LoginVCDelegate) -> LoginViewController {
+        let viewController = LoginViewController()
         viewController.delegate = delegate
         return viewController
     }

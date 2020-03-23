@@ -34,7 +34,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func presentLoginVC() {
-        let loginVC = LoginVC.instantiate(delegate: self)
+        let loginVC = LoginViewController.instantiate(delegate: self)
         router.present(loginVC, animated: true)
     }
     

@@ -24,7 +24,7 @@
 		0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B94D240FE4C500310F1E /* TabBar.swift */; };
 		0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B953240FF64B00310F1E /* ChatVC.swift */; };
 		0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B955240FF66700310F1E /* ProfileViewController.swift */; };
-		0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B958240FF69400310F1E /* LoginVC.swift */; };
+		0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B958240FF69400310F1E /* LoginViewController.swift */; };
 		0BD7B95B240FF6CE00310F1E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */; };
 		0BD7B95D240FF79200310F1E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95C240FF79200310F1E /* WelcomeViewController.swift */; };
 		0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */; };
@@ -67,7 +67,7 @@
 		0BD7B94D240FE4C500310F1E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0BD7B953240FF64B00310F1E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		0BD7B955240FF66700310F1E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0BD7B958240FF69400310F1E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0BD7B958240FF69400310F1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0BD7B95C240FF79200310F1E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				0BD7B95C240FF79200310F1E /* WelcomeViewController.swift */,
-				0BD7B958240FF69400310F1E /* LoginVC.swift */,
+				0BD7B958240FF69400310F1E /* LoginViewController.swift */,
 				0BD7B95A240FF6CE00310F1E /* SignUpVC.swift */,
 				0BD7B95E240FF7B300310F1E /* PasswordResetVC.swift */,
 			);
@@ -385,7 +385,7 @@
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatVC.swift in Sources */,
 				0BB13F362417B43F00B445A9 /* Presentable.swift in Sources */,
-				0BD7B959240FF69500310F1E /* LoginVC.swift in Sources */,
+				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,
 				0BD7B927240FDF7600310F1E /* ChannelVC.swift in Sources */,
 				0BD7B95F240FF7B300310F1E /* PasswordResetVC.swift in Sources */,
