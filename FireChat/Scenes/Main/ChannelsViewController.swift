@@ -1,5 +1,5 @@
 //
-//  ChatVC.swift
+//  ChannelsViewController.swift
 //  FireChat
 //
 //  Created by Petre Vane on 04/03/2020.
@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ChatVC: UIViewController {
+class ChannelsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        view.backgroundColor = .systemGreen
     }
-    
+
+
 }
+

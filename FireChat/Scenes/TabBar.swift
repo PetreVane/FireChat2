@@ -16,7 +16,7 @@ class TabBar: UITabBarController {
     }
     
     func prepareChannelRouter() -> UINavigationController {
-         let channelVC = ChannelVC()
+         let channelVC = ChannelsViewController()
          channelVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
          return UINavigationController(rootViewController: channelVC)
      }
