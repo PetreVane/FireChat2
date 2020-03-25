@@ -11,6 +11,7 @@
 		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
 		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1BA241029AA00E35794 /* FireButton.swift */; };
+		0B164FA3242BB7E800DB2AE8 /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0B08D1BA241029AA00E35794 /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
+		0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		0B164FA1242BB7C000DB2AE8 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		0B90D0142410F59400BF997F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,15 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				0BD7B945240FE00E00310F1E /* AppDelegate */,
-				0BD7B964240FF86A00310F1E /* Models */,
-				0BD7B962240FF83000310F1E /* Scenes */,
-				0BD7B966240FF8F600310F1E /* Protocols */,
 				0BD7B963240FF85900310F1E /* ConcreteCoordinators */,
 				0BD7B965240FF8A600310F1E /* ConcreteRouters */,
 				0BD7B96B240FFF8900310F1E /* CustomViews */,
+				0B164FA1242BB7C000DB2AE8 /* Enums */,
 				0B90D0142410F59400BF997F /* Extensions */,
-				0BD7B949240FE12700310F1E /* Resources */,
 				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
+				0BD7B964240FF86A00310F1E /* Models */,
+				0BD7B966240FF8F600310F1E /* Protocols */,
+				0BD7B949240FE12700310F1E /* Resources */,
+				0BD7B962240FF83000310F1E /* Scenes */,
 			);
 			path = FireChat;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B164FA3242BB7E800DB2AE8 /* LaunchInstructor.swift in Sources */,
 				0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */,
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeViewController.swift in Sources */,

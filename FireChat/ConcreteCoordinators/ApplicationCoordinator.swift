@@ -13,7 +13,10 @@ class ApplicationCoordinator {
     var window: UIWindow?
     let router = NavigationRouter(navigationController: UINavigationController())
     var childCoordinators: [Coordinator] = []
-        
+    var isUserAuthorized: Bool = false {
+        didSet { determineFlow() }
+    }
+    
     init(window: UIWindow) {
         self.window = window
         start()
@@ -21,13 +24,20 @@ class ApplicationCoordinator {
     }
     
     func start() {
-        // remember to include a Launch Instructor of some logic, to determine which flow to launch
-        startAuthenticationFlow()
-//        startMainFlow()
+        determineFlow()
      }
+    
+    private func determineFlow() {
+        
+        switch isUserAuthorized {
+            case true: startMainFlow()
+            case false: startAuthenticationFlow()
+        }
+    }
     
     func startAuthenticationFlow() {
         let authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
+        authenticationCoordinator.parentCoordinator = self
         authenticationCoordinator.start()
         addCoordinator(authenticationCoordinator)
         window?.rootViewController = authenticationCoordinator.router.navigationController
@@ -35,10 +45,12 @@ class ApplicationCoordinator {
     
     func startMainFlow() {
         let mainAppCoordinator = MainAppCoordinator(router: router)
+        mainAppCoordinator.parentCoordinator = self
         mainAppCoordinator.start()
         childCoordinators.append(mainAppCoordinator)
         window?.rootViewController = TabBar()
     }
+    
     
     func addCoordinator(_ coordinator: Coordinator) {
         for element in childCoordinators {
