@@ -11,7 +11,6 @@
 		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
 		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1BA241029AA00E35794 /* FireButton.swift */; };
-		0B164FA3242BB7E800DB2AE8 /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
@@ -20,7 +19,6 @@
 		0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BD7B92B240FDF7C00310F1E /* Assets.xcassets */; };
 		0BD7B92F240FDF7C00310F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BD7B92D240FDF7C00310F1E /* LaunchScreen.storyboard */; };
 		0BD7B93A240FDF7D00310F1E /* FireChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B939240FDF7D00310F1E /* FireChatTests.swift */; };
-		0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B94D240FE4C500310F1E /* TabBar.swift */; };
 		0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B953240FF64B00310F1E /* ChatViewController.swift */; };
 		0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B955240FF66700310F1E /* ProfileViewController.swift */; };
 		0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B958240FF69400310F1E /* LoginViewController.swift */; };
@@ -48,7 +46,6 @@
 		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0B08D1BA241029AA00E35794 /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
-		0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +59,6 @@
 		0BD7B939240FDF7D00310F1E /* FireChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireChatTests.swift; sourceTree = "<group>"; };
 		0BD7B93B240FDF7D00310F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BD7B944240FDFA700310F1E /* FireChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChat.entitlements; sourceTree = "<group>"; };
-		0BD7B94D240FE4C500310F1E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0BD7B953240FF64B00310F1E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0BD7B955240FF66700310F1E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BD7B958240FF69400310F1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +100,6 @@
 		0B164FA1242BB7C000DB2AE8 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				0B164FA2242BB7E800DB2AE8 /* LaunchInstructor.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -221,7 +216,6 @@
 		0BD7B962240FF83000310F1E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				0BD7B94D240FE4C500310F1E /* TabBar.swift */,
 				0BD7B961240FF7EF00310F1E /* Main */,
 				0BD7B960240FF7C300310F1E /* Authentication */,
 			);
@@ -380,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B164FA3242BB7E800DB2AE8 /* LaunchInstructor.swift in Sources */,
 				0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */,
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeViewController.swift in Sources */,
@@ -400,7 +393,6 @@
 				0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
-				0BD7B94E240FE4C500310F1E /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

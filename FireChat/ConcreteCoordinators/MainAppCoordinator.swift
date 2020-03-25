@@ -18,14 +18,17 @@ class MainAppCoordinator: Coordinator {
     }
     
     func start() {
-        // starts this coordinator
-//        _ = TabBar()
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = [startChannelViewController(), startProfileViewController()]
+        _ = instantiateTabBar()
     }
  
     func removeCoordinator(_ coordinator: Coordinator) {
         parentCoordinator?.removeCoordinator(self)
+    }
+    
+    func instantiateTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [startChannelViewController(), startProfileViewController()]
+        return tabBar
     }
     
     private func startChannelViewController() -> UINavigationController {
