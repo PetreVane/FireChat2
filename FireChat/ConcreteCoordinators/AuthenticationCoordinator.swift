@@ -69,7 +69,8 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 
 extension AuthenticationCoordinator: LoginVCDelegate {
     func didPressLoginButton() {
-        prepateTabBar()
+        parentCoordinator?.isUserAuthorized = true
+        parentCoordinator?.removeCoordinator(self)
     }
     
     func didPressForgotPasswordButton() {
@@ -92,7 +93,4 @@ extension AuthenticationCoordinator: PasswordResetDelegate {
 
 extension AuthenticationCoordinator {
     
-    func prepateTabBar() {
-//        SceneDelegate.shared.presenter = 
-    }
 }
