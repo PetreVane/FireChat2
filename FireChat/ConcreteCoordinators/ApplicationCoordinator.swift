@@ -48,7 +48,7 @@ class ApplicationCoordinator {
         mainAppCoordinator.parentCoordinator = self
         mainAppCoordinator.start()
         childCoordinators.append(mainAppCoordinator)
-        window?.rootViewController = TabBar()
+        window?.rootViewController = mainAppCoordinator.instantiateTabBar()
     }
     
     
