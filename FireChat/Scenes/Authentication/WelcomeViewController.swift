@@ -84,6 +84,7 @@ class WelcomeViewController: UIViewController {
     
     @objc private func didPressGoogleButton() {
         delegate?.didPressGoogleButton()
+        presentAlert(withTitle: "Ops, an error", message: "Page not implemented yet", buttonTitle: "Ok, move on.")
     }
     
     @objc private func didPressNewAccountButton() {
