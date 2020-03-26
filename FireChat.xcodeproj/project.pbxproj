@@ -97,13 +97,6 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		0B164FA1242BB7C000DB2AE8 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		0B90D0142410F59400BF997F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +138,6 @@
 				0BD7B963240FF85900310F1E /* ConcreteCoordinators */,
 				0BD7B965240FF8A600310F1E /* ConcreteRouters */,
 				0BD7B96B240FFF8900310F1E /* CustomViews */,
-				0B164FA1242BB7C000DB2AE8 /* Enums */,
 				0B90D0142410F59400BF997F /* Extensions */,
 				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
 				0BD7B964240FF86A00310F1E /* Models */,
