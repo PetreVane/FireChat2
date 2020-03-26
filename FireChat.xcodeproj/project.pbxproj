@@ -97,6 +97,13 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		0B79324C242CC9820028CEAE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0B90D0142410F59400BF997F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +258,7 @@
 		0BD7B96B240FFF8900310F1E /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				0B79324C242CC9820028CEAE /* Views */,
 				0B90D017241104E000BF997F /* TextField */,
 				0B08D1B92410292F00E35794 /* Buttons */,
 				0BD7B96C240FFFCB00310F1E /* Labels */,
