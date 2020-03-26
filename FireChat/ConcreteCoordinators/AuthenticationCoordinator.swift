@@ -17,7 +17,6 @@ class AuthenticationCoordinator: Coordinator {
     
     init(navigationRouter: Router) {
           self.router = navigationRouter
-        start()
       }
     
     func start() {
@@ -55,6 +54,7 @@ class AuthenticationCoordinator: Coordinator {
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
     func didPressGoogleButton() {
+//        let alert = AlertController(alertTitle: "Ops", message: "Button not configured yer", buttonTitle: "Ok, dismiss")
         
     }
     

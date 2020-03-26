@@ -28,7 +28,6 @@ class ApplicationCoordinator {
      }
     
     private func determineFlow() {
-        
         switch isUserAuthorized {
             case true: startMainFlow()
             case false: startAuthenticationFlow()

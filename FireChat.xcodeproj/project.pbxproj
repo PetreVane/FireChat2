@@ -11,6 +11,10 @@
 		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
 		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1BA241029AA00E35794 /* FireButton.swift */; };
+		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
+		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
+		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
+		0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793253242CEA560028CEAE /* UIViewController+Ext.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
@@ -46,6 +50,10 @@
 		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0B08D1BA241029AA00E35794 /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
+		0B79324D242CCA9C0028CEAE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		0B79324F242CCAB90028CEAE /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		0B793253242CEA560028CEAE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +108,9 @@
 		0B79324C242CC9820028CEAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B79324D242CCA9C0028CEAE /* AlertController.swift */,
+				0B793251242CCB510028CEAE /* AlertView.swift */,
+				0B79324F242CCAB90028CEAE /* EmptyState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				0B90D0152410F5B600BF997F /* UIView+Ext.swift */,
+				0B793253242CEA560028CEAE /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,7 +389,9 @@
 				0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */,
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,
 				0BD7B95D240FF79200310F1E /* WelcomeViewController.swift in Sources */,
+				0B793252242CCB510028CEAE /* AlertView.swift in Sources */,
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
+				0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */,
 				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpViewController.swift in Sources */,
@@ -389,7 +403,9 @@
 				0BD7B95F240FF7B300310F1E /* PasswordResetViewController.swift in Sources */,
 				0B08D1B6241007FC00E35794 /* Router.swift in Sources */,
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
+				0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
+				0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */,
 				0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
