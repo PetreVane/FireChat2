@@ -10,7 +10,6 @@ import UIKit
 
 class FireLabel: UILabel {
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -33,9 +32,10 @@ class FireLabel: UILabel {
         adjustsFontSizeToFitWidth = true
         numberOfLines = 1
         lineBreakMode = .byWordWrapping
-        minimumScaleFactor = 0.9
+        minimumScaleFactor = 0.75
         backgroundColor = .systemBackground
         layer.cornerRadius = 25
+
     }
     
 }
