@@ -15,6 +15,7 @@
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
 		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
 		0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793253242CEA560028CEAE /* UIViewController+Ext.swift */; };
+		0B793258242D27390028CEAE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793257242D27390028CEAE /* Images.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		0B79324F242CCAB90028CEAE /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0B793253242CEA560028CEAE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		0B793257242D27390028CEAE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0B793256242D270A0028CEAE /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0B793257242D27390028CEAE /* Images.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		0B90D0142410F59400BF997F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 				0BD7B963240FF85900310F1E /* ConcreteCoordinators */,
 				0BD7B965240FF8A600310F1E /* ConcreteRouters */,
 				0BD7B96B240FFF8900310F1E /* CustomViews */,
+				0B793256242D270A0028CEAE /* Enums */,
 				0B90D0142410F59400BF997F /* Extensions */,
 				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
 				0BD7B964240FF86A00310F1E /* Models */,
@@ -179,8 +190,8 @@
 		0BD7B945240FE00E00310F1E /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				0BD7B944240FDFA700310F1E /* FireChat.entitlements */,
 				0BD7B922240FDF7600310F1E /* AppDelegate.swift */,
+				0BD7B944240FDFA700310F1E /* FireChat.entitlements */,
 				0BD7B924240FDF7600310F1E /* SceneDelegate.swift */,
 			);
 			name = AppDelegate;
@@ -399,6 +410,7 @@
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,
+				0B793258242D27390028CEAE /* Images.swift in Sources */,
 				0BD7B927240FDF7600310F1E /* ChannelsViewController.swift in Sources */,
 				0BD7B95F240FF7B300310F1E /* PasswordResetViewController.swift in Sources */,
 				0B08D1B6241007FC00E35794 /* Router.swift in Sources */,
