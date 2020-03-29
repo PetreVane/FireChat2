@@ -28,7 +28,6 @@ class AuthenticationCoordinator: Coordinator {
         parentCoordinator?.removeCoordinator(self)
     }
     
-    
     func presentWelcomeVC() {
         let welcomeScreen = WelcomeViewController.instantiate(delegate: self)
         router.present(welcomeScreen, animated: true)
@@ -67,7 +66,7 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
 }
 
 extension AuthenticationCoordinator: LoginVCDelegate {
-    func didPressLoginButton() {
+    func userHasLoggedIn() {
         parentCoordinator?.isUserAuthorized = true
         parentCoordinator?.removeCoordinator(self)
     }

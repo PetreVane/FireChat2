@@ -98,11 +98,9 @@ class AlertController: UIViewController {
             actionButton.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
             actionButton.heightAnchor.constraint(equalToConstant: 30)
         ])
-        
     }
 
     @objc private func didPressActionButton() {
-        print("Action button pressed")
         dismiss(animated: true, completion: nil)
     }
 }
