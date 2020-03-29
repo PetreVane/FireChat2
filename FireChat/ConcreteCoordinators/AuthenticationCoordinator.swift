@@ -54,7 +54,6 @@ class AuthenticationCoordinator: Coordinator {
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
     func didPressGoogleButton() {
-//        let alert = AlertController(alertTitle: "Ops", message: "Button not configured yer", buttonTitle: "Ok, dismiss")
         
     }
     
