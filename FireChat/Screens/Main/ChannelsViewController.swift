@@ -18,17 +18,11 @@ class ChannelsViewController: UIViewController {
     private let firebase = Firebase.shared
     private let label = FireLabel(textAlignment: .center, fontSize: 25)
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        welcomeMessage()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
-//        configureLabel()
-        showEmptyState()
+        welcomeMessage()
     }
     
     private func configureLabel() {

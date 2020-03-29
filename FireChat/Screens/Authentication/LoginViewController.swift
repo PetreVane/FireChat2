@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginVCDelegate: AnyObject {
     func didPressForgotPasswordButton()
-    func didPressLoginButton()
+    func userHasLoggedIn()
 }
 
 class LoginViewController: UIViewController {
@@ -100,13 +100,20 @@ class LoginViewController: UIViewController {
     
     @objc private func didPressLoginButton() {
         authenticateFirebaseUser()
-        delegate?.didPressLoginButton()
     }
     
     private func authenticateFirebaseUser() {
         guard let emailAddress = userNameTextField.text,
               let password = passwordTextField.text else { return }
-        firebase.authenticateUser(withEmail: emailAddress, password: password)
+        firebase.authenticateUser(withEmail: emailAddress, password: password) { (completed, error) in
+            if completed {
+                self.delegate?.userHasLoggedIn()
+            } else {
+                if let errorMessage = error {
+                    self.presentAlert(withTitle: "Error", message: errorMessage, buttonTitle: "Ok")
+                }
+            }
+        }
     }
 }
 

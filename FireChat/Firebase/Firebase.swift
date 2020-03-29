@@ -31,11 +31,16 @@ class Firebase {
         }
     }
     
-    func authenticateUser(withEmail email: String, password: String) {
+    func authenticateUser(withEmail email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
                 
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authUser, error) in
             guard let self = self else { return }
-            guard error == nil else { ErrorsManager.failedAuthentication; return }
+            guard
+                error == nil
+                else {
+                    completion(false, error?.localizedDescription)
+                    return
+                }
             
             guard let firebaseUser = authUser?.user else { return }
             let name = firebaseUser.displayName ?? "Missing name"
@@ -44,6 +49,7 @@ class Firebase {
             let provider = firebaseUser.providerID
             let authenticatedUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
             self.users.append(authenticatedUser)
+            completion(true, nil)
         }
     }
 }
