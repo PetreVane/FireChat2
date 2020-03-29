@@ -15,7 +15,13 @@ protocol ChannelsVCDelegate: AnyObject {
 class ChannelsViewController: UIViewController {
     
     weak var delegate: ChannelsVCDelegate?
+    private let firebase = Firebase.shared
     private let label = FireLabel(textAlignment: .center, fontSize: 25)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        welcomeMessage()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,11 @@ class ChannelsViewController: UIViewController {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             label.heightAnchor.constraint(equalToConstant: padding)
         ])
+    }
+    
+    private func welcomeMessage() {
+        guard let firebaseUser = firebase.users.first else { return }
+        presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
     }
     
 }

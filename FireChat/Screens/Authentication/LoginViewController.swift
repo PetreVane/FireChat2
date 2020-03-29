@@ -16,6 +16,7 @@ protocol LoginVCDelegate: AnyObject {
 class LoginViewController: UIViewController {
     
     weak var delegate: LoginVCDelegate?
+    private let firebase = Firebase.shared
     let label = FireLabel(textAlignment: .center, fontSize: 25)
     let userNameTextField = FireTextField()
     let passwordTextField = FireTextField()
@@ -98,9 +99,15 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didPressLoginButton() {
+        authenticateFirebaseUser()
         delegate?.didPressLoginButton()
     }
     
+    private func authenticateFirebaseUser() {
+        guard let emailAddress = userNameTextField.text,
+              let password = passwordTextField.text else { return }
+        firebase.authenticateUser(withEmail: emailAddress, password: password)
+    }
 }
 
 extension LoginViewController {

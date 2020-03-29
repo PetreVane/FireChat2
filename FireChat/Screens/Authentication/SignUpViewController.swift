@@ -15,6 +15,7 @@ protocol SignUPDelegate: AnyObject {
 class SignUpViewController: UIViewController {
     
     weak var delegate: SignUPDelegate?
+    let firebase = Firebase.shared
     let nameTextField = FireTextField()
     let emailTextField = FireTextField()
     let passwordTextField = FireTextField()
@@ -61,7 +62,18 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func didPressSignUPButton() {
+        createFirebaseAccount()
         delegate?.signUpButtonPressed()
+    }
+    
+    private func createFirebaseAccount() {
+        guard
+            let userName = nameTextField.text,
+            let emailAddress = emailTextField.text,
+            let password = passwordTextField.text
+        else { return}
+         
+        firebase.createUser(withUserName: userName, email: emailAddress, password: password)
     }
     
     
