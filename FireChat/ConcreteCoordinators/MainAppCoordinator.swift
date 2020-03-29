@@ -50,6 +50,9 @@ extension MainAppCoordinator: ChannelsVCDelegate {
 }
 
 extension MainAppCoordinator: ProfileVCDelegate {
-    
-    
+    func didPressLogout() {
+        print("Did press logout")
+        parentCoordinator?.startAuthenticationFlow()
+        parentCoordinator?.removeCoordinator(self)
+    }
 }

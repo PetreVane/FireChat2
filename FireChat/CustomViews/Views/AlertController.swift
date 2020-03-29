@@ -12,7 +12,7 @@ class AlertController: UIViewController {
 
     let alertContainerView = AlertView()
     let titleLabel = FireLabel(textAlignment: .center, fontSize: 10)
-    let bodyLabel = FireLabel(textAlignment: .left, fontSize: 5)
+    let bodyLabel = FireLabel(textAlignment: .center, fontSize: 5)
     let actionButton = FireButton(backgroundColor: .systemRed, title: "Ok, let's move on")
     let padding: CGFloat = 20
     
@@ -46,8 +46,8 @@ class AlertController: UIViewController {
         NSLayoutConstraint.activate([
             alertContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             alertContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            alertContainerView.heightAnchor.constraint(equalToConstant: 280),
-            alertContainerView.widthAnchor.constraint(equalToConstant: 220)
+            alertContainerView.heightAnchor.constraint(equalToConstant: 200),
+            alertContainerView.widthAnchor.constraint(equalToConstant: 320)
         ])
     }
     
@@ -71,7 +71,9 @@ class AlertController: UIViewController {
     private func configureBodyLabel() {
         view.addSubview(bodyLabel)
         bodyLabel.text = alertMessage ?? "Unable to complete request!"
-        bodyLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        bodyLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        bodyLabel.numberOfLines = 2
+        
         titleLabel.textColor = .secondaryLabel
         titleLabel.backgroundColor = .systemBackground
         

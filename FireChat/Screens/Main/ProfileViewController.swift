@@ -9,25 +9,28 @@
 import UIKit
 
 protocol ProfileVCDelegate: AnyObject {
-    
+    func didPressLogout()
 }
 
 class ProfileViewController: UIViewController {
 
     weak var delegate: ProfileVCDelegate?
     private let label = FireLabel(textAlignment: .center, fontSize: 25)
+    private let logoutButton = FireButton(backgroundColor: .systemRed, title: "Log out")
+    private let padding: CGFloat = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureLabel()
+        configureLogOutButton()
     }
     
 
     private func configureLabel() {
         view.addSubview(label)
         label.text = "Welcome to Profile ViewController"
-        let padding: CGFloat = 50
+        
         label.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
@@ -37,6 +40,22 @@ class ProfileViewController: UIViewController {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             label.heightAnchor.constraint(equalToConstant: padding)
         ])
+    }
+    
+    private func configureLogOutButton() {
+        view.addSubview(logoutButton)
+        logoutButton.addTarget(self, action: #selector(didPressLogout), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            logoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            logoutButton.heightAnchor.constraint(equalToConstant: padding)
+        ])
+    }
+    
+    @objc private func didPressLogout() {
+        delegate?.didPressLogout()
     }
 
 }
