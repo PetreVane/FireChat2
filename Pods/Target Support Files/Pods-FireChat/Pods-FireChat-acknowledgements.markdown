@@ -462,6 +462,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    limitations under the License.
 
 
+## FirebaseAnalytics
+
+Copyright 2019 Google
+
 ## FirebaseAnalyticsInterop
 
 
@@ -2727,6 +2731,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## GoogleAppMeasurement
+
+Copyright 2019 Google
 
 ## GoogleDataTransport
 
