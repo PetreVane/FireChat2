@@ -71,12 +71,10 @@ class SignUpViewController: UIViewController {
             let userName = nameTextField.text,
             let emailAddress = emailTextField.text,
             let password = passwordTextField.text
-        else { return}
+        else { return }
          
         firebase.createUser(withUserName: userName, email: emailAddress, password: password)
     }
-    
-    
 }
 
 extension SignUpViewController {

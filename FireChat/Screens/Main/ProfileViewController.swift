@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     private let label = FireLabel(textAlignment: .center, fontSize: 25)
     private let logoutButton = FireButton(backgroundColor: .systemRed, title: "Log out")
     private let padding: CGFloat = 50
+    private let firebase = Firebase.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func didPressLogout() {
+        firebase.signOut()
         delegate?.didPressLogout()
     }
 

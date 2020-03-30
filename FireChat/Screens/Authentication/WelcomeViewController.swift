@@ -43,7 +43,6 @@ class WelcomeViewController: UIViewController {
         let padding: CGFloat = 50
         
         NSLayoutConstraint.activate([
-        
             welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 2),
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
@@ -59,7 +58,6 @@ class WelcomeViewController: UIViewController {
             button.setTitleColor(.systemBlue, for: .normal)
             
             NSLayoutConstraint.activate([
-            
                 button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding / 2),
                 button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding / 2),
                 button.heightAnchor.constraint(equalToConstant: padding)
@@ -71,7 +69,6 @@ class WelcomeViewController: UIViewController {
         newAccountButton.addTarget(self, action: #selector(didPressNewAccountButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-        
            newAccountButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
            googleButton.bottomAnchor.constraint(equalTo: newAccountButton.topAnchor, constant: -15),
            emailButton.bottomAnchor.constraint(equalTo: googleButton.topAnchor, constant: -15)
@@ -90,11 +87,9 @@ class WelcomeViewController: UIViewController {
     @objc private func didPressNewAccountButton() {
         delegate?.didPressNewAccountButton()
     }
-
 }
 
 extension WelcomeViewController {
-    
     class func instantiate(delegate: WelcomeVCDelegate) -> WelcomeViewController {
         let viewController = WelcomeViewController()
         viewController.delegate = delegate

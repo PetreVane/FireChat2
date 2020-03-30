@@ -83,7 +83,6 @@ extension AuthenticationCoordinator: SignUPDelegate {
 }
 
 extension AuthenticationCoordinator: PasswordResetDelegate {
-    
     func didPressPasswordResetButton() {
         router.navigationController.popToRootViewController(animated: true)
     }
