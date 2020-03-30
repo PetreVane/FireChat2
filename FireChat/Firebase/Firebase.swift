@@ -52,4 +52,25 @@ class Firebase {
             completion(true, nil)
         }
     }
+    
+    func getSignedInUser(completion: @escaping (User?) -> Void) {
+        
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if let user = user {
+                let signedInUser = User(name: user.displayName ?? "Missing name", email: user.email ?? "Missing email", photoURL: user.photoURL, provider: user.providerID)
+                completion(signedInUser)
+            } else { completion(nil) }
+        }
+    }
+    
+    func signOut() {
+        let firebaseAuthentication = Auth.auth()
+        do {
+            try firebaseAuthentication.signOut()
+            print("Success signing out")
+        } catch {
+            print("Errors while signing out: \(error.localizedDescription)")
+        }
+    }
 }

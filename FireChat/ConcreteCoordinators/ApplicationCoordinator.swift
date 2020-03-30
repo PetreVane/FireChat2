@@ -13,9 +13,8 @@ class ApplicationCoordinator {
     var window: UIWindow?
     let router = NavigationRouter(navigationController: UINavigationController())
     var childCoordinators: [Coordinator] = []
-    var isUserAuthorized: Bool = false {
-        didSet { determineFlow() }
-    }
+    let firebase = Firebase.shared
+    var isUserAuthorized = false { didSet { decideAppFlow() } }
     
     init(window: UIWindow) {
         self.window = window
@@ -24,13 +23,21 @@ class ApplicationCoordinator {
     }
     
     func start() {
-        determineFlow()
+        isUserLoggedIn()
+        decideAppFlow()
      }
     
-    private func determineFlow() {
+    private func decideAppFlow() {
         switch isUserAuthorized {
             case true: startMainFlow()
             case false: startAuthenticationFlow()
+        }
+    }
+    
+    private func isUserLoggedIn() {
+        firebase.getSignedInUser { (user) in
+            guard user != nil else { return }
+            self.isUserAuthorized = true
         }
     }
     
@@ -50,14 +57,12 @@ class ApplicationCoordinator {
         window?.rootViewController = mainAppCoordinator.instantiateTabBar()
     }
     
-    
     func addCoordinator(_ coordinator: Coordinator) {
         for element in childCoordinators {
             if element === coordinator { return }
         }
         childCoordinators.append(coordinator)
     }
-    
     
     func removeCoordinator(_ coordinator: Coordinator) {
         guard childCoordinators.isEmpty == false else { return }
