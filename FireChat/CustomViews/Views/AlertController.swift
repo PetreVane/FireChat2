@@ -63,7 +63,7 @@ class AlertController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: alertContainerView.topAnchor, constant: padding),
             titleLabel.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
-            titleLabel.heightAnchor.constraint(equalToConstant: 28)
+            titleLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
     }

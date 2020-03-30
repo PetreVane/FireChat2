@@ -28,7 +28,7 @@ class ChannelsViewController: UIViewController {
     }
         
     private func welcomeMessage() {
-        guard let firebaseUser = firebase.users.first else { return }
+        guard let firebaseUser = firebase.users.last else { return }
         presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
     }
     

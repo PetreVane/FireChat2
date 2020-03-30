@@ -63,7 +63,6 @@ class SignUpViewController: UIViewController {
     
     @objc private func didPressSignUPButton() {
         createFirebaseAccount()
-        delegate?.signUpButtonPressed()
     }
     
     private func createFirebaseAccount() {
@@ -73,7 +72,16 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text
         else { return }
          
-        firebase.createUser(withUserName: userName, email: emailAddress, password: password)
+        firebase.createUser(withUserName: userName, email: emailAddress, password: password) { (completed, message) in
+            if completed {
+                self.presentAlert(withTitle: "Hooray", message: "Your account has been created. Now, try to log in!", buttonTitle: "Take me back to Welcome Screen")
+                self.delegate?.signUpButtonPressed()
+            } else {
+                if let errorMessage = message {
+                    self.presentAlert(withTitle: "Account Not Created!", message: errorMessage, buttonTitle: "Let me try again!")
+                }
+            }
+        }
     }
 }
 
