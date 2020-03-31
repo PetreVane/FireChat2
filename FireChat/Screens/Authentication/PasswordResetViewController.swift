@@ -15,6 +15,7 @@ protocol PasswordResetDelegate: AnyObject {
 class PasswordResetViewController: UIViewController {
 
     weak var delegate: PasswordResetDelegate?
+    private let firebase = Firebase.shared
     let label = FireLabel(textAlignment: .center, fontSize: 25)
     let emailTextField = FireTextField()
     let resetButton = FireButton(backgroundColor: .systemYellow, title: "Reset password now")
@@ -40,8 +41,8 @@ class PasswordResetViewController: UIViewController {
         let customViews = [label, emailTextField, resetButton]
         for customView in customViews {
             view.addSubview(customView)
-            NSLayoutConstraint.activate([
             
+            NSLayoutConstraint.activate([
                 customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
                 customView.heightAnchor.constraint(equalToConstant: 40)
@@ -56,7 +57,23 @@ class PasswordResetViewController: UIViewController {
     }
     
     @objc private func didPressResetButton() {
-        delegate?.didPressPasswordResetButton()
+        resetPassword()
+    }
+    
+    private func resetPassword() {
+        guard let emailAddress = emailTextField.text else { return }
+        emailAddress.isEmpty ?
+            presentAlert(withTitle: "Ops", message: "You need to provide an email address!", buttonTitle: "Ok, I'll do that")
+            : firebase.sendPasswordResetLink(to: emailAddress, completion: { [weak self] (completed, message) in
+                
+                guard let self = self else { return }
+                
+                if completed {
+                    self.presentAlert(withTitle: "Success", message: message, buttonTitle: "Nicely done 👍🏻")
+                } else {
+                    self.presentAlert(withTitle: "What?! an Error?", message: message, buttonTitle: "I'll try one more time")
+                    self.delegate?.didPressPasswordResetButton() }
+            })
     }
 }
 

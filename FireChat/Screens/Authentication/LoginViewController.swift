@@ -105,14 +105,11 @@ class LoginViewController: UIViewController {
     private func authenticateFirebaseUser() {
         guard let emailAddress = userNameTextField.text,
               let password = passwordTextField.text else { return }
-        firebase.authenticateUser(withEmail: emailAddress, password: password) { (completed, error) in
-            if completed {
-                self.delegate?.userHasLoggedIn()
-            } else {
-                if let errorMessage = error {
-                    self.presentAlert(withTitle: "Error", message: errorMessage, buttonTitle: "Ok")
-                }
-            }
+        firebase.authenticateUser(withEmail: emailAddress, password: password) { [weak self] (completed, error) in
+            guard let self = self else { return }
+            
+            if completed { self.delegate?.userHasLoggedIn() }
+            else { self.presentAlert(withTitle: "Error", message: error, buttonTitle: "Ok") }
         }
     }
 }
