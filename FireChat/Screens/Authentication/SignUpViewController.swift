@@ -15,7 +15,7 @@ protocol SignUPDelegate: AnyObject {
 class SignUpViewController: UIViewController {
     
     weak var delegate: SignUPDelegate?
-    let firebase = Firebase.shared
+    let firebase = FirebaseAuth.shared
     let nameTextField = FireTextField()
     let emailTextField = FireTextField()
     let passwordTextField = FireTextField()

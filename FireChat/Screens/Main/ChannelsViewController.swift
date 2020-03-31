@@ -15,7 +15,7 @@ protocol ChannelsVCDelegate: AnyObject {
 class ChannelsViewController: UIViewController {
     
     weak var delegate: ChannelsVCDelegate?
-    private let firebase = Firebase.shared
+    private let firebase = FirebaseAuth.shared
     private let tableView = UITableView()
     private var channels = ["First Cell here"]
     

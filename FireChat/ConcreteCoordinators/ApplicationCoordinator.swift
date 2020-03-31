@@ -13,7 +13,7 @@ class ApplicationCoordinator {
     var window: UIWindow?
     let router = NavigationRouter(navigationController: UINavigationController())
     var childCoordinators: [Coordinator] = []
-    let firebase = Firebase.shared
+    let firebase = FirebaseAuth.shared
     var isUserAuthorized = false { didSet { decideAppFlow() } }
     
     init(window: UIWindow) {

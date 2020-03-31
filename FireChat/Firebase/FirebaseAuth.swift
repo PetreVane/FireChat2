@@ -1,5 +1,5 @@
 //
-//  Firebase.swift
+//  FirebaseAuth.swift
 //  FireChat
 //
 //  Created by Petre Vane on 27/03/2020.
@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 
-class Firebase {
+class FirebaseAuth {
     
-    static let shared = Firebase()
+    static let shared = FirebaseAuth()
     var users = [User]()
     typealias handler = ((Bool, String) -> Void)
     

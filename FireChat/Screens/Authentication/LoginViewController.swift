@@ -16,7 +16,7 @@ protocol LoginVCDelegate: AnyObject {
 class LoginViewController: UIViewController {
     
     weak var delegate: LoginVCDelegate?
-    private let firebase = Firebase.shared
+    private let firebase = FirebaseAuth.shared
     let label = FireLabel(textAlignment: .center, fontSize: 25)
     let userNameTextField = FireTextField()
     let passwordTextField = FireTextField()

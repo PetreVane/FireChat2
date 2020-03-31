@@ -15,7 +15,7 @@ protocol PasswordResetDelegate: AnyObject {
 class PasswordResetViewController: UIViewController {
 
     weak var delegate: PasswordResetDelegate?
-    private let firebase = Firebase.shared
+    private let firebase = FirebaseAuth.shared
     let label = FireLabel(textAlignment: .center, fontSize: 25)
     let emailTextField = FireTextField()
     let resetButton = FireButton(backgroundColor: .systemYellow, title: "Reset password now")

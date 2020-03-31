@@ -11,7 +11,7 @@
 		0B08D1B6241007FC00E35794 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B5241007FC00E35794 /* Router.swift */; };
 		0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1B724101CDB00E35794 /* NavigationRouter.swift */; };
 		0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D1BA241029AA00E35794 /* FireButton.swift */; };
-		0B0C7914242E76D80099C73B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0C7913242E76D80099C73B /* Firebase.swift */; };
+		0B0C7914242E76D80099C73B /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0C7913242E76D80099C73B /* FirebaseAuth.swift */; };
 		0B19F9D6243248D300A0FCB2 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F9D5243248D300A0FCB2 /* ChannelCell.swift */; };
 		0B19F9D82432537A00A0FCB2 /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */; };
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
@@ -59,7 +59,7 @@
 		0B08D1B5241007FC00E35794 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0B08D1B724101CDB00E35794 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0B08D1BA241029AA00E35794 /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
-		0B0C7913242E76D80099C73B /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		0B0C7913242E76D80099C73B /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		0B19F9D5243248D300A0FCB2 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
 		0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsManager.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		0B0C7912242E76BE0099C73B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				0B0C7913242E76D80099C73B /* Firebase.swift */,
+				0B0C7913242E76D80099C73B /* FirebaseAuth.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -545,7 +545,7 @@
 				0B793252242CCB510028CEAE /* AlertView.swift in Sources */,
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
 				0B3D84BC242FBE8900ACF706 /* User.swift in Sources */,
-				0B0C7914242E76D80099C73B /* Firebase.swift in Sources */,
+				0B0C7914242E76D80099C73B /* FirebaseAuth.swift in Sources */,
 				0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */,
 				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
