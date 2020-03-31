@@ -14,20 +14,20 @@ class Firebase {
     
     static let shared = Firebase()
     var users = [User]()
-    typealias handler = ((Bool, String?) -> Void)
+    typealias handler = ((Bool, String) -> Void)
     
     func createUser(withUserName username: String, email: String, password: String, completion: @escaping handler) {
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (createdUser, error) in
             
             guard self != nil else { return }
-            guard error == nil else { completion(false, error?.localizedDescription); return }
+            guard error == nil else { completion(false, error!.localizedDescription); return }
                         
             if let changeCredentialsRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
                 changeCredentialsRequest.displayName = username
                 changeCredentialsRequest.commitChanges { (requestError) in
                     guard requestError == nil else { completion(false, "User account created; updates could not be commited"); return }
-                }; completion(true, nil)
+                }; completion(true, "Success saving user credentials")
             }
             if let newUser = createdUser?.user {
                 let name = newUser.displayName ?? "Stranger"
@@ -44,12 +44,7 @@ class Firebase {
                 
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authUser, error) in
             guard let self = self else { return }
-            guard
-                error == nil
-                else {
-                    completion(false, error?.localizedDescription)
-                    return
-                }
+            guard error == nil else { completion(false, error!.localizedDescription); return }
             
             guard let firebaseUser = authUser?.user else { return }
             let name = firebaseUser.displayName ?? "Stranger"
@@ -58,7 +53,7 @@ class Firebase {
             let provider = firebaseUser.providerID
             let authenticatedUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
             self.users.append(authenticatedUser)
-            completion(true, nil)
+            completion(true, "Success")
         }
     }
     
@@ -80,6 +75,14 @@ class Firebase {
             print("Success signing out")
         } catch {
             print("Errors while signing out: \(error.localizedDescription)")
+        }
+    }
+    
+    func sendPasswordResetLink(to emailAddress: String, completion: @escaping handler) {
+        Auth.auth().sendPasswordReset(withEmail: emailAddress) { (error) in
+            
+            guard error == nil else { completion(false, error!.localizedDescription); return }
+            completion(true ,"Password reset link sent to \(emailAddress).")
         }
     }
 }

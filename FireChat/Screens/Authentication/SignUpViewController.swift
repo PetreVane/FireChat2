@@ -72,14 +72,15 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text
         else { return }
          
-        firebase.createUser(withUserName: userName, email: emailAddress, password: password) { (completed, message) in
+        firebase.createUser(withUserName: userName, email: emailAddress, password: password) { [weak self] (completed, message) in
+            
+            guard let self = self else { return }
+            
             if completed {
                 self.presentAlert(withTitle: "Hooray", message: "Your account has been created. Now, try to log in!", buttonTitle: "Take me back to Welcome Screen")
                 self.delegate?.signUpButtonPressed()
             } else {
-                if let errorMessage = message {
-                    self.presentAlert(withTitle: "Account Not Created!", message: errorMessage, buttonTitle: "Let me try again!")
-                }
+                self.presentAlert(withTitle: "Account Not Created!", message: message, buttonTitle: "Let me try again!")
             }
         }
     }
