@@ -70,10 +70,11 @@ class PasswordResetViewController: UIViewController {
                 
                 if completed {
                     self.presentAlert(withTitle: "Success", message: message, buttonTitle: "Nicely done 👍🏻")
-                } else {
-                    self.presentAlert(withTitle: "What?! an Error?", message: message, buttonTitle: "I'll try one more time")
-                    self.delegate?.didPressPasswordResetButton() }
-            })
+                    self.delegate?.didPressPasswordResetButton()
+                } else { self.presentAlert(withTitle: "What?! an Error?", message: message, buttonTitle: "I'll try one more time")
+                }
+            }
+        )
     }
 }
 
