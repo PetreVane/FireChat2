@@ -20,10 +20,11 @@ class ChannelsViewController: UIViewController {
     private let tableView = UITableView()
     private var chatRooms = [Channel]()
     
-    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        addBarButton()
         welcomeMessage()
         configureTableView()
     }
@@ -31,9 +32,9 @@ class ChannelsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchChatRooms()
-        chatRooms.count == 0 ? showMissingChatRooms() : tableView.reloadData()
     }
-        
+    
+    //MARK: - Visual elements
     private func welcomeMessage() {
         guard let firebaseUser = firebase.users.last else { return }
         presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
@@ -62,8 +63,24 @@ class ChannelsViewController: UIViewController {
         ])
     }
     
-    //MARK: - Firebase
+    private func addBarButton() {
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonPressed))
+        let addButton = UIBarButtonItem(title: "Add chat room", style: .plain, target: self, action: #selector(barButtonPressed))
+        navigationItem.rightBarButtonItem = addButton
+    }
     
+    @objc private func barButtonPressed() {
+        print("Add Button pressed")
+    }
+    
+    private func createChatRoom() {
+        let titleTextField = FireTextField()
+        let descriptionTextField = FireTextField()
+        
+        let alertController = UIAlertController(title: "Add new chat room", message: "", preferredStyle: .alert)
+    }
+    
+    //MARK: - Firebase
     func fetchChatRooms() {
         cloudDatabase.fetchChatRooms { [weak self] (cloudChatRoom, error) in
             guard let self = self else { return }
@@ -72,20 +89,16 @@ class ChannelsViewController: UIViewController {
             if let chatRoom = cloudChatRoom {
                 guard !self.chatRooms.contains(chatRoom) else { return }
                 self.chatRooms.append(chatRoom)
-                self.tableView.reloadData()
+                print("ChatRooms in fetchChatRooms: \(self.chatRooms.count)")
+                self.chatRooms.count == 0 ? self.showMissingChatRooms() : self.tableView.reloadData()
             }
         }
     }
+    
+    
 }
 
-extension ChannelsViewController {
-    class func instantiate(delegate: ChannelsVCDelegate) -> ChannelsViewController {
-        let viewController = ChannelsViewController()
-        viewController.delegate = delegate
-        return viewController
-    }
-}
-
+//MARK: - TableView data source
 extension ChannelsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,26 +115,21 @@ extension ChannelsViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - TableView delegate
 extension ChannelsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    //    private let label = FireLabel(textAlignment: .center, fontSize: 25)
-    //    private func configureLabel() {
-    //        view.addSubview(label)
-    //        label.text = "Welcome to Channels ViewController"
-    //        let padding: CGFloat = 50
-    //        label.backgroundColor = .systemBackground
-    //
-    //        NSLayoutConstraint.activate([
-    //
-    //            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-    //            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-    //            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-    //            label.heightAnchor.constraint(equalToConstant: padding)
-    //        ])
-    //    }
+}
+
+//MARK: - Initialisation
+extension ChannelsViewController {
+    class func instantiate(delegate: ChannelsVCDelegate) -> ChannelsViewController {
+        let viewController = ChannelsViewController()
+        viewController.delegate = delegate
+        return viewController
+    }
 }
 

@@ -38,6 +38,7 @@ class ChannelCell: UITableViewCell {
         addSubview(titleLabel)
         addSubview(channelDescription)
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.textColor = .systemOrange
         channelDescription.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         
         let padding: CGFloat = 18

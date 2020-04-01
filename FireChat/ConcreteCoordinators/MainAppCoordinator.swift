@@ -27,6 +27,7 @@ class MainAppCoordinator: Coordinator {
     
     func instantiateTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
+        
         tabBar.viewControllers = [startChannelViewController(), startProfileViewController()]
         return tabBar
     }

@@ -19,7 +19,7 @@ class ApplicationCoordinator {
     init(window: UIWindow) {
         self.window = window
         start()
-        configureNavigationBar()
+        configureAppearance()
     }
     
     func start() {
@@ -76,8 +76,9 @@ class ApplicationCoordinator {
     }
     
     // Configures NavigationBar Appearance
-    func configureNavigationBar() {
+    func configureAppearance() {
         // changes general appearance
         UINavigationBar.appearance().tintColor = .systemOrange
+        UITabBar.appearance().tintColor = .systemOrange
     }
 }

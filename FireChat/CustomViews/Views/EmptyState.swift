@@ -43,7 +43,7 @@ class EmptyState: UIView {
     
     private func configureTitleLabel(withTitle title: String) {
         addSubview(titleLabel)
-        titleLabel.textColor = .systemBlue
+        titleLabel.textColor = .systemOrange
         titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         titleLabel.text = title
         
