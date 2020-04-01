@@ -16,8 +16,9 @@ class ChannelsViewController: UIViewController {
     
     weak var delegate: ChannelsVCDelegate?
     private let firebase = FirebaseAuth.shared
+    private let cloudDatabase = CloudFirestore.shared
     private let tableView = UITableView()
-    private var channels = ["First Cell here"]
+    private var channels = [Channel]()
     
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class ChannelsViewController: UIViewController {
         view.backgroundColor = .systemBackground
         welcomeMessage()
         configureTableView()
+        fetchChatRooms()
     }
         
     private func welcomeMessage() {
@@ -51,6 +53,20 @@ class ChannelsViewController: UIViewController {
         ])
     }
     
+    //MARK: - Firebase
+    
+    func fetchChatRooms() {
+        cloudDatabase.fetchChannels { [weak self] (channel, error) in
+            guard let self = self else { return }
+            guard error == nil
+                else { self.presentAlert(withTitle: "What? An Error?!", message: error!.rawValue , buttonTitle: "Dismiss")
+                return }
+            if let firebaseChannel = channel {
+                self.channels.append(firebaseChannel)
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension ChannelsViewController {
@@ -64,13 +80,15 @@ extension ChannelsViewController {
 extension ChannelsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 145
+        return channels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChannelCell.identifier, for: indexPath) as? ChannelCell
               else { return UITableViewCell() }
-//        cell.titleLabel.text = channels[indexPath.row]
+        let currentChannel = channels[indexPath.row]
+        cell.titleLabel.text = currentChannel.title
+        cell.channelDescription.text = currentChannel.description
         
         return cell
     }

@@ -11,4 +11,5 @@ import Foundation
 
 enum ErrorsManager: String, Error {
     case failedAuthentication = "There were some problems signing you in."
+    case failedFetchingChannels = "Failed fetching the list of available chat rooms"
 }
