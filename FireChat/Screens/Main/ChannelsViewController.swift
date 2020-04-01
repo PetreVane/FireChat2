@@ -31,11 +31,16 @@ class ChannelsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchChatRooms()
+        chatRooms.count == 0 ? showMissingChatRooms() : tableView.reloadData()
     }
         
     private func welcomeMessage() {
         guard let firebaseUser = firebase.users.last else { return }
         presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
+    }
+    
+    private func showMissingChatRooms() {
+        showEmptyState(withTitle: "No chat rooms yet", message: "Press '+' button to add one, now!")
     }
     
     private func configureTableView() {

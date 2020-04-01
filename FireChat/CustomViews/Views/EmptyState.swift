@@ -11,14 +11,14 @@ import UIKit
 class EmptyState: UIView {
     
     private let imageView = UIImageView()
-    private let mainLabel = FireLabel(textAlignment: .center, fontSize: 20)
-    private let secondaryLabel = FireLabel(textAlignment: .center, fontSize: 18)
+    private let titleLabel = FireLabel(textAlignment: .center, fontSize: 20)
+    private let messageLabel = FireLabel(textAlignment: .center, fontSize: 18)
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, title: String, message: String) {
         super.init(frame: frame)
         configureImageView()
-        configureLabel()
-        configureSecondaryLabel()
+        configureTitleLabel(withTitle: title)
+        configureMessageLabel(withMessage: message)
     }
     
     required init?(coder: NSCoder) {
@@ -41,35 +41,35 @@ class EmptyState: UIView {
         ])
     }
     
-    private func configureLabel() {
-        addSubview(mainLabel)
-        mainLabel.textColor = .systemBlue
-        mainLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        mainLabel.text = "No Messages!"
+    private func configureTitleLabel(withTitle title: String) {
+        addSubview(titleLabel)
+        titleLabel.textColor = .systemBlue
+        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        titleLabel.text = title
         
         
         NSLayoutConstraint.activate([
-            mainLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            mainLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-            mainLabel.widthAnchor.constraint(equalToConstant: 150),
-            mainLabel.heightAnchor.constraint(equalToConstant: 25)
+            titleLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -50),
+            titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            titleLabel.widthAnchor.constraint(equalToConstant: 150),
+            titleLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
     
-    private func configureSecondaryLabel() {
-        addSubview(secondaryLabel)
+    private func configureMessageLabel(withMessage message: String) {
+        addSubview(messageLabel)
         let padding: CGFloat = 20
-        secondaryLabel.textColor = .secondaryLabel
-        secondaryLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        secondaryLabel.text = "Start typing a message"
+        messageLabel.textColor = .secondaryLabel
+        messageLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        messageLabel.text = message
 
         
         NSLayoutConstraint.activate([
         
-            secondaryLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: padding / 2),
-            secondaryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            secondaryLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            secondaryLabel.heightAnchor.constraint(equalToConstant: 30)
+            messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding / 2),
+            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            messageLabel.heightAnchor.constraint(equalToConstant: 30)
             
         ])
     }

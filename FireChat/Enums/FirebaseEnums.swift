@@ -11,5 +11,5 @@ import Firebase
 
 
 enum Collection {
-    static let chatRooms = "ChatRooms"
+    static let chatRooms = "ChatRoomms"
 }
