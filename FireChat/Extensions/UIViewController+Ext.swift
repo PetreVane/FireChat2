@@ -26,6 +26,15 @@ extension UIViewController {
         }
     }
     
+    func presentActionAlertController() {
+        DispatchQueue.main.async {
+            let actionAlertController = AlertController()
+            actionAlertController.modalPresentationStyle = .overFullScreen
+            actionAlertController.modalTransitionStyle = .coverVertical
+            self.present(actionAlertController, animated: true, completion: nil)
+        }
+    }
+    
     func showEmptyState(withTitle title: String, message: String) {
         let emptyState = EmptyState(frame: .zero, title: title, message: message)
         emptyState.frame = view.bounds

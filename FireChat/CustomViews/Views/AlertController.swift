@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol AlertControllerDelegate: AnyObject {
+    func didPressActionButton()
+}
+
 class AlertController: UIViewController {
 
+    private weak var delegate: AlertControllerDelegate?
     let alertContainerView = AlertView()
     let titleLabel = FireLabel(textAlignment: .center, fontSize: 10)
     let bodyLabel = FireLabel(textAlignment: .center, fontSize: 5)
-    let actionButton = FireButton(backgroundColor: .systemRed, title: "Ok, let's move on")
-    let padding: CGFloat = 20
+    let actionButton = FireButton(backgroundColor: .systemGreen, title: "Add chat room")
+    let cancelButton = FireButton(backgroundColor: .systemRed, title: "Cancel")
+    let titleTextField = FireTextField()
+    let descriptionTextField = FireTextField()
+    let padding: CGFloat = 30
     
     var alertTitle: String?
     var alertMessage: String?
@@ -25,6 +33,12 @@ class AlertController: UIViewController {
         self.alertTitle = alertTitle
         self.alertMessage = message
         self.buttonTitle = buttonTitle
+        configureInformingAlert()
+    }
+    
+     init() {
+        super.init(nibName: nil, bundle: nil)
+        configureActionAlert()
     }
     
     required init?(coder: NSCoder) {
@@ -34,10 +48,8 @@ class AlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-        configureAlertContainer()
-        configureTitleLabel()
-        configureBodyLabel()
-        configureActionButton()
+        view.dismissKeyboardOnTap()
+
     }
     
     private func configureAlertContainer() {
@@ -46,8 +58,8 @@ class AlertController: UIViewController {
         NSLayoutConstraint.activate([
             alertContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             alertContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            alertContainerView.heightAnchor.constraint(equalToConstant: 200),
-            alertContainerView.widthAnchor.constraint(equalToConstant: 320)
+            alertContainerView.heightAnchor.constraint(equalToConstant: 300),
+            alertContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50)
         ])
     }
     
@@ -86,13 +98,70 @@ class AlertController: UIViewController {
         ])
     }
     
-    private func configureActionButton() {
-        view.addSubview(actionButton)
-        actionButton.setTitle(buttonTitle ?? "Dismiss", for: .normal)
+    private func configureInformingAlert() {
+        configureAlertContainer()
+        configureTitleLabel()
+        configureBodyLabel()
+        configureActionButton()
+    }
+    
+    private func configureActionAlert() {
+        // container
+        configureAlertContainer()
+
+        // title label
+        configureTitleLabel()
+        titleLabel.text = "Add a new chat room"
+        titleLabel.textColor = .systemOrange
+        
+        // text fields
+        alertContainerView.addSubview(titleTextField)
+        alertContainerView.addSubview(descriptionTextField)
+        titleTextField.placeholder = "Chat room title"
+        descriptionTextField.placeholder = "Short chat room description"
+        
+        // stackView
+        let stackView = configureStackView()
+        alertContainerView.addSubview(stackView)
+        stackView.addArrangedSubview(actionButton)
+        stackView.addArrangedSubview(cancelButton)
+        stackView.setCustomSpacing(15, after: actionButton)
+        
         actionButton.addTarget(self, action: #selector(didPressActionButton), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(didPressCancelButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
         
+            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            titleTextField.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
+            titleTextField.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
+            titleTextField.heightAnchor.constraint(equalToConstant: 35),
+            
+            descriptionTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10),
+            descriptionTextField.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor),
+            descriptionTextField.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
+            descriptionTextField.heightAnchor.constraint(equalTo: titleTextField.heightAnchor),
+            
+            stackView.bottomAnchor.constraint(equalTo: alertContainerView.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+
+    private func configureCancelButton() {
+        view.addSubview(cancelButton)
+        cancelButton.setTitle("Cancel", for: .normal)
+    }
+    
+    private func configureActionButton() {
+        view.addSubview(actionButton)
+        actionButton.setTitle(buttonTitle ?? "Dismiss", for: .normal)
+        actionButton.addTarget(self, action: #selector(didPressCancelButton), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+
             actionButton.bottomAnchor.constraint(equalTo: alertContainerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             actionButton.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
@@ -100,7 +169,23 @@ class AlertController: UIViewController {
         ])
     }
 
-    @objc private func didPressActionButton() {
+    @objc private func didPressCancelButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func didPressActionButton() {
+        print("Delegate did press action button")
+        delegate?.didPressActionButton()
+    }
+    
+    private func configureStackView() -> UIStackView {
+        let stackView = UIStackView()
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        return stackView
     }
 }
