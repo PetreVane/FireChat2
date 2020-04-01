@@ -35,7 +35,5 @@ class FireLabel: UILabel {
         minimumScaleFactor = 0.75
         backgroundColor = .systemBackground
         layer.cornerRadius = 25
-
     }
-    
 }

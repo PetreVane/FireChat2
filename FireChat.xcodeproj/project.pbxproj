@@ -23,6 +23,9 @@
 		0B793258242D27390028CEAE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793257242D27390028CEAE /* Images.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
+		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
+		0B94E6462434A512007868EB /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E6452434A512007868EB /* Channel.swift */; };
+		0B94E6482434A871007868EB /* FirebaseEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E6472434A871007868EB /* FirebaseEnums.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
 		0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B924240FDF7600310F1E /* SceneDelegate.swift */; };
 		0BD7B927240FDF7600310F1E /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ChannelsViewController.swift */; };
@@ -71,6 +74,9 @@
 		0B793257242D27390028CEAE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
+		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
+		0B94E6452434A512007868EB /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		0B94E6472434A871007868EB /* FirebaseEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEnums.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD7B922240FDF7600310F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD7B924240FDF7600310F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0B0C7913242E76D80099C73B /* FirebaseAuth.swift */,
+				0B94E64324348DD0007868EB /* CloudFirestore.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0B793257242D27390028CEAE /* Images.swift */,
+				0B94E6472434A871007868EB /* FirebaseEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				0B3D84BB242FBE8900ACF706 /* User.swift */,
+				0B94E6452434A512007868EB /* Channel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -550,6 +559,7 @@
 				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpViewController.swift in Sources */,
+				0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */,
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
@@ -560,6 +570,8 @@
 				0BD7B95F240FF7B300310F1E /* PasswordResetViewController.swift in Sources */,
 				0B08D1B6241007FC00E35794 /* Router.swift in Sources */,
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
+				0B94E6462434A512007868EB /* Channel.swift in Sources */,
+				0B94E6482434A871007868EB /* FirebaseEnums.swift in Sources */,
 				0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
 				0B19F9D82432537A00A0FCB2 /* TableView+Ext.swift in Sources */,
