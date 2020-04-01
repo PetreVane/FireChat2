@@ -16,23 +16,27 @@ class CloudFirestore {
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     
     
-    func fetchChannels(completion: @escaping (Channel?, ErrorsManager?) -> Void) {
+    func fetchChatRooms(completion: @escaping (Channel?, ErrorsManager?) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
-            
-            guard error == nil else {completion(nil, ErrorsManager.failedFetchingChannels); return }
+            guard error == nil
+                else { completion(nil, ErrorsManager.failedFetchingChannels); return }
             _ = snapShot?.documents.map({ (document) in
                 
                 let channelName = document.documentID
                 let documentContent = document.data()
                 
                 documentContent.forEach { (key, _) in
-                    guard let channelDescription = documentContent[key] as? String else { return }
-                    let channel = Channel(title: channelName, description: channelDescription)
-                    completion(channel, nil)
+
+                    if let channelDescription = documentContent[key] as? String {
+                        let channel = Channel(title: channelName, description: channelDescription)
+                        completion(channel, nil)
+                    } else { completion(nil, ErrorsManager.failedFetchingChannels) }
                 }
             })
         }
     }
+    
+    
 }
 

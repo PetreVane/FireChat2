@@ -13,3 +13,5 @@ struct Channel {
     let title: String
     let description: String
 }
+
+extension Channel: Equatable { }
