@@ -37,6 +37,11 @@ class CloudFirestore {
         }
     }
     
-    
+    func saveChatRoom(_ chatRoom: Channel) {
+        let documentTitle = chatRoom.title
+        let documentData = ["Description": chatRoom.description]
+        chatRooms.document(documentTitle).setData(documentData, merge: true)
+        
+    }
 }
 
