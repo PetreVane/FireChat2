@@ -82,7 +82,7 @@ class FirebaseAuth {
         Auth.auth().sendPasswordReset(withEmail: emailAddress) { (error) in
             
             guard error == nil else { completion(false, error!.localizedDescription); return }
-            completion(true ,"Password reset link sent to \(emailAddress).")
+            completion(true,"Password reset link sent to \(emailAddress).")
         }
     }
 }
