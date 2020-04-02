@@ -28,17 +28,21 @@ class AlertController: UIViewController {
     var alertMessage: String?
     var buttonTitle: String?
     
-    init(alertTitle: String, message: String, buttonTitle: String) {
-        super.init(nibName: nil, bundle: nil)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init(alertTitle: String, message: String, buttonTitle: String) {
+        self.init()
         self.alertTitle = alertTitle
         self.alertMessage = message
         self.buttonTitle = buttonTitle
-        configureInformingAlert()
+        presentInformingAlert()
     }
     
-     init() {
-        super.init(nibName: nil, bundle: nil)
-        configureActionAlert()
+    convenience init() {
+        self.init()
+        presentActionAlert()
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +53,57 @@ class AlertController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.dismissKeyboardOnTap()
-
+    }
+    
+    private func presentInformingAlert() {
+        configureAlertContainer()
+        configureTitleLabel()
+        configureBodyLabel()
+        configureActionButton()
+    }
+    
+    private func presentActionAlert() {
+        // container
+        configureAlertContainer()
+        
+        // title label
+        configureTitleLabel()
+        titleLabel.text = "Add a new chat room"
+        titleLabel.textColor = .systemOrange
+        
+        // text fields
+        alertContainerView.addSubview(titleTextField)
+        alertContainerView.addSubview(descriptionTextField)
+        titleTextField.placeholder = "Chat room title"
+        descriptionTextField.placeholder = "Short chat room description"
+        
+        // stackView
+        let stackView = configureStackView()
+        alertContainerView.addSubview(stackView)
+        stackView.addArrangedSubview(actionButton)
+        stackView.addArrangedSubview(cancelButton)
+        stackView.setCustomSpacing(15, after: actionButton)
+        
+        // button actions
+        actionButton.addTarget(self, action: #selector(didPressActionButton), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(didPressCancelButton), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            titleTextField.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
+            titleTextField.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
+            titleTextField.heightAnchor.constraint(equalToConstant: 35),
+            
+            descriptionTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10),
+            descriptionTextField.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor),
+            descriptionTextField.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
+            descriptionTextField.heightAnchor.constraint(equalTo: titleTextField.heightAnchor),
+            
+            stackView.bottomAnchor.constraint(equalTo: alertContainerView.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func configureAlertContainer() {
@@ -71,13 +125,11 @@ class AlertController: UIViewController {
         titleLabel.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
-        
             titleLabel.topAnchor.constraint(equalTo: alertContainerView.topAnchor, constant: padding),
             titleLabel.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
             titleLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
-        
     }
     
     private func configureBodyLabel() {
@@ -85,12 +137,10 @@ class AlertController: UIViewController {
         bodyLabel.text = alertMessage ?? "Unable to complete request!"
         bodyLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         bodyLabel.numberOfLines = 2
-        
         titleLabel.textColor = .secondaryLabel
         titleLabel.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
-        
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             bodyLabel.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             bodyLabel.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
@@ -98,84 +148,24 @@ class AlertController: UIViewController {
         ])
     }
     
-    private func configureInformingAlert() {
-        configureAlertContainer()
-        configureTitleLabel()
-        configureBodyLabel()
-        configureActionButton()
-    }
-    
-    private func configureActionAlert() {
-        // container
-        configureAlertContainer()
-
-        // title label
-        configureTitleLabel()
-        titleLabel.text = "Add a new chat room"
-        titleLabel.textColor = .systemOrange
-        
-        // text fields
-        alertContainerView.addSubview(titleTextField)
-        alertContainerView.addSubview(descriptionTextField)
-        titleTextField.placeholder = "Chat room title"
-        descriptionTextField.placeholder = "Short chat room description"
-        
-        // stackView
-        let stackView = configureStackView()
-        alertContainerView.addSubview(stackView)
-        stackView.addArrangedSubview(actionButton)
-        stackView.addArrangedSubview(cancelButton)
-        stackView.setCustomSpacing(15, after: actionButton)
-        
-        actionButton.addTarget(self, action: #selector(didPressActionButton), for: .touchUpInside)
-        cancelButton.addTarget(self, action: #selector(didPressCancelButton), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
-        
-            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
-            titleTextField.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
-            titleTextField.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
-            titleTextField.heightAnchor.constraint(equalToConstant: 35),
-            
-            descriptionTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10),
-            descriptionTextField.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor),
-            descriptionTextField.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
-            descriptionTextField.heightAnchor.constraint(equalTo: titleTextField.heightAnchor),
-            
-            stackView.bottomAnchor.constraint(equalTo: alertContainerView.bottomAnchor, constant: -padding),
-            stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-
     private func configureCancelButton() {
         view.addSubview(cancelButton)
         cancelButton.setTitle("Cancel", for: .normal)
+        
     }
     
     private func configureActionButton() {
         view.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "Dismiss", for: .normal)
+        actionButton.backgroundColor = .systemOrange
         actionButton.addTarget(self, action: #selector(didPressCancelButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-
             actionButton.bottomAnchor.constraint(equalTo: alertContainerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             actionButton.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
             actionButton.heightAnchor.constraint(equalToConstant: 30)
         ])
-    }
-
-    @objc private func didPressCancelButton() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc private func didPressActionButton() {
-        print("Delegate did press action button")
-        delegate?.didPressActionButton()
     }
     
     private func configureStackView() -> UIStackView {
@@ -187,5 +177,14 @@ class AlertController: UIViewController {
         stackView.distribution = .fillEqually
         
         return stackView
+    }
+
+    @objc private func didPressCancelButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func didPressActionButton() {
+        print("Delegate did press action button")
+        delegate?.didPressActionButton()
     }
 }

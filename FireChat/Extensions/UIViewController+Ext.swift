@@ -17,7 +17,6 @@ extension UIViewController {
     ///   - message: message contained by the alert
     ///   - buttonTitle: text contained by the button
     func presentAlert(withTitle title: String, message: String, buttonTitle: String) {
-        
         DispatchQueue.main.async {
             let alert = AlertController(alertTitle: title, message: message, buttonTitle: buttonTitle)
             alert.modalPresentationStyle = .overFullScreen
@@ -30,7 +29,7 @@ extension UIViewController {
         DispatchQueue.main.async {
             let actionAlertController = AlertController()
             actionAlertController.modalPresentationStyle = .overFullScreen
-            actionAlertController.modalTransitionStyle = .coverVertical
+            actionAlertController.modalTransitionStyle = .crossDissolve
             self.present(actionAlertController, animated: true, completion: nil)
         }
     }
