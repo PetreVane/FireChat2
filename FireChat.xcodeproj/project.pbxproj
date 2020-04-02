@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		0B19F9D82432537A00A0FCB2 /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */; };
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
+		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
 		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
@@ -112,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */,
 				4862FD6CBAD0BADD20F2ECA7 /* Pods_FireChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +400,9 @@
 			dependencies = (
 			);
 			name = FireChat;
+			packageProductDependencies = (
+				0B66C85A2435DF5200C04B58 /* DeviceTypes */,
+			);
 			productName = FireChat;
 			productReference = 0BD7B91F240FDF7600310F1E /* FireChat.app */;
 			productType = "com.apple.product-type.application";
@@ -449,6 +454,9 @@
 				Base,
 			);
 			mainGroup = 0BD7B916240FDF7600310F1E;
+			packageReferences = (
+				0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */,
+			);
 			productRefGroup = 0BD7B920240FDF7600310F1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -850,6 +858,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PetreVane/DeviceTypes.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B66C85A2435DF5200C04B58 /* DeviceTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */;
+			productName = DeviceTypes;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0BD7B917240FDF7600310F1E /* Project object */;
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeviceTypes
 
 class FireButton: UIButton {
 
@@ -29,7 +30,7 @@ class FireButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 10
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel?.font = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? UIFont.systemFont(ofSize: 12) : UIFont.preferredFont(forTextStyle: .headline)
     }
     
     func setButtonWith(color: UIColor, andTitle title: String) {

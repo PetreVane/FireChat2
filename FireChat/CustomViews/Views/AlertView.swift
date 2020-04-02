@@ -28,5 +28,4 @@ class AlertView: UIView {
         layer.backgroundColor = UIColor.systemBackground.cgColor
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

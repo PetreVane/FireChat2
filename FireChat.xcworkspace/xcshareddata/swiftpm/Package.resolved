@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DeviceTypes",
+        "repositoryURL": "https://github.com/PetreVane/DeviceTypes.git",
+        "state": {
+          "branch": null,
+          "revision": "c5011fdf8c29368a81a47a6bcefbce1324142a34",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
