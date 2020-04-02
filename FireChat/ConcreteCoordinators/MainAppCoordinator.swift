@@ -12,13 +12,15 @@ import UIKit
 class MainAppCoordinator: Coordinator {
 
     var router: Router
+    var tabBar: UITabBarController?
     weak var parentCoordinator: ApplicationCoordinator?
+    
     init(router: NavigationRouter) {
         self.router = router
     }
     
     func start() {
-        _ = instantiateTabBar()
+        tabBar = instantiateTabBar()
     }
  
     func removeCoordinator(_ coordinator: Coordinator) {
@@ -27,7 +29,6 @@ class MainAppCoordinator: Coordinator {
     
     func instantiateTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        
         tabBar.viewControllers = [startChannelViewController(), startProfileViewController()]
         return tabBar
     }
@@ -35,8 +36,8 @@ class MainAppCoordinator: Coordinator {
     private func startChannelViewController() -> UINavigationController {
         let channelsVC = ChannelsViewController.instantiate(delegate: self)
         channelsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-        
-        return UINavigationController(rootViewController: channelsVC)
+       
+        return  UINavigationController(rootViewController: channelsVC)
     }
     
     private func startProfileViewController() -> UINavigationController {
@@ -44,9 +45,25 @@ class MainAppCoordinator: Coordinator {
         profileVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         return UINavigationController(rootViewController: profileVC)
     }
+    
+    private func startChatViewController() {
+        // should accept a chatRoom
+        let chatVC = ChatViewController.instantiate(delegate: self)
+        KeyWindow.rootViewController?.present(chatVC, animated: true)
+//        let vc = router.navigationController.topViewController
+//        vc?.showDetailViewController(chatVC, sender: nil)
+//        print("RootNav controller: \(vc.debugDescription)")
+//         router.navigationController.setViewControllers([channelsVC], animated: true)
+    }
 }
 
 extension MainAppCoordinator: ChannelsVCDelegate {
+    func didPressChatRoom(_ chatRoom: ChatRoom) {
+        startChatViewController()
+    }
+}
+
+extension MainAppCoordinator: ChatVCDelegate {
     
 }
 
