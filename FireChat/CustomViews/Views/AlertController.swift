@@ -8,8 +8,9 @@
 
 import UIKit
 
+// adopted by ChannelsViewController
 protocol AlertControllerDelegate: AnyObject {
-    func didPressActionButton()
+    func didAddNewChannel(_ channel: Channel)
 }
 
 class AlertController: UIViewController {
@@ -50,6 +51,8 @@ class AlertController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.dismissKeyboardOnTap()
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
     }
     
     private func presentInformingAlert() {
@@ -133,7 +136,7 @@ class AlertController: UIViewController {
         view.addSubview(bodyLabel)
         bodyLabel.text = alertMessage ?? "Unable to complete request!"
         bodyLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        bodyLabel.numberOfLines = 2
+        bodyLabel.numberOfLines = 4
         titleLabel.textColor = .secondaryLabel
         titleLabel.backgroundColor = .systemBackground
         
@@ -141,14 +144,13 @@ class AlertController: UIViewController {
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             bodyLabel.leadingAnchor.constraint(equalTo: alertContainerView.leadingAnchor, constant: padding),
             bodyLabel.trailingAnchor.constraint(equalTo: alertContainerView.trailingAnchor, constant: -padding),
-            bodyLabel.heightAnchor.constraint(equalToConstant: 80)
+            bodyLabel.heightAnchor.constraint(equalToConstant: 120)
         ])
     }
     
     private func configureCancelButton() {
         view.addSubview(cancelButton)
         cancelButton.setTitle("Cancel", for: .normal)
-        
     }
     
     private func configureActionButton() {
@@ -169,10 +171,8 @@ class AlertController: UIViewController {
         let stackView = UIStackView()
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        
         return stackView
     }
 
@@ -181,7 +181,28 @@ class AlertController: UIViewController {
     }
     
     @objc private func didPressActionButton() {
-        print("Delegate did press action button")
-        delegate?.didPressActionButton()
+        createNewChatRoom()
+    }
+    
+    @objc private func didPressReturnButton() {
+        view.endEditing(true)
+    }
+    
+    private func createNewChatRoom() {
+        guard let title = titleTextField.text else { return }
+        guard let description = descriptionTextField.text else { return }
+        
+        if title.isEmpty || description.isEmpty {
+            self.presentAlert(withTitle: "Missing values", message: "You need to privide a Title and a short Description of your chat room!", buttonTitle: "Ok")
+        }
+        let newChatRoom = Channel(title: title, description: description)
+        delegate?.didAddNewChannel(newChatRoom)
+    }
+}
+
+extension AlertController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didPressReturnButton()
+        return true
     }
 }
