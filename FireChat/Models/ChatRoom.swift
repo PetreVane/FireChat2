@@ -1,5 +1,5 @@
 //
-//  Channel.swift
+//  ChatRoom.swift
 //  FireChat
 //
 //  Created by Petre Vane on 01/04/2020.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Channel {
+struct ChatRoom {
     
     let title: String
     let description: String
 }
 
-extension Channel: Equatable { }
+extension ChatRoom: Equatable { }

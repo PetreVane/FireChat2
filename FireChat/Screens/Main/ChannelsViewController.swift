@@ -12,13 +12,14 @@ protocol ChannelsVCDelegate: AnyObject {
     // didPressChatCell -> init ChatVC
 }
 
+
 class ChannelsViewController: UIViewController {
     
     weak var delegate: ChannelsVCDelegate?
     private let firebase = FirebaseAuth.shared
     private let cloudDatabase = CloudFirestore.shared
     private let tableView = UITableView()
-    private var chatRooms = [Channel]()
+    private var chatRooms = [ChatRoom]()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -64,24 +65,18 @@ class ChannelsViewController: UIViewController {
     }
     
     private func addBarButton() {
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonPressed))
-        let addButton = UIBarButtonItem(title: "Add chat room", style: .plain, target: self, action: #selector(barButtonPressed))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonPressed))
+//        let addButton = UIBarButtonItem(title: "Add chat room", style: .plain, target: self, action: #selector(barButtonPressed))
         navigationItem.rightBarButtonItem = addButton
     }
     
     @objc private func barButtonPressed() {
-        print("Add Button pressed")
+        presentActionAlertController(delegate: self)
     }
     
-    private func createChatRoom() {
-        let titleTextField = FireTextField()
-        let descriptionTextField = FireTextField()
-        
-        let alertController = UIAlertController(title: "Add new chat room", message: "", preferredStyle: .alert)
-    }
     
     //MARK: - Firebase
-    func fetchChatRooms() {
+   private func fetchChatRooms() {
         cloudDatabase.fetchChatRooms { [weak self] (cloudChatRoom, error) in
             guard let self = self else { return }
             guard error == nil else {
@@ -89,13 +84,21 @@ class ChannelsViewController: UIViewController {
             if let chatRoom = cloudChatRoom {
                 guard !self.chatRooms.contains(chatRoom) else { return }
                 self.chatRooms.append(chatRoom)
-                print("ChatRooms in fetchChatRooms: \(self.chatRooms.count)")
                 self.chatRooms.count == 0 ? self.showMissingChatRooms() : self.tableView.reloadData()
             }
         }
     }
     
-    
+    private func saveChannelToCloud(_ channel: ChatRoom) {
+        cloudDatabase.saveChatRoom(channel)
+    }
+}
+
+extension ChannelsViewController: AlertControllerDelegate {
+    func didCreateNewChatRoom(_ chatRoom: ChatRoom) {
+        saveChannelToCloud(chatRoom)
+        fetchChatRooms()
+    }
 }
 
 //MARK: - TableView data source

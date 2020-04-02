@@ -10,12 +10,17 @@ import UIKit
 
 // adopted by ChannelsViewController
 protocol AlertControllerDelegate: AnyObject {
-    func didAddNewChannel(_ channel: Channel)
+    func didCreateNewChatRoom(_ channel: ChatRoom)
 }
 
+/// Presents two types of Alerts
+///
+/// - One type (Informing Alert) contains two labels and one button. It is used for
+/// showing alert messages.
+/// - The other type (Action Alert) contains one label, two text fields and two buttons. This alert is used only in ChannelsViewController, for getting user's input when creating a new channel / chat room.
 class AlertController: UIViewController {
 
-    private weak var delegate: AlertControllerDelegate?
+    weak var delegate: AlertControllerDelegate?
     let alertContainerView = AlertView()
     let titleLabel = FireLabel(textAlignment: .center, fontSize: 10)
     let bodyLabel = FireLabel(textAlignment: .center, fontSize: 5)
@@ -193,10 +198,12 @@ class AlertController: UIViewController {
         guard let description = descriptionTextField.text else { return }
         
         if title.isEmpty || description.isEmpty {
-            self.presentAlert(withTitle: "Missing values", message: "You need to privide a Title and a short Description of your chat room!", buttonTitle: "Ok")
+            self.presentAlert(withTitle: "Missing values", message: "You need to provide both a Title and a short Description of your chat room!", buttonTitle: "Ok")
+            return
         }
-        let newChatRoom = Channel(title: title, description: description)
-        delegate?.didAddNewChannel(newChatRoom)
+        let chatRoom = ChatRoom(title: title, description: description)
+        delegate?.didCreateNewChatRoom(chatRoom)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -206,3 +213,4 @@ extension AlertController: UITextFieldDelegate {
         return true
     }
 }
+

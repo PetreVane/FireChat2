@@ -25,9 +25,10 @@ extension UIViewController {
         }
     }
     
-    func presentActionAlertController() {
+    func presentActionAlertController(delegate: AlertControllerDelegate) {
         DispatchQueue.main.async {
             let actionAlertController = AlertController()
+            actionAlertController.delegate = delegate
             actionAlertController.modalPresentationStyle = .overFullScreen
             actionAlertController.modalTransitionStyle = .crossDissolve
             self.present(actionAlertController, animated: true, completion: nil)

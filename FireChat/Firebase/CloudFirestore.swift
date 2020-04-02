@@ -16,7 +16,7 @@ class CloudFirestore {
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     
     
-    func fetchChatRooms(completion: @escaping (Channel?, ErrorsManager?) -> Void) {
+    func fetchChatRooms(completion: @escaping (ChatRoom?, ErrorsManager?) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
             guard error == nil
@@ -29,7 +29,7 @@ class CloudFirestore {
                 documentContent.forEach { (key, _) in
 
                     if let channelDescription = documentContent[key] as? String {
-                        let channel = Channel(title: channelName, description: channelDescription)
+                        let channel = ChatRoom(title: channelName, description: channelDescription)
                         completion(channel, nil)
                     } else { completion(nil, ErrorsManager.failedFetchingChannels) }
                 }
@@ -37,10 +37,13 @@ class CloudFirestore {
         }
     }
     
-    func saveChatRoom(_ chatRoom: Channel) {
+    func saveChatRoom(_ chatRoom: ChatRoom) {
         let documentTitle = chatRoom.title
         let documentData = ["Description": chatRoom.description]
         chatRooms.document(documentTitle).setData(documentData, merge: true)
+    }
+    
+    func deleteChatRoom(_ channel: ChatRoom) {
         
     }
 }

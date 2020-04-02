@@ -81,7 +81,6 @@ class WelcomeViewController: UIViewController {
     
     @objc private func didPressGoogleButton() {
         delegate?.didPressGoogleButton()
-        presentActionAlertController()
     }
     
     @objc private func didPressNewAccountButton() {
