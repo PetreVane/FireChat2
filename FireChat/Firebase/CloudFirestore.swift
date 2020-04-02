@@ -20,7 +20,7 @@ class CloudFirestore {
 
         chatRooms.getDocuments { (snapShot, error) in
             guard error == nil
-                else { completion(nil, ErrorsManager.failedFetchingChannels); return }
+                else { completion(nil, ErrorsManager.failedFetchingChatRooms); return }
             _ = snapShot?.documents.map({ (document) in
                 
                 let channelName = document.documentID
@@ -31,7 +31,7 @@ class CloudFirestore {
                     if let channelDescription = documentContent[key] as? String {
                         let channel = ChatRoom(title: channelName, description: channelDescription)
                         completion(channel, nil)
-                    } else { completion(nil, ErrorsManager.failedFetchingChannels) }
+                    } else { completion(nil, ErrorsManager.failedFetchingChatRooms) }
                 }
             })
         }
@@ -43,8 +43,11 @@ class CloudFirestore {
         chatRooms.document(documentTitle).setData(documentData, merge: true)
     }
     
-    func deleteChatRoom(_ channel: ChatRoom) {
-        
+    func deleteChatRoom(_ channel: ChatRoom, completion: @escaping (Bool, ErrorsManager?) -> Void) {
+        chatRooms.document(channel.title).delete { (error) in
+            guard error == nil else { completion(false, ErrorsManager.failedDeletingChatRoom); return }
+            completion(true, nil)
+        }
     }
 }
 

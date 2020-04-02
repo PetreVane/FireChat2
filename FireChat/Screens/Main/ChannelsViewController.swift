@@ -89,8 +89,19 @@ class ChannelsViewController: UIViewController {
         }
     }
     
-    private func saveChannelToCloud(_ channel: ChatRoom) {
-        cloudDatabase.saveChatRoom(channel)
+    private func saveChannelToCloud(_ chatRoom: ChatRoom) {
+        cloudDatabase.saveChatRoom(chatRoom)
+    }
+    
+    private func deleteChatRoom(_ chatRoom: ChatRoom) {
+        cloudDatabase.deleteChatRoom(chatRoom) { (completed, error) in
+            if completed {
+                self.presentAlert(withTitle: "Success", message: "\(chatRoom.title) has been deleted", buttonTitle: "Nicely done 👍🏻")
+                self.tableView.reloadData()
+            } else {
+                self.presentAlert(withTitle: "What, an Error!?", message: "\(String(describing: error?.rawValue))", buttonTitle: "I'll try later")
+            }
+        }
     }
 }
 
@@ -125,6 +136,13 @@ extension ChannelsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let selectedChatRoom = chatRooms[indexPath.row]
+        if editingStyle == .delete {
+            chatRooms.remove(at: indexPath.row)
+            deleteChatRoom(selectedChatRoom)
+        }
+    }
 }
 
 //MARK: - Initialisation
