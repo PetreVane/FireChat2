@@ -16,6 +16,7 @@
 		0B19F9D82432537A00A0FCB2 /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */; };
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
+		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
 		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
@@ -68,6 +69,7 @@
 		0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
 		0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsManager.swift; sourceTree = "<group>"; };
 		0B3D84BB242FBE8900ACF706 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0B3D98B12436566E00A417D7 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
 		0B79324D242CCA9C0028CEAE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		0B79324F242CCAB90028CEAE /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				0B793257242D27390028CEAE /* Images.swift */,
 				0B94E6472434A871007868EB /* FirebaseEnums.swift */,
+				0B3D98B12436566E00A417D7 /* KeyWindow.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				0B08D1BB241029AA00E35794 /* FireButton.swift in Sources */,
 				0B3D84BC242FBE8900ACF706 /* User.swift in Sources */,
 				0B0C7914242E76D80099C73B /* FirebaseAuth.swift in Sources */,
+				0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */,
 				0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */,
 				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
