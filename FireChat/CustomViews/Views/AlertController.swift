@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeviceTypes
 
 // adopted by ChannelsViewController
 protocol AlertControllerDelegate: AnyObject {
@@ -113,9 +114,9 @@ class AlertController: UIViewController {
     
     private func configureAlertContainer() {
         view.addSubview(alertContainerView)
-        
+        let topPaddingConstraint: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -90 : -45
         NSLayoutConstraint.activate([
-            alertContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            alertContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: topPaddingConstraint),
             alertContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alertContainerView.heightAnchor.constraint(equalToConstant: 300),
             alertContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50)
