@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChannelsVCDelegate: AnyObject {
-    // didPressChatCell -> init ChatVC
+    func didPressChatRoom(_ chatRoom: ChatRoom)
 }
 
 
@@ -25,9 +25,9 @@ class ChannelsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureTableView()
         addBarButton()
         welcomeMessage()
-        configureTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +85,7 @@ class ChannelsViewController: UIViewController {
                 guard !self.chatRooms.contains(chatRoom) else { return }
                 self.chatRooms.append(chatRoom)
                 self.chatRooms.count == 0 ? self.showMissingChatRooms() : self.tableView.reloadData()
+                DispatchQueue.main.async { self.view.bringSubviewToFront(self.tableView) }
             }
         }
     }
@@ -133,7 +134,9 @@ extension ChannelsViewController: UITableViewDataSource {
 extension ChannelsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tappedChatRoom = chatRooms[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.didPressChatRoom(tappedChatRoom)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
