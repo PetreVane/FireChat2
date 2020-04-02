@@ -28,20 +28,17 @@ class AlertController: UIViewController {
     var alertMessage: String?
     var buttonTitle: String?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
     
-    convenience init(alertTitle: String, message: String, buttonTitle: String) {
-        self.init()
+    init(alertTitle: String, message: String, buttonTitle: String) {
+        super.init(nibName: nil, bundle: nil)
         self.alertTitle = alertTitle
         self.alertMessage = message
         self.buttonTitle = buttonTitle
         presentInformingAlert()
     }
     
-    convenience init() {
-        self.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         presentActionAlert()
     }
     
@@ -75,7 +72,7 @@ class AlertController: UIViewController {
         alertContainerView.addSubview(titleTextField)
         alertContainerView.addSubview(descriptionTextField)
         titleTextField.placeholder = "Chat room title"
-        descriptionTextField.placeholder = "Short chat room description"
+        descriptionTextField.placeholder = "Chat room description"
         
         // stackView
         let stackView = configureStackView()
