@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CloudFirestore {
+final class CloudFirestore {
     
     static let shared = CloudFirestore()
     private let database = Firestore.firestore()

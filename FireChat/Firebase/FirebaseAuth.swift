@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class FirebaseAuth {
+final class FirebaseAuth {
     
     static let shared = FirebaseAuth()
     var users = [User]()
@@ -57,25 +57,18 @@ class FirebaseAuth {
         }
     }
     
-    func getSignedInUser(completion: @escaping (User?) -> Void) {
+    func checkIfSignedIn(completion: @escaping (Bool) -> Void) {
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-            if let user = user {
-                let signedInUser = User(name: user.displayName ?? "Missing name", email: user.email ?? "Missing email", photoURL: user.photoURL, provider: user.providerID)
-                completion(signedInUser)
-            } else { completion(nil) }
+            if user != nil { completion(true) }
+            else { completion(false) }
         }
     }
     
     func signOut() {
         let firebaseAuthentication = Auth.auth()
-        do {
-            try firebaseAuthentication.signOut()
-            print("Success signing out")
-        } catch {
-            print("Errors while signing out: \(error.localizedDescription)")
-        }
+        do { try firebaseAuthentication.signOut() }
+        catch { print("Errors while signing out: \(error.localizedDescription)") }
     }
     
     func sendPasswordResetLink(to emailAddress: String, completion: @escaping handler) {
