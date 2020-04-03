@@ -28,6 +28,7 @@ class ChannelsViewController: UIViewController {
         configureTableView()
         addBarButton()
         welcomeMessage()
+        title = "Channels View Controller"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +39,9 @@ class ChannelsViewController: UIViewController {
     //MARK: - Visual elements
     private func welcomeMessage() {
         guard let firebaseUser = firebase.users.last else { return }
-        presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
+        DispatchQueue.main.async {
+            self.presentAlert(withTitle: "Welcome \(firebaseUser.name)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
+        }
     }
     
     private func showMissingChatRooms() {

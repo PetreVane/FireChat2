@@ -22,6 +22,7 @@ class ChatViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.dismissKeyboardOnTap()
         showNoMessagesState()
+        title = "Chat View Controller"
     }
     
     private func showNoMessagesState() {

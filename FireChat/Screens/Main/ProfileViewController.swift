@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureLabel()
         configureLogOutButton()
+        title = "Profile View Controller"
     }
     
 
