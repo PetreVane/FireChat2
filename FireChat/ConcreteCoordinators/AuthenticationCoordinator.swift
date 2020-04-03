@@ -11,16 +11,16 @@ import UIKit
 
 class AuthenticationCoordinator: Coordinator {
 
-    var router: Router
+    var router: Router = NavigationRouter(navigationController: UINavigationController())
     var childControllers: [UIViewController] = []
     weak var parentCoordinator: ApplicationCoordinator?
-    
-    init(navigationRouter: Router) {
-          self.router = navigationRouter
-      }
+
+    init(coordinator: ApplicationCoordinator) {
+        self.parentCoordinator = coordinator
+        start()
+    }
     
     func start() {
-        // starts this coordinator
         presentWelcomeVC()
     }
     
@@ -48,7 +48,6 @@ class AuthenticationCoordinator: Coordinator {
         let passwordResetVC = PasswordResetViewController.instantiate(delegate: self)
         router.present(passwordResetVC, animated: true)
     }
-    
 }
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {

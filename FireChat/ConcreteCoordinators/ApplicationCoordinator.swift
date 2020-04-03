@@ -11,7 +11,6 @@ import UIKit
 class ApplicationCoordinator {
     
     var window: UIWindow?
-    let router = NavigationRouter(navigationController: UINavigationController())
     var childCoordinators: [Coordinator] = []
     let firebase = FirebaseAuth.shared
     var isUserAuthorized = false { didSet { decideAppFlow() } }
@@ -35,24 +34,22 @@ class ApplicationCoordinator {
     }
     
     private func isUserLoggedIn() {
-        firebase.getSignedInUser { (user) in
-            guard user != nil else { return }
-            self.isUserAuthorized = true
+        firebase.checkIfSignedIn { [weak self ](signedIn) in
+            guard let self = self else { return }
+            if signedIn {
+                self.isUserAuthorized = true
+            }
         }
     }
     
     func startAuthenticationFlow() {
-        let authenticationCoordinator = AuthenticationCoordinator(navigationRouter: router)
-        authenticationCoordinator.parentCoordinator = self
-        authenticationCoordinator.start()
+        let authenticationCoordinator = AuthenticationCoordinator(coordinator: self)
         addCoordinator(authenticationCoordinator)
         window?.rootViewController = authenticationCoordinator.router.navigationController
     }
     
     func startMainFlow() {
-        let mainAppCoordinator = MainAppCoordinator(router: router)
-        mainAppCoordinator.parentCoordinator = self
-        mainAppCoordinator.start()
+        let mainAppCoordinator = MainAppCoordinator(coordinator: self)
         childCoordinators.append(mainAppCoordinator)
         window?.rootViewController = mainAppCoordinator.instantiateTabBar()
     }
