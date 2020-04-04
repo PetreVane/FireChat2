@@ -15,6 +15,7 @@ target 'FireChat' do
  pod 'Firebase/Firestore'
  pod 'Firebase/Storage'
  pod 'Reveal-SDK', :configurations => ['Debug']
+ pod 'MessageKit'
 
   target 'FireChatTests' do
     inherit! :search_paths

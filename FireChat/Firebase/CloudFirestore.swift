@@ -15,7 +15,6 @@ final class CloudFirestore {
     private let database = Firestore.firestore()
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     
-    
     func fetchChatRooms(completion: @escaping (ChatRoom?, ErrorsManager?) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
