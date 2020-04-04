@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import MessageKit
 
 
-struct User {
-    let name: String
+struct User: SenderType, Equatable {
+    var senderId: String = ""
+    var displayName: String
     let email: String
     let photoURL: URL?
     let provider: String?
 
     init(name: String, email: String, photoURL: URL?, provider: String?) {
-        self.name = name
+        self.displayName = name
         self.email = email
         self.photoURL = photoURL
         self.provider = provider
