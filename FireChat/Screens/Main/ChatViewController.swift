@@ -16,6 +16,7 @@ class ChatViewController: UIViewController {
 
     weak var delegate: ChatVCDelegate?
     var chatMessages = [String]()
+//    let firebaseMessages = FirebaseMessagesController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,6 +18,7 @@
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
 		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
+		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
 		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
@@ -46,6 +47,7 @@
 		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
 		0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */; };
 		0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BECFB682430944E00B18195 /* GoogleService-Info.plist */; };
+		0BEEEB80243B35DD0074E82E /* FirebaseMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEEB7F243B35DD0074E82E /* FirebaseMessagesController.swift */; };
 		30F0B93DC79976EA30B0006A /* Pods_FireChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D975672E70B80076A46F526 /* Pods_FireChatTests.framework */; };
 		4862FD6CBAD0BADD20F2ECA7 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C563B4F6E9321B23542FA3B1 /* Pods_FireChat.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,7 @@
 		0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsManager.swift; sourceTree = "<group>"; };
 		0B3D84BB242FBE8900ACF706 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B3D98B12436566E00A417D7 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
+		0B48FB81243B42D4005F16F5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		0B79324D242CCA9C0028CEAE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		0B79324F242CCAB90028CEAE /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
 		0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0BECFB682430944E00B18195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0BEEEB7F243B35DD0074E82E /* FirebaseMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagesController.swift; sourceTree = "<group>"; };
 		1C5959A6EA222E93FC1D6744 /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 		9D975672E70B80076A46F526 /* Pods_FireChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7599E5659AEACD9773C06D5 /* Pods-FireChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChatTests.debug.xcconfig"; path = "Target Support Files/Pods-FireChatTests/Pods-FireChatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +181,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		0B48FB80243B413B005F16F5 /* MessageConfigurator */ = {
+			isa = PBXGroup;
+			children = (
+				0BEEEB7F243B35DD0074E82E /* FirebaseMessagesController.swift */,
+				0B48FB81243B42D4005F16F5 /* AudioController.swift */,
+			);
+			path = MessageConfigurator;
+			sourceTree = "<group>";
+		};
 		0B79324C242CC9820028CEAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +260,7 @@
 				0B0C7912242E76BE0099C73B /* Firebase */,
 				0BD7B94A240FE18B00310F1E /* LaunchScreen */,
 				0B3D84B8242FB00800ACF706 /* Managers */,
+				0B48FB80243B413B005F16F5 /* MessageConfigurator */,
 				0BD7B964240FF86A00310F1E /* Models */,
 				0BD7B966240FF8F600310F1E /* Protocols */,
 				0BD7B949240FE12700310F1E /* Resources */,
@@ -572,11 +586,13 @@
 				0B0C7914242E76D80099C73B /* FirebaseAuth.swift in Sources */,
 				0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */,
 				0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */,
+				0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */,
 				0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */,
 				0B08D1B4241007D300E35794 /* Coordinator.swift in Sources */,
 				0BD7B95B240FF6CE00310F1E /* SignUpViewController.swift in Sources */,
 				0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */,
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
+				0BEEEB80243B35DD0074E82E /* FirebaseMessagesController.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,

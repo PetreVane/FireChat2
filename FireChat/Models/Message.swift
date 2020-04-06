@@ -103,7 +103,7 @@ private struct SoundItem: AudioItem {
     }
 }
 
-struct Contact: ContactItem {
+ struct Contact: ContactItem {
     var displayName: String
     var initials: String
     var phoneNumbers: [String]
