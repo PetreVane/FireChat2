@@ -10,18 +10,27 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 
- class FirebaseMessagesController: UIViewController {
+class FirebaseMessagesController: MessagesViewController {
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    open lazy var audioController = AudioController(messageCollectionView: messagesCollectionView)
+    let refreshController = UIRefreshControl()
+    var messagesList = [Message]()
     
-    
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "Testing MessageKit"
     }
     
-
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        audioController.stopAnyOngoingPlaying()
+    }
 }
