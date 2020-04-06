@@ -1,4 +1,4 @@
-framework module Pods_FireChat {
+module Pods_FireChat {
   umbrella header "Pods-FireChat-umbrella.h"
 
   export *
