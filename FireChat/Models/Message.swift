@@ -18,6 +18,8 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
+    /// Points to a resource associated with this Message
+    var messageDataURL: URL?
     
     private init(kind: MessageKind, user: User, messageID: String, date: Date) {
         self.kind = kind

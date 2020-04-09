@@ -43,16 +43,21 @@ class MainAppCoordinator: NSObject, Coordinator {
         return UINavigationController(rootViewController: profileVC)
     }
     
-    private func startChatViewController() {
+    private func startChatViewController(forChatRoom chatRoom: ChatRoom) {
         let chatViewController = ChatViewController.instantiate(delegate: self)
-        router.present(chatViewController, animated: true)
+        chatViewController.chatRoom = chatRoom
+         #if targetEnvironment(macCatalyst)
+            router.present(chatViewController, animated: false)
+        #else
+            router.present(chatViewController, animated: true)
+        #endif
     }
 }
 
 
 extension MainAppCoordinator: ChannelsVCDelegate {
     func didPressChatRoom(_ chatRoom: ChatRoom) {
-        startChatViewController()
+        startChatViewController(forChatRoom: chatRoom)
     }
 }
 
