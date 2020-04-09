@@ -13,4 +13,7 @@ enum ErrorsManager: String, Error {
     case failedAuthentication = "There were some problems signing you in."
     case failedFetchingChatRooms = "Failed fetching the list of available chat rooms"
     case failedDeletingChatRoom = "Chat room could not be deleted at this momment. Try again later!"
+    case failedUploadingAudio = "Your audio file has not been uploaded to CloudStorage"
+    case failedUploadingImage = "Your image file has not been uploaded to CloudStorage"
+    case failedUploadingVideo = "Your video file has not been uploaded to CloudStorage"
 }

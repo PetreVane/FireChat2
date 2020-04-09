@@ -7,9 +7,15 @@
 //
 
 import Foundation
-import Firebase
 
 
 enum Collection {
     static let chatRooms = "ChatRooms"
+    static let chatMessages = "ChatMessages"
+}
+
+enum CloudStorageDirectory {
+    static let images = "/Images/"
+    static let videos = "/Videos/"
+    static let audioFiles = "/AudioFiles/"
 }
