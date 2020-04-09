@@ -15,6 +15,7 @@ final class CloudFirestore {
     private let database = Firestore.firestore()
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     
+    // Chat rooms
     func fetchChatRooms(completion: @escaping (ChatRoom?, ErrorsManager?) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
@@ -47,6 +48,32 @@ final class CloudFirestore {
             guard error == nil else { completion(false, ErrorsManager.failedDeletingChatRoom); return }
             completion(true, nil)
         }
+    }
+    
+    //Messages
+    func uploadMessage(to chatRoom: ChatRoom, message: Message) {
+        
+        switch message.kind {
+            case .photo, .audio, .location, .video:
+                print("Calling CloudStorage")
+            case .text(let textContent):
+                cloudFirebaseUpload(message: message, messageContent: textContent, to: chatRoom)
+            default:
+                print("Default statement Switch case uploadMessage CloudFirestore")
+        }
+    }
+    
+    private func cloudFirebaseUpload(message: Message, messageContent: String, to chatRoom: ChatRoom) {
+        let chatRoomReference = chatRooms.document(chatRoom.title).collection(Collection.chatMessages).document()
+        let associatedDataURL = message.messageDataURL?.absoluteString ?? ""
+        
+        let documentData: Dictionary<String, Any> = ["Sender": message.sender,
+                                                     "Date": message.sentDate,
+                                                     "MessageID": message.messageId,
+                                                     "MessageTextContent": messageContent,
+                                                     "MessageAsociatedDataURL": associatedDataURL]
+        
+        chatRoomReference.setData(documentData, merge: true)
     }
 }
 
