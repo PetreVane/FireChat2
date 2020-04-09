@@ -20,6 +20,7 @@
 		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
 		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
 		0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */; };
+		0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B575D4B243C91ED000E3C5B /* CloudStorage.swift */; };
 		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
@@ -78,6 +79,7 @@
 		0B48FB81243B42D4005F16F5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		0B575D4A243B9346000E3C5B /* FireChatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChatRelease.entitlements; sourceTree = "<group>"; };
+		0B575D4B243C91ED000E3C5B /* CloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage.swift; sourceTree = "<group>"; };
 		0B79324D242CCA9C0028CEAE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		0B79324F242CCAB90028CEAE /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				0B0C7913242E76D80099C73B /* FirebaseAuth.swift */,
 				0B94E64324348DD0007868EB /* CloudFirestore.swift */,
+				0B575D4B243C91ED000E3C5B /* CloudStorage.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */,
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0BEEEB80243B35DD0074E82E /* FirebaseMessagesController.swift in Sources */,
+				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,

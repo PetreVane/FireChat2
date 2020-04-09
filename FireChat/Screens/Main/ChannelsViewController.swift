@@ -138,7 +138,7 @@ extension ChannelsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedChatRoom = chatRooms[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         delegate?.didPressChatRoom(tappedChatRoom)
     }
     
