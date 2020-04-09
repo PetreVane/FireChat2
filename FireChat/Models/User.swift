@@ -10,7 +10,7 @@ import Foundation
 import MessageKit
 
 
-struct User: SenderType, Equatable {
+struct User: SenderType, Equatable, Hashable {
     var senderId: String = ""
     var displayName: String
     let email: String
@@ -24,3 +24,4 @@ struct User: SenderType, Equatable {
         self.provider = provider
     }
 }
+

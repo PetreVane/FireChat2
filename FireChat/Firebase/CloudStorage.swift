@@ -37,12 +37,12 @@ final class CloudStorage {
         }
     }
     
-    func saveFile(file: MessageKind, to chatRoom: ChatRoom, completion: @escaping (Result<URL, ErrorsManager>) -> Void) {
+    func uploadAttachment(of message: Message, from chatRoom: ChatRoom, completion: @escaping (Result<URL, ErrorsManager>) -> Void) {
         
         let chatRoomTitle = chatRoom.title
         let timeStamp = Date()
         
-        switch file {
+        switch message.kind {
         case .audio(let audioItem):
             metaData.contentType = "audio/wav/mp3"
             let audioDirectory = databaseReference.child("\(chatRoomTitle)/\(CloudStorageDirectory.audioFiles)/\(timeStamp)")
