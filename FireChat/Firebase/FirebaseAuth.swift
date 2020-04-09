@@ -13,7 +13,7 @@ import Firebase
 final class FirebaseAuth {
     
     static let shared = FirebaseAuth()
-    var users = [User]()
+    var loggedInUser: Set<User> = []
     typealias handler = ((Bool, String) -> Void)
     
     func createUser(withUserName username: String, email: String, password: String, completion: @escaping handler) {
@@ -35,7 +35,7 @@ final class FirebaseAuth {
                 let photoURL = newUser.photoURL
                 let provider = newUser.providerID
                 let recentlyCreatedUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
-                self?.users.append(recentlyCreatedUser)
+                self?.loggedInUser.insert(recentlyCreatedUser)
             }
         }
     }
@@ -52,9 +52,26 @@ final class FirebaseAuth {
             let photoURL = firebaseUser.photoURL
             let provider = firebaseUser.providerID
             let authenticatedUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
-            self.users.append(authenticatedUser)
+            self.loggedInUser.insert(authenticatedUser)
             completion(true, "Success")
         }
+    }
+    
+    func getCurrentUser(completion: @escaping(User) -> Void) {
+        _ = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if let authenticatedUser = user {
+                guard
+                    let name = authenticatedUser.displayName,
+                    let email = authenticatedUser.email
+                else { return }
+
+                let provider = authenticatedUser.providerID
+                let photoURL = authenticatedUser.photoURL
+                let currentUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
+                self.loggedInUser.insert(currentUser)
+                completion(currentUser)
+            }
+        })
     }
     
     func checkIfSignedIn(completion: @escaping (Bool) -> Void) {
@@ -69,6 +86,7 @@ final class FirebaseAuth {
         let firebaseAuthentication = Auth.auth()
         do { try firebaseAuthentication.signOut() }
         catch { print("Errors while signing out: \(error.localizedDescription)") }
+        loggedInUser.removeAll()
     }
     
     func sendPasswordResetLink(to emailAddress: String, completion: @escaping handler) {
