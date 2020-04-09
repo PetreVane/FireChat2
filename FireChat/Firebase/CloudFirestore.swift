@@ -12,10 +12,12 @@ import Firebase
 final class CloudFirestore {
     
     static let shared = CloudFirestore()
-    private let database = Firestore.firestore()
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
+    private let cloudStorage = CloudStorage.shared
+    private let auth = FirebaseAuth.shared
     
-    // Chat rooms
+    //MARK: - Chat rooms
+    
     func fetchChatRooms(completion: @escaping (ChatRoom?, ErrorsManager?) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
@@ -50,30 +52,90 @@ final class CloudFirestore {
         }
     }
     
-    //Messages
-    func uploadMessage(to chatRoom: ChatRoom, message: Message) {
+     //MARK: - Messages
+    
+    func upload(message: Message, from chatRoom: ChatRoom) {
         
         switch message.kind {
-            case .photo, .audio, .location, .video:
-                print("Calling CloudStorage")
-            case .text(let textContent):
-                cloudFirebaseUpload(message: message, messageContent: textContent, to: chatRoom)
-            default:
-                print("Default statement Switch case uploadMessage CloudFirestore")
+            
+        case .photo, .video, .audio:
+            print("Calling CloudStorage")
+            cloudStorage.uploadAttachment(of: message, from: chatRoom) { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .failure(let error):
+                    print("Errors while uploading file to CloudStorage: \(error.rawValue)")
+                    message.messageDataURL = URL(string: error.rawValue)
+                case .success(let url):
+                    message.messageDataURL = url
+                    self.cloudFirestoreUpload(message, messageContent: nil, from: chatRoom)
+                }
+            }
+            
+        case .text(let textContent):
+            cloudFirestoreUpload(message, messageContent: textContent, from: chatRoom)
+            
+        case .emoji(let emojiString):
+            cloudFirestoreUpload(message, messageContent: emojiString, from: chatRoom)
+            
+        case .attributedText(let attributedString):
+            cloudFirestoreUpload(message, messageContent: attributedString.string, from: chatRoom)
+            
+        case .location(let location):
+            let stringCoordinates = String(describing: location.location.coordinate)
+            cloudFirestoreUpload(message, messageContent: stringCoordinates, from: chatRoom)
+            
+        case .contact(let contact):
+            cloudFirestoreUpload(message, messageContent: contact.displayName, from: chatRoom)
+            
+        case .custom( _):
+            cloudFirestoreUpload(message, messageContent: nil, from: chatRoom)
         }
     }
     
-    private func cloudFirebaseUpload(message: Message, messageContent: String, to chatRoom: ChatRoom) {
+    private func cloudFirestoreUpload(_ message: Message, messageContent: String?, from chatRoom: ChatRoom) {
         let chatRoomReference = chatRooms.document(chatRoom.title).collection(Collection.chatMessages).document()
-        let associatedDataURL = message.messageDataURL?.absoluteString ?? ""
-        
-        let documentData: Dictionary<String, Any> = ["Sender": message.sender,
+        let associatedDataURL = message.messageDataURL?.absoluteString ?? "No data associated with this message"
+        let documentData: Dictionary<String, Any> = ["text": messageContent as Any,
+                                                     "userName": message.user.displayName,
+                                                     "userEmail": message.user.email,
+                                                     "userPhotoURL": message.user.photoURL as Any,
+                                                     "userProvider": message.user.provider as Any,
+                                                     "messageID": message.messageId,
                                                      "Date": message.sentDate,
-                                                     "MessageID": message.messageId,
-                                                     "MessageTextContent": messageContent,
-                                                     "MessageAsociatedDataURL": associatedDataURL]
+                                                     "messageDataURL": associatedDataURL]
         
         chatRoomReference.setData(documentData, merge: true)
+    }
+    
+    func fetchMessages(for chatRoom: ChatRoom, completion: @escaping (Result<[Message], ErrorsManager>) -> Void) {
+        
+        var retrievedMessages = [Message]()
+        let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
+        chatRoomMessages.order(by: "Date", descending: false).limit(to: 50).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+            
+            guard error == nil else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
+            if let documents = snapShot?.documents {
+                _ = documents.map { document in
+                    
+                    let text = document["text"] as? String
+                    let userName = document["userName"] as? String
+                    let userEmail = document["userEmail"] as? String
+                    let messageID = document["messageID"] as? String
+                    let date = document["Date"] as? Date
+                    let userPhotoURL = document["userPhotoURL"] as? URL
+                    let userProvider = document["userProvider"] as? String
+                    let messageDataURL = document["messageDataURL"] as? URL
+                    
+                    let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing userEmail", photoURL: userPhotoURL, provider: userProvider)
+                    let cloudMessage = Message(text: text ?? "Missing message text", user: user, messageID: messageID ?? "some messageID", date: date ?? Date())
+                    cloudMessage.messageDataURL = messageDataURL
+                    retrievedMessages.append(cloudMessage)
+                }
+                print("You've got \(retrievedMessages.count) messages")
+                completion(.success(retrievedMessages))
+            }
+        }
     }
 }
 

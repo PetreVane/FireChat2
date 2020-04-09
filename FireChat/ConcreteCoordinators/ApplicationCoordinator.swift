@@ -36,9 +36,7 @@ class ApplicationCoordinator {
     private func isUserLoggedIn() {
         firebase.checkIfSignedIn { [weak self ](signedIn) in
             guard let self = self else { return }
-            if signedIn {
-                self.isUserAuthorized = true
-            }
+            if signedIn { self.isUserAuthorized = true }
         }
     }
     
@@ -55,9 +53,7 @@ class ApplicationCoordinator {
     }
     
     func addCoordinator(_ coordinator: Coordinator) {
-        for element in childCoordinators {
-            if element === coordinator { return }
-        }
+        for element in childCoordinators { if element === coordinator { return } }
         childCoordinators.append(coordinator)
     }
     
