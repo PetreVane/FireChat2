@@ -38,7 +38,7 @@ class ChannelsViewController: UIViewController {
     
     //MARK: - Visual elements
     private func welcomeMessage() {
-        guard let firebaseUser = firebase.users.last else { return }
+        guard let firebaseUser = firebase.loggedInUser.first else { return }
         DispatchQueue.main.async {
             self.presentAlert(withTitle: "Welcome \(firebaseUser.displayName)", message: "It's nice to have you on board!", buttonTitle: "Okay 👍🏻")
         }
