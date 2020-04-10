@@ -18,37 +18,36 @@ final class CloudFirestore {
     
     //MARK: - Chat rooms
     
-    func fetchChatRooms(completion: @escaping (ChatRoom?, ErrorsManager?) -> Void) {
+    func fetchChatRooms(completion: @escaping (Result<ChatRoom, ErrorsManager>) -> Void) {
 
         chatRooms.getDocuments { (snapShot, error) in
-            guard error == nil
-                else { completion(nil, ErrorsManager.failedFetchingChatRooms); return }
+            guard error == nil else { completion(.failure(ErrorsManager.failedFetchingChatRooms)); return }
+            
             _ = snapShot?.documents.map({ (document) in
                 
                 let channelName = document.documentID
                 let documentContent = document.data()
                 
                 documentContent.forEach { (key, _) in
-
                     if let channelDescription = documentContent[key] as? String {
-                        let channel = ChatRoom(title: channelName, description: channelDescription)
-                        completion(channel, nil)
-                    } else { completion(nil, ErrorsManager.failedFetchingChatRooms) }
+                        let chatRoom = ChatRoom(title: channelName, description: channelDescription)
+                        completion(.success(chatRoom))
+                    } else { completion(.failure(ErrorsManager.failedFetchingChatRooms)) }
                 }
             })
         }
     }
     
-    func saveChatRoom(_ chatRoom: ChatRoom) {
+    func createChatRoom(_ chatRoom: ChatRoom) {
         let documentTitle = chatRoom.title
         let documentData = ["Description": chatRoom.description]
         chatRooms.document(documentTitle).setData(documentData, merge: true)
     }
     
-    func deleteChatRoom(_ channel: ChatRoom, completion: @escaping (Bool, ErrorsManager?) -> Void) {
+    func deleteChatRoom(_ channel: ChatRoom, completion: @escaping (Result<Bool, ErrorsManager>) -> Void) {
         chatRooms.document(channel.title).delete { (error) in
-            guard error == nil else { completion(false, ErrorsManager.failedDeletingChatRoom); return }
-            completion(true, nil)
+            guard error == nil else { completion(.failure(ErrorsManager.failedDeletingChatRoom)); return }
+            completion(.success(true))
         }
     }
     
@@ -102,7 +101,7 @@ final class CloudFirestore {
                                                      "userPhotoURL": message.user.photoURL as Any,
                                                      "userProvider": message.user.provider as Any,
                                                      "messageID": message.messageId,
-                                                     "Date": message.sentDate,
+                                                     "Date": message.sentDate.timeIntervalSinceReferenceDate,
                                                      "messageDataURL": associatedDataURL]
         
         chatRoomReference.setData(documentData, merge: true)
@@ -122,18 +121,17 @@ final class CloudFirestore {
                     let userName = document["userName"] as? String
                     let userEmail = document["userEmail"] as? String
                     let messageID = document["messageID"] as? String
-                    let date = document["Date"] as? Date
+                    let timeInterval = document["Date"] as? TimeInterval
                     let userPhotoURL = document["userPhotoURL"] as? URL
                     let userProvider = document["userProvider"] as? String
                     let messageDataURL = document["messageDataURL"] as? URL
                     
-                    let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing userEmail", photoURL: userPhotoURL, provider: userProvider)
-                    let cloudMessage = Message(text: text ?? "Missing message text", user: user, messageID: messageID ?? "some messageID", date: date ?? Date())
+                    let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing email address", photoURL: userPhotoURL, provider: userProvider)
+                    let cloudMessage = Message(text: text ?? "No text", user: user, messageID: messageID ?? "No message ID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
                     cloudMessage.messageDataURL = messageDataURL
+                    guard !retrievedMessages.contains(cloudMessage) else { return }
                     retrievedMessages.append(cloudMessage)
-                }
-                print("You've got \(retrievedMessages.count) messages")
-                completion(.success(retrievedMessages))
+                };  completion(.success(retrievedMessages))
             }
         }
     }
