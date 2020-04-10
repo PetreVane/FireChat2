@@ -12,7 +12,6 @@ import InputBarAccessoryView
 
 class FirebaseMessagesController: MessagesViewController {
     
-    
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     open lazy var audioController = AudioController(messageCollectionView: messagesCollectionView)
     let refreshController = UIRefreshControl()

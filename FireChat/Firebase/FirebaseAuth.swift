@@ -57,8 +57,9 @@ final class FirebaseAuth {
         }
     }
     
-    func getCurrentUser(completion: @escaping(User) -> Void) {
-        _ = Auth.auth().addStateDidChangeListener({ (auth, user) in
+    func checkIfSignedIn(completion: @escaping (Bool) -> Void) {
+
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let authenticatedUser = user {
                 guard
                     let name = authenticatedUser.displayName,
@@ -69,16 +70,8 @@ final class FirebaseAuth {
                 let photoURL = authenticatedUser.photoURL
                 let currentUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
                 self.loggedInUser.insert(currentUser)
-                completion(currentUser)
+                completion(true)
             }
-        })
-    }
-    
-    func checkIfSignedIn(completion: @escaping (Bool) -> Void) {
-        
-        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil { completion(true) }
-            else { completion(false) }
         }
     }
     
