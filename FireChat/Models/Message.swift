@@ -69,6 +69,17 @@ class Message: MessageType {
     }
 }
 
+extension Message: Comparable {
+    
+    static func < (lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate < rhs.sentDate
+    }
+    
+    static func == (lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate == rhs.sentDate
+    }
+}
+
 private struct ImageMediaItem: MediaItem {
     var url: URL?
     var image: UIImage?
