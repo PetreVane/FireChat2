@@ -80,11 +80,12 @@ class ChannelsViewController: UIViewController {
     
     //MARK: - Firebase
    private func fetchChatRooms() {
-        cloudDatabase.fetchChatRooms { [weak self] (cloudChatRoom, error) in
+        cloudDatabase.fetchChatRooms { [weak self] result in
             guard let self = self else { return }
-            guard error == nil else {
-                self.presentAlert(withTitle: "What? An Error?!", message: error!.rawValue , buttonTitle: "Dismiss"); return }
-            if let chatRoom = cloudChatRoom {
+            switch result {
+            case .failure(let error):
+                self.presentAlert(withTitle: "What? An Error?!", message: error.rawValue , buttonTitle: "Dismiss")
+            case .success(let chatRoom):
                 guard !self.chatRooms.contains(chatRoom) else { return }
                 self.chatRooms.append(chatRoom)
                 self.chatRooms.count == 0 ? self.showMissingChatRooms() : self.tableView.reloadData()
@@ -93,25 +94,29 @@ class ChannelsViewController: UIViewController {
         }
     }
     
-    private func saveChannelToCloud(_ chatRoom: ChatRoom) {
-        cloudDatabase.saveChatRoom(chatRoom)
+    private func createChatRoom(_ chatRoom: ChatRoom) {
+        cloudDatabase.createChatRoom(chatRoom)
     }
     
     private func deleteChatRoom(_ chatRoom: ChatRoom) {
-        cloudDatabase.deleteChatRoom(chatRoom) { (completed, error) in
-            if completed {
+        cloudDatabase.deleteChatRoom(chatRoom) { completion in
+            
+            switch completion {
+                
+            case .failure(let error):
+                self.presentAlert(withTitle: "What, an Error!?", message: "\(error.rawValue)", buttonTitle: "I'll try later")
+                
+            case .success:
                 self.presentAlert(withTitle: "Success", message: "\(chatRoom.title) has been deleted", buttonTitle: "Nicely done 👍🏻")
                 self.tableView.reloadData()
-            } else {
-                self.presentAlert(withTitle: "What, an Error!?", message: "\(String(describing: error?.rawValue))", buttonTitle: "I'll try later")
             }
         }
     }
 }
 
 extension ChannelsViewController: AlertControllerDelegate {
-    func didCreateNewChatRoom(_ chatRoom: ChatRoom) {
-        saveChannelToCloud(chatRoom)
+    func didCreateNewChatRoom(_ newChatRoom: ChatRoom) {
+        createChatRoom(newChatRoom)
         fetchChatRooms()
     }
 }
