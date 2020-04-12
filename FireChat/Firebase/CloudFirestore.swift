@@ -15,6 +15,7 @@ final class CloudFirestore {
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     private let cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
+    var lastSnapshotForChatRoom: Dictionary<ChatRoom, QueryDocumentSnapshot> = [:]
     
     //MARK: - Chat rooms
     
@@ -107,32 +108,47 @@ final class CloudFirestore {
         chatRoomReference.setData(documentData, merge: true)
     }
     
-    func fetchMessages(for chatRoom: ChatRoom, completion: @escaping (Result<[Message], ErrorsManager>) -> Void) {
+    
+    func fetchLatestMessages(for chatRoom: ChatRoom, completion: @escaping (Result<[Message], ErrorsManager>) -> Void) {
         
+        var databaseQuery: Query?
         var retrievedMessages = [Message]()
         let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
-        chatRoomMessages.order(by: "Date", descending: false).limit(to: 50).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
-            
-            guard error == nil else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
-            if let documents = snapShot?.documents {
-                _ = documents.map { document in
-                    
-                    let text = document["text"] as? String
-                    let userName = document["userName"] as? String
-                    let userEmail = document["userEmail"] as? String
-                    let messageID = document["messageID"] as? String
-                    let timeInterval = document["Date"] as? TimeInterval
-                    let userPhotoURL = document["userPhotoURL"] as? URL
-                    let userProvider = document["userProvider"] as? String
-                    let messageDataURL = document["messageDataURL"] as? URL
-                    
-                    let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing email address", photoURL: userPhotoURL, provider: userProvider)
-                    let cloudMessage = Message(text: text ?? "No text", user: user, messageID: messageID ?? "No message ID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
-                    cloudMessage.messageDataURL = messageDataURL
-                    guard !retrievedMessages.contains(cloudMessage) else { return }
-                    retrievedMessages.append(cloudMessage)
-                };  completion(.success(retrievedMessages))
-            }
+        
+        if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
+            print("There are some documents left")
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 1).start(afterDocument: lastSnapShot)
+        } else {
+            print("This must be the first read attempt")
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 1)
+        }
+        
+        databaseQuery!.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+
+            guard let snapShot = snapShot else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
+            guard let lastSnapShot = snapShot.documents.last else { return }
+            self.lastSnapshotForChatRoom.updateValue(lastSnapShot, forKey: chatRoom)
+            let documents = snapShot.documents
+            _ = documents.map { document in
+
+                let text = document["text"] as? String
+                let userName = document["userName"] as? String
+                let userEmail = document["userEmail"] as? String
+                let messageID = document["messageID"] as? String
+                let timeInterval = document["Date"] as? TimeInterval
+                let userPhotoURL = document["userPhotoURL"] as? URL
+                let userProvider = document["userProvider"] as? String
+                let messageDataURL = document["messageDataURL"] as? URL
+
+                let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing email address",
+                                photoURL: userPhotoURL, provider: userProvider)
+                let cloudMessage = Message(text: text ?? "No text", user: user, messageID: messageID ?? "No message ID",
+                                           date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
+                cloudMessage.messageDataURL = messageDataURL
+                guard !retrievedMessages.contains(cloudMessage) else { return }
+                retrievedMessages.append(cloudMessage)
+
+            };  completion(.success(retrievedMessages))
         }
     }
 }
