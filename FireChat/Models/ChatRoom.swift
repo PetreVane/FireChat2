@@ -14,4 +14,4 @@ struct ChatRoom {
     let description: String
 }
 
-extension ChatRoom: Equatable { }
+extension ChatRoom: Equatable, Hashable { }

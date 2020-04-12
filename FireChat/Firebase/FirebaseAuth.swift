@@ -16,11 +16,13 @@ final class FirebaseAuth {
     var loggedInUser: Set<User> = []
     typealias handler = ((Bool, String) -> Void)
     
+    //MARK: TO DO [Replace handler parameters types with Result<Bool, Error> type]
+    
     func createUser(withUserName username: String, email: String, password: String, completion: @escaping handler) {
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (createdUser, error) in
             
-            guard self != nil else { return }
+            guard let self = self else { return }
             guard error == nil else { completion(false, error!.localizedDescription); return }
                         
             if let changeCredentialsRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
@@ -35,7 +37,7 @@ final class FirebaseAuth {
                 let photoURL = newUser.photoURL
                 let provider = newUser.providerID
                 let recentlyCreatedUser = User(name: name, email: email, photoURL: photoURL, provider: provider)
-                self?.loggedInUser.insert(recentlyCreatedUser)
+                self.loggedInUser.insert(recentlyCreatedUser)
             }
         }
     }
