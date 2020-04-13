@@ -118,10 +118,10 @@ final class CloudFirestore {
         
         if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
             print("There are some documents left")
-            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 1).start(afterDocument: lastSnapShot)
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50).start(afterDocument: lastSnapShot)
         } else {
             print("This must be the first read attempt")
-            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 1)
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50)
         }
         
         databaseQuery!.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
