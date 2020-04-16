@@ -236,7 +236,7 @@ extension BaseMessageKitConfigurator: InputBarAccessoryViewDelegate {
         messageInputBar.sendButton.startAnimating()
         messageInputBar.inputTextView.placeholder = "Sending..."
         DispatchQueue.global(qos: .default).async {
-//            sleep(1)
+            sleep(1)
             self.insertMessages(components)
             DispatchQueue.main.async { [weak self] in
                 self?.messageInputBar.sendButton.stopAnimating()

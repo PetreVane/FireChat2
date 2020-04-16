@@ -11,18 +11,24 @@ import MessageKit
 
 protocol ChatVCDelegate: AnyObject { }
 
-class ChatViewController: AdvancedExample {
+class ChatViewController: BaseMessageKitConfigurator {
 
     weak var delegate: ChatVCDelegate?
     var currentlyLoggedInUser: User?
+//    var chatRoom: ChatRoom?
+//    var chatMessages: [Message] = []
+    
+    // firebase
+//    let auth = FirebaseAuth.shared
+//    let cloudFirestore = CloudFirestore.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureMessageCollectionView()
         view.backgroundColor = .systemBackground
         confirmChatRoomDetails()
         view.dismissKeyboardOnTap()
-        title = chatRoom?.title
-        fetchMessages()
+        fetchMessages(for: chatRoom)
     }
     
     //MARK: - Private methods
@@ -32,32 +38,35 @@ class ChatViewController: AdvancedExample {
         currentlyLoggedInUser = currentUser
         guard chatRoom != nil else { return }
     }
-    
+        
   
     private func showNoMessagesState() {
-        chatMessages.count == 0 ? showEmptyState(withTitle: "Ops, no messages yet", message: "Start typing to add a new message!") : print("There are some more messages left! 🤭")
+        chatMessages.count == 0 ? showEmptyState(withTitle: "Ops, no messages yet", message: "Start typing to add a new message!") : print("There are some messages to be shown! 🤭")
     }
     
-    private func fetchMessages() {
+    private func fetchMessages(for chatRoom: ChatRoom?) {
         guard let currentChatRoom = chatRoom else { return }
         cloudFirestore.fetchLatestMessages(for: currentChatRoom) { [weak self] (result) in
             guard let self = self else { return }
 
             switch result {
-            case .failure(let error):
-                self.presentAlert(withTitle: "Ops, an Error", message: error.rawValue, buttonTitle: "Dismiss")
-
-            case .success(let messages):
-                print("You've got \(messages.count) received messages from completionHandler")
-                
-                for message in messages {
-                    guard !self.chatMessages.contains(message) else { return }
-                    self.chatMessages.append(message)
+                case .failure(let error):
+                    self.presentAlert(withTitle: "Ops, an Error", message: error.rawValue, buttonTitle: "Dismiss")
+                case .success(let messages):
+                    self.parse(chatMessages: messages, for: currentChatRoom)
+            }
+        }
+    }
     
-                    switch message.kind {
-                        case .text(let text): print("Your message text is: \(text) sent on \(message.sentDate)")
-                        default: print("Other type of message")
-                    }
+    private func parse(chatMessages: Dictionary<ChatRoom, [Message]>, for chatRoom: ChatRoom) {
+        if let messages = chatMessages[chatRoom] {
+            for chatMessage in messages {
+                guard !self.chatMessages.contains(chatMessage) else { return }
+                self.chatMessages.insert(chatMessage, at: 0)
+                self.chatMessages.sort { $0.sentDate < $1.sentDate }
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem()
                 }
             }
         }
@@ -71,7 +80,6 @@ extension ChatViewController {
         return viewController
     }
 }
-
 
 
 
