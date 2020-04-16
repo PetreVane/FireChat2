@@ -16,7 +16,8 @@ final class CloudFirestore {
     private let cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
     var lastSnapshotForChatRoom: Dictionary<ChatRoom, QueryDocumentSnapshot> = [:]
-    var retrievedMessages = [Message]()
+    var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
+    
     
     //MARK: - Chat rooms
     
@@ -110,12 +111,12 @@ final class CloudFirestore {
     }
     
     
-    func fetchLatestMessages(for chatRoom: ChatRoom, completion: @escaping (Result<[Message], ErrorsManager>) -> Void) {
-        
-        var databaseQuery: Query?
-        
+    func fetchLatestMessages(for chatRoom: ChatRoom, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
+        var retrievedMessages = [Message]()
         let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
         
+         /*
+        var databaseQuery: Query?
         if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
             print("There are some documents left")
             databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50).start(afterDocument: lastSnapShot)
@@ -123,14 +124,16 @@ final class CloudFirestore {
             print("This must be the first read attempt")
             databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50)
         }
+         */
         
-        databaseQuery!.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+        let latestMessages = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50)
+        
+        latestMessages.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
 
             guard let snapShot = snapShot else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
             guard let lastSnapShot = snapShot.documents.last else { return }
             self.lastSnapshotForChatRoom.updateValue(lastSnapShot, forKey: chatRoom)
             let documents = snapShot.documents
-            print("Documents so far: \(documents.count)")
             _ = documents.map { document in
 
                 let text = document["text"] as? String
@@ -145,10 +148,11 @@ final class CloudFirestore {
                 let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing email address", photoURL: userPhotoURL, provider: userProvider)
                 let cloudMessage = Message(text: text ?? "No text", user: user, messageID: messageID ?? "No message ID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
                 cloudMessage.messageDataURL = messageDataURL
-                guard !self.retrievedMessages.contains(cloudMessage) else { return }
-                self.retrievedMessages.insert(cloudMessage, at: 0)
-                print("Retrieved messages: \(self.retrievedMessages.count)")
-            }; completion(.success(self.retrievedMessages))
+                guard !retrievedMessages.contains(cloudMessage) else { return }
+                retrievedMessages.insert(cloudMessage, at: 0)
+            }
+            self.messagesForChatRoom.updateValue(retrievedMessages, forKey: chatRoom)
+            completion(.success(self.messagesForChatRoom))
         }
     }
 }
