@@ -11,7 +11,7 @@ import MessageKit
 
 protocol ChatVCDelegate: AnyObject { }
 
-class ChatViewController: BaseMessageKitConfigurator {
+class ChatViewController: BaseConfiguration {
 
     weak var delegate: ChatVCDelegate?
     var currentlyLoggedInUser: User?
@@ -32,17 +32,18 @@ class ChatViewController: BaseMessageKitConfigurator {
     }
     
     //MARK: - Private methods
-    
+        
     private func confirmChatRoomDetails() {
         guard let currentUser = auth.loggedInUser.first else { return }
         currentlyLoggedInUser = currentUser
         guard chatRoom != nil else { return }
     }
-        
+    
   
     private func showNoMessagesState() {
         chatMessages.count == 0 ? showEmptyState(withTitle: "Ops, no messages yet", message: "Start typing to add a new message!") : print("There are some messages to be shown! 🤭")
     }
+    
     
     private func fetchMessages(for chatRoom: ChatRoom?) {
         guard let currentChatRoom = chatRoom else { return }
