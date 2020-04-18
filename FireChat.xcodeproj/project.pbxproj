@@ -33,6 +33,7 @@
 		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
 		0B94E6462434A512007868EB /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E6452434A512007868EB /* ChatRoom.swift */; };
 		0B94E6482434A871007868EB /* FirebaseEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E6472434A871007868EB /* FirebaseEnums.swift */; };
+		0BB003282449BAB600D0D65E /* BaseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB003272449BAB600D0D65E /* BaseConfiguration.swift */; };
 		0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B922240FDF7600310F1E /* AppDelegate.swift */; };
 		0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B924240FDF7600310F1E /* SceneDelegate.swift */; };
 		0BD7B927240FDF7600310F1E /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B926240FDF7600310F1E /* ChannelsViewController.swift */; };
@@ -94,6 +95,7 @@
 		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
 		0B94E6452434A512007868EB /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		0B94E6472434A871007868EB /* FirebaseEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEnums.swift; sourceTree = "<group>"; };
+		0BB003272449BAB600D0D65E /* BaseConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfiguration.swift; sourceTree = "<group>"; };
 		0BD7B91F240FDF7600310F1E /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD7B922240FDF7600310F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD7B924240FDF7600310F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				0BEEEB7F243B35DD0074E82E /* BaseMessageKitConfigurator.swift */,
 				0B48FB81243B42D4005F16F5 /* AudioController.swift */,
 				0BFAE4A924447C09007CEF80 /* AdvancedExample.swift */,
+				0BB003272449BAB600D0D65E /* BaseConfiguration.swift */,
 			);
 			path = MessageConfigurator;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */,
 				0B19F9D6243248D300A0FCB2 /* ChannelCell.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
+				0BB003282449BAB600D0D65E /* BaseConfiguration.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
