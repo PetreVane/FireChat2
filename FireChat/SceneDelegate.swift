@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         guard let window = window else { return }
-        applicationCoordinator = ApplicationCoordinator(window: window)       
+        applicationCoordinator = ApplicationCoordinator(window: window)
         window.makeKeyAndVisible()
     }
 }
