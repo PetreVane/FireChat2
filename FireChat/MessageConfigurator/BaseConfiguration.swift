@@ -63,29 +63,27 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
         messagesCollectionView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         
-        /*
-         Additional settings:
+        
+//         Additional settings:
          
-         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
+//         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+//         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
 
          // Hide the outgoing avatar and adjust the label alignment to line up with the messages
-         layout?.setMessageOutgoingAvatarSize(.zero)
-         layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-         layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+//        layout?.setMessageOutgoingAvatarSize(.zero)
+//         layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+//         layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
 
          // Set outgoing avatar to overlap with the message bubble
-         layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: outgoingAvatarOverlap, right: 0)))
-         layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
-         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left: -18, bottom: outgoingAvatarOverlap, right: 18))
+//         layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: outgoingAvatarOverlap, right: 0)))
+//         layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
+//         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left: -18, bottom: outgoingAvatarOverlap, right: 18))
 
-         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
-         layout?.setMessageIncomingAccessoryViewPadding(HorizontalEdgeInsets(left: 8, right: 0))
-         layout?.setMessageIncomingAccessoryViewPosition(.messageBottom)
-         layout?.setMessageOutgoingAccessoryViewSize(CGSize(width: 30, height: 30))
-         layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
-         
-         */
+//         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
+//         layout?.setMessageIncomingAccessoryViewPadding(HorizontalEdgeInsets(left: 8, right: 0))
+//         layout?.setMessageIncomingAccessoryViewPosition(.messageBottom)
+//         layout?.setMessageOutgoingAccessoryViewSize(CGSize(width: 30, height: 30))
+//         layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
     }
     
     func configureMessageInputBar() {
@@ -403,6 +401,7 @@ extension BaseConfiguration: MessagesDisplayDelegate {
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         
         let tail: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+        let bubble: MessageStyle = .bubble
         return .bubbleTail(tail, .curved)
     }
     
