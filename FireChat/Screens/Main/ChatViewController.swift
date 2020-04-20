@@ -82,5 +82,11 @@ extension ChatViewController {
     }
 }
 
+extension ChatViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage) {
+        print("Image has been selected")
+    }
+}
+
 
 

@@ -62,28 +62,6 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
         
         messagesCollectionView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        
-        
-//         Additional settings:
-         
-//         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-//         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
-
-         // Hide the outgoing avatar and adjust the label alignment to line up with the messages
-//        layout?.setMessageOutgoingAvatarSize(.zero)
-//         layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-//         layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-
-         // Set outgoing avatar to overlap with the message bubble
-//         layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: outgoingAvatarOverlap, right: 0)))
-//         layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
-//         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left: -18, bottom: outgoingAvatarOverlap, right: 18))
-
-//         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
-//         layout?.setMessageIncomingAccessoryViewPadding(HorizontalEdgeInsets(left: 8, right: 0))
-//         layout?.setMessageIncomingAccessoryViewPosition(.messageBottom)
-//         layout?.setMessageOutgoingAccessoryViewSize(CGSize(width: 30, height: 30))
-//         layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
     }
     
     func configureMessageInputBar() {
@@ -262,34 +240,6 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
 
 extension BaseConfiguration: MessageCellDelegate {
     
-    func didTapAvatar(in cell: MessageCollectionViewCell) {
-        print("Avatar tapped")
-    }
-    
-    func didTapMessage(in cell: MessageCollectionViewCell) {
-        print("Message tapped")
-    }
-    
-    func didTapImage(in cell: MessageCollectionViewCell) {
-        print("Image tapped")
-    }
-    
-    func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top cell label tapped")
-    }
-    
-    func didTapCellBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom cell label tapped")
-    }
-    
-    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top message label tapped")
-    }
-    
-    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom label tapped")
-    }
-    
     func didTapPlayButton(in cell: AudioMessageCell) {
         guard let indexPath = messagesCollectionView.indexPath(for: cell),
             let message = messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView) else {
@@ -314,62 +264,11 @@ extension BaseConfiguration: MessageCellDelegate {
             audioController.playSound(for: message, in: cell)
         }
     }
-    
-    func didStartAudio(in cell: AudioMessageCell) {
-        print("Did start playing audio sound")
-    }
-    
-    func didPauseAudio(in cell: AudioMessageCell) {
-        print("Did pause audio sound")
-    }
-    
-    func didStopAudio(in cell: AudioMessageCell) {
-        print("Did stop audio sound")
-    }
-    
-    func didTapAccessoryView(in cell: MessageCollectionViewCell) {
-        print("Accessory view tapped")
-    }
-    
 }
 
 // MARK: - MessageLabelDelegate
 
-extension BaseConfiguration: MessageLabelDelegate {
-    
-    func didSelectAddress(_ addressComponents: [String: String]) {
-        print("Address Selected: \(addressComponents)")
-    }
-    
-    func didSelectDate(_ date: Date) {
-        print("Date Selected: \(date)")
-    }
-    
-    func didSelectPhoneNumber(_ phoneNumber: String) {
-        print("Phone Number Selected: \(phoneNumber)")
-    }
-    
-    func didSelectURL(_ url: URL) {
-        print("URL Selected: \(url)")
-    }
-    
-    func didSelectTransitInformation(_ transitInformation: [String: String]) {
-        print("TransitInformation Selected: \(transitInformation)")
-    }
-    
-    func didSelectHashtag(_ hashtag: String) {
-        print("Hashtag selected: \(hashtag)")
-    }
-    
-    func didSelectMention(_ mention: String) {
-        print("Mention selected: \(mention)")
-    }
-    
-    func didSelectCustom(_ pattern: String, match: String?) {
-        print("Custom data detector patter selected: \(pattern)")
-    }
-    
-}
+extension BaseConfiguration: MessageLabelDelegate { }
 
 //MARK: - MessageDisplayDelegate
 
