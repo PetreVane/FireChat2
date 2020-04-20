@@ -88,13 +88,13 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
     
     func configureMessageInputBar() {
         messageInputBar.delegate = self
-        messageInputBar.sendButton.setTitleColor(.systemGreen, for: .normal)
+        messageInputBar.sendButton.setTitleColor(UIColor.systemBlue, for: .normal)
         messageInputBar.sendButton.setTitleColor( UIColor.systemOrange, for: .highlighted)
         
 //         Additional settings:
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
-        messageInputBar.inputTextView.tintColor = .systemOrange
+        messageInputBar.inputTextView.tintColor = .systemBlue
         messageInputBar.inputTextView.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
         messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
@@ -114,29 +114,20 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        messageInputBar.sendButton.image = Images.airplane!// arrow image
+        messageInputBar.sendButton.image = Images.arrow// arrow image
         messageInputBar.sendButton.title = nil
         messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
         messageInputBar.middleContentViewPadding.right = -38
         
-        let charCountButton = InputBarButtonItem()
-            .configure {
-                $0.title = "0/140"
-                $0.contentHorizontalAlignment = .right
-                $0.setTitleColor(UIColor(white: 0.6, alpha: 1), for: .normal)
-                $0.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold)
-                $0.setSize(CGSize(width: 50, height: 25), animated: false)
-        }.onTextViewDidChange { (item, textView) in
-            item.title = "\(textView.text.count)/140"
-            let isOverLimit = textView.text.count > 140
-            item.inputBarAccessoryView?.shouldManageSendButtonEnabledState = !isOverLimit // Disable automated management when over limit
-            if isOverLimit { item.inputBarAccessoryView?.sendButton.isEnabled = false }
-            let color = isOverLimit ? .red : UIColor(white: 0.6, alpha: 1)
-            item.setTitleColor(color, for: .normal)
-        }
-        let bottomItems = [.flexibleSpace, charCountButton, makeButton(named: "camera")]
+        // bottom right items
+        let bottomItems = [.flexibleSpace, makeCharCounter()]
         messageInputBar.middleContentViewPadding.bottom = 8
         messageInputBar.setStackViewItems(bottomItems, forStack: .bottom, animated: false)
+        
+        // left items
+        messageInputBar.leftStackView.alignment = .center
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        messageInputBar.setStackViewItems([makeCameraButton(named: "Camera")], forStack: .left, animated: false)
         
         // This just adds some more flare
         messageInputBar.sendButton
@@ -151,28 +142,39 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
         }
     }
 
-    private func makeButton(named: String) -> InputBarButtonItem {
-        return InputBarButtonItem()
-            .configure {
-                $0.spacing = .fixed(10)
-                $0.image = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
-                $0.setSize(CGSize(width: 25, height: 25), animated: false)
-                $0.tintColor = UIColor(white: 0.8, alpha: 1)
-        }.onSelected {
-            $0.tintColor = .green
-        }.onDeselected {
-            $0.tintColor = UIColor(white: 0.8, alpha: 1)
-        }.onTouchUpInside {
-            print("Camera button Tapped")
-            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            actionSheet.addAction(action)
-            if let popoverPresentationController = actionSheet.popoverPresentationController {
-                popoverPresentationController.sourceView = $0
-                popoverPresentationController.sourceRect = $0.frame
-            }
-            self.navigationController?.present(actionSheet, animated: true, completion: nil)
+    private func makeCameraButton(named: String) -> InputBarButtonItem {
+        let cameraButton = InputBarButtonItem()
+        cameraButton.configure { button in
+            button.spacing = .fixed(10)
+            button.image = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+            button.setSize(CGSize(width: 25, height: 25), animated: false)
+            button.tintColor = UIColor(white: 0.8, alpha: 1)
         }
+        cameraButton.onSelected { $0.tintColor = .systemOrange }
+        cameraButton.onDeselected { $0.tintColor = UIColor(white: 0.8, alpha: 1)}
+        cameraButton.onTouchUpInside { _ in print("Camera button tapped") }
+        return cameraButton
+    }
+    
+    private func makeCharCounter() -> InputBarButtonItem {
+        let characterCounter = InputBarButtonItem()
+        characterCounter.configure { label in
+            label.title = "0/140"
+            label.contentHorizontalAlignment = .right
+            label.setTitleColor(UIColor(white: 0.6, alpha: 1), for: .normal)
+            label.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+            label.setSize(CGSize(width: 50, height: 25), animated: false)
+        }
+        characterCounter.onTextViewDidChange { (item, textView) in
+            item.title = "\(textView.text.count)/140"
+            let isOverLimit = textView.text.count > 140
+            item.inputBarAccessoryView?.shouldManageSendButtonEnabledState = !isOverLimit
+            // Disable automated management when over limit
+            if isOverLimit { item.inputBarAccessoryView?.sendButton.isEnabled = false }
+            let color = isOverLimit ? .red : UIColor(white: 0.6, alpha: 1)
+            item.setTitleColor(color, for: .normal)
+        }
+        return characterCounter
     }
     
     @objc private func didPullToRefresh() {
@@ -401,7 +403,6 @@ extension BaseConfiguration: MessagesDisplayDelegate {
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         
         let tail: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
-        let bubble: MessageStyle = .bubble
         return .bubbleTail(tail, .curved)
     }
     
@@ -443,7 +444,7 @@ extension BaseConfiguration: MessagesDisplayDelegate {
     
     func annotationViewForLocation(message: MessageType, at indexPath: IndexPath, in messageCollectionView: MessagesCollectionView) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: nil, reuseIdentifier: nil)
-        let pinImage = Images.pin!
+        let pinImage = Images.pin
         annotationView.image = pinImage
         annotationView.centerOffset = CGPoint(x: 0, y: -pinImage.size.height / 2)
         return annotationView
