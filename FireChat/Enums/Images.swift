@@ -10,10 +10,11 @@ import UIKit
 
 
 enum Images {
-    static let noMessages = UIImage(named: "noMessages")
-    static let cameraImage = UIImage(named: "camera")
-    static let pin = UIImage(named: "pin")
-    static let email = UIImage(named: "email")
-    static let hashtag = UIImage(named: "hashtag")
-    static let airplane = UIImage(named: "send1")
+    static let noMessages = UIImage(named: "noMessages")!
+    static let cameraImage = UIImage(named: "camera")!
+    static let pin = UIImage(named: "pin")!
+    static let email = UIImage(named: "email")!
+    static let hashtag = UIImage(named: "hashtag")!
+    static let airplane = UIImage(named: "send1")!
+    static let arrow = UIImage(named: "arrow")!
 }

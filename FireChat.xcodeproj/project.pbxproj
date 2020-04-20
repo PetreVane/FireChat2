@@ -19,7 +19,6 @@
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
 		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
 		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
-		0B55F6FE2445BC4E003FBFFF /* CustomMessagesFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B55F6FD2445BC4E003FBFFF /* CustomMessagesFlowLayout.swift */; };
 		0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */; };
 		0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B575D4B243C91ED000E3C5B /* CloudStorage.swift */; };
 		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
@@ -79,7 +78,6 @@
 		0B3D84BB242FBE8900ACF706 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B3D98B12436566E00A417D7 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
 		0B48FB81243B42D4005F16F5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
-		0B55F6FD2445BC4E003FBFFF /* CustomMessagesFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessagesFlowLayout.swift; sourceTree = "<group>"; };
 		0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		0B575D4A243B9346000E3C5B /* FireChatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChatRelease.entitlements; sourceTree = "<group>"; };
 		0B575D4B243C91ED000E3C5B /* CloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage.swift; sourceTree = "<group>"; };
@@ -195,19 +193,10 @@
 		0B48FB80243B413B005F16F5 /* MessageConfigurator */ = {
 			isa = PBXGroup;
 			children = (
-				0B55F6FC2445BC23003FBFFF /* Layout */,
 				0B48FB81243B42D4005F16F5 /* AudioController.swift */,
 				0BB003272449BAB600D0D65E /* BaseConfiguration.swift */,
 			);
 			path = MessageConfigurator;
-			sourceTree = "<group>";
-		};
-		0B55F6FC2445BC23003FBFFF /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				0B55F6FD2445BC4E003FBFFF /* CustomMessagesFlowLayout.swift */,
-			);
-			path = Layout;
 			sourceTree = "<group>";
 		};
 		0B79324C242CC9820028CEAE /* Views */ = {
@@ -616,7 +605,6 @@
 				0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */,
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
-				0B55F6FE2445BC4E003FBFFF /* CustomMessagesFlowLayout.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,

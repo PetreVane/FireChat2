@@ -23,7 +23,7 @@ final class CloudStorage {
         metaData.contentType = "image/png"
         let directoryReference = databaseReference.child("\(title)/\(CloudStorageDirectory.images)/Some Picture")
         
-        if let imageData = Images.noMessages?.pngData() {
+        if let imageData = Images.noMessages.pngData() {
             _ = directoryReference.putData(imageData, metadata: metaData) { (metadata, error) in
 
                 guard error == nil else { completion(.failure(ErrorsManager.failedUploadingImage)); return }
