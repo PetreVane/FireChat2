@@ -44,7 +44,7 @@ final class CloudStorage {
         
         switch message.kind {
         case .audio(let audioItem):
-            metaData.contentType = "audio/wav/mp3"
+            metaData.contentType = "audio/mp3"
             let audioDirectory = databaseReference.child("\(chatRoomTitle)/\(CloudStorageDirectory.audioFiles)/\(timeStamp)")
             let audioURL = audioItem.url
             audioDirectory.putFile(from: audioURL, metadata: metaData) { (metadata, error) in
@@ -57,7 +57,7 @@ final class CloudStorage {
             }
 
         case .photo(let mediaItem):
-            metaData.contentType = "image/jpg/png"
+            metaData.contentType = "image/png"
             let imageDirectory = databaseReference.child("\(chatRoomTitle)/\(CloudStorageDirectory.images)/\(timeStamp)")
             guard let image = mediaItem.image else { return }
             if let imageData = image.pngData() {

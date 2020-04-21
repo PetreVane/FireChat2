@@ -50,6 +50,7 @@
 		0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B96D2410000200310F1E /* FireLabel.swift */; };
 		0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */; };
 		0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BECFB682430944E00B18195 /* GoogleService-Info.plist */; };
+		0BFADED7244F4AE500D9702A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFADED6244F4AE500D9702A /* CacheManager.swift */; };
 		0BFAE4AC24447DE8007CEF80 /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAE4AB24447DE8007CEF80 /* ChatRoomCell.swift */; };
 		0BFD6C22244E05E700895BAA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD6C21244E05E700895BAA /* ImagePicker.swift */; };
 		9C2202676BC63ECE8FAE47A1 /* libPods-FireChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E0A96E638889ED26E23A28 /* libPods-FireChatTests.a */; };
@@ -115,6 +116,7 @@
 		0BD7B96D2410000200310F1E /* FireLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLabel.swift; sourceTree = "<group>"; };
 		0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0BECFB682430944E00B18195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0BFADED6244F4AE500D9702A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		0BFAE4AB24447DE8007CEF80 /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
 		0BFD6C21244E05E700895BAA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		108EB9734813BFCF4D86559D /* libPods-FireChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */,
+				0BFADED6244F4AE500D9702A /* CacheManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */,
 				0BD7B968240FFF3900310F1E /* MainAppCoordinator.swift in Sources */,
 				0B19F9D6243248D300A0FCB2 /* ChannelCell.swift in Sources */,
+				0BFADED7244F4AE500D9702A /* CacheManager.swift in Sources */,
 				0BD7B925240FDF7600310F1E /* SceneDelegate.swift in Sources */,
 				0BB003282449BAB600D0D65E /* BaseConfiguration.swift in Sources */,
 				0BD7B96E2410000200310F1E /* FireLabel.swift in Sources */,
