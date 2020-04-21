@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 import Firebase
 
 final class CloudFirestore {
     
     static let shared = CloudFirestore()
+    private let cache = CacheManager.sharedInstance
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     private let cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
@@ -114,6 +116,7 @@ final class CloudFirestore {
     func fetchLatestMessages(for chatRoom: ChatRoom, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
         var retrievedMessages = [Message]()
         let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
+        var tempImage: UIImage = UIImage()
         
          /*
         var databaseQuery: Query?
@@ -143,13 +146,36 @@ final class CloudFirestore {
                 let timeInterval = document["Date"] as? TimeInterval
                 let userPhotoURL = document["userPhotoURL"] as? URL
                 let userProvider = document["userProvider"] as? String
-                let messageDataURL = document["messageDataURL"] as? URL
-
+                let resourceStringURL = document["messageDataURL"] as? String
+                
                 let user = User(name: userName ?? "Missing userName", email: userEmail ?? "Missing email address", photoURL: userPhotoURL, provider: userProvider)
-                let cloudMessage = Message(text: text ?? "No text", user: user, messageID: messageID ?? "No message ID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
-                cloudMessage.messageDataURL = messageDataURL
-                guard !retrievedMessages.contains(cloudMessage) else { return }
-                retrievedMessages.insert(cloudMessage, at: 0)
+                
+                switch text {
+                    case .some(let textContent):
+                        let textMessage = Message(text: textContent, user: user, messageID: messageID ?? "No message ID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
+                        guard !retrievedMessages.contains(textMessage) else { return }
+                        retrievedMessages.insert(textMessage, at: 0)
+                    case .none:
+                        if let url = resourceStringURL {
+                            if let resourceURL = URL(string: url) {
+                                if let imageFromCache = self.cache.retrieveImage(withIdentifier: resourceURL.absoluteString) {
+                                    tempImage = imageFromCache
+                                }
+                                else if let data = try? Data(contentsOf: resourceURL) {
+                                    if let networkImage = UIImage(data: data) {
+                                        tempImage = networkImage
+                                        self.cache.saveImage(withIdentifier: resourceURL.absoluteString, image: networkImage)
+                                    }
+                                } else {
+                                    let avasset = AVAsset(url: resourceURL)
+                                    print("You've got an avAsset: \(avasset.commonMetadata)")
+                                }
+                            }
+                        }
+                    let messageWithImage = Message(image: tempImage, user: user, messageID: messageID ?? "no messageID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
+                        guard !retrievedMessages.contains(messageWithImage) else { return }
+                        retrievedMessages.insert(messageWithImage, at: 0)
+                }
             }
             self.messagesForChatRoom.updateValue(retrievedMessages, forKey: chatRoom)
             completion(.success(self.messagesForChatRoom))
