@@ -31,7 +31,7 @@ class ChatViewController: BaseConfiguration {
         configureImagePicker()
         confirmChatRoomDetails()
         view.dismissKeyboardOnTap()
-        fetchMessages(for: chatRoom)
+        fetchMessages(for: chatRoom, mostRecent: true)
     }
 
     // MARK: - Configuration methods
@@ -141,7 +141,7 @@ class ChatViewController: BaseConfiguration {
     //MARK: - Private methods
     
     @objc private func didPullToRefresh() {
-        print("User pulled to refresh")
+        fetchMessages(for: chatRoom, mostRecent: false)
     }
         
     private func confirmChatRoomDetails() {
@@ -156,16 +156,18 @@ class ChatViewController: BaseConfiguration {
     }
     
     
-    private func fetchMessages(for chatRoom: ChatRoom?) {
+    private func fetchMessages(for chatRoom: ChatRoom?, mostRecent: Bool) {
         guard let currentChatRoom = chatRoom else { return }
-        cloudFirestore.fetchLatestMessages(for: currentChatRoom) { [weak self] (result) in
+        
+        cloudFirestore.fetchMessages(for: currentChatRoom, requestMostRecent: mostRecent) { [weak self] result in
             guard let self = self else { return }
-
+            
             switch result {
                 case .failure(let error):
                     self.presentAlert(withTitle: "Ops, an Error", message: error.rawValue, buttonTitle: "Dismiss")
                 case .success(let messages):
                     self.parse(chatMessages: messages, for: currentChatRoom)
+                    self.refreshControl.endRefreshing()
             }
         }
     }
@@ -215,7 +217,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         messageInputBar.sendButton.startAnimating()
         messageInputBar.inputTextView.placeholder = "Sending..."
         DispatchQueue.global(qos: .default).async {
-            sleep(1)
             DispatchQueue.main.async { [weak self] in
                 self?.messageInputBar.sendButton.stopAnimating()
                 self?.messageInputBar.inputTextView.placeholder = "Aa"

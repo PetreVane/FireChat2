@@ -17,7 +17,7 @@ final class CloudFirestore {
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     private let cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
-    var lastSnapshotForChatRoom: Dictionary<ChatRoom, QueryDocumentSnapshot> = [:]
+    var lastSnapshotForChatRoom: Dictionary<ChatRoom, [QueryDocumentSnapshot]> = [:]
     var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
     
     
@@ -113,29 +113,41 @@ final class CloudFirestore {
     }
     
     
-    func fetchLatestMessages(for chatRoom: ChatRoom, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
+    func fetchMessages(for chatRoom: ChatRoom, requestMostRecent: Bool = true, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
         var retrievedMessages = [Message]()
         let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
-        var tempImage: UIImage = UIImage()
-        
-         /*
+        var temporaryImage: UIImage = UIImage()
         var databaseQuery: Query?
-        if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
-            print("There are some documents left")
-            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50).start(afterDocument: lastSnapShot)
+        
+        if requestMostRecent {
+            print("This is the first read attempt: mostRecent = true ")
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 5)
         } else {
-            print("This must be the first read attempt")
-            databaseQuery = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50)
+            if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
+                print("This is an additional attemtp: mostRecent = false")
+                if let mostRecentSnapShot = lastSnapShot.last {
+                    databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 5).start(afterDocument: mostRecentSnapShot)
+                }
+            }
         }
-         */
         
-        let latestMessages = chatRoomMessages.order(by: "Date", descending: false).limit(to: 50)
-        
-        latestMessages.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+        databaseQuery?.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
 
             guard let snapShot = snapShot else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
-            guard let lastSnapShot = snapShot.documents.last else { return }
-            self.lastSnapshotForChatRoom.updateValue(lastSnapShot, forKey: chatRoom)
+            
+            if snapShot.documents.count < 1 {
+                print("There are less than 1 documents: \(snapShot.documents.count)")
+                if self.lastSnapshotForChatRoom[chatRoom] != nil {
+                    self.lastSnapshotForChatRoom.removeValue(forKey: chatRoom)
+                }
+                
+            } else {
+                guard let latestSnapShot = snapShot.documents.last else { return }
+                var snapShots: [QueryDocumentSnapshot] = []
+                snapShots.append(latestSnapShot)
+                self.lastSnapshotForChatRoom.updateValue(snapShots, forKey: chatRoom)
+            }
+            
             let documents = snapShot.documents
             _ = documents.map { document in
 
@@ -159,11 +171,11 @@ final class CloudFirestore {
                         if let url = resourceStringURL {
                             if let resourceURL = URL(string: url) {
                                 if let imageFromCache = self.cache.retrieveImage(withIdentifier: resourceURL.absoluteString) {
-                                    tempImage = imageFromCache
+                                    temporaryImage = imageFromCache
                                 }
                                 else if let data = try? Data(contentsOf: resourceURL) {
                                     if let networkImage = UIImage(data: data) {
-                                        tempImage = networkImage
+                                        temporaryImage = networkImage
                                         self.cache.saveImage(withIdentifier: resourceURL.absoluteString, image: networkImage)
                                     }
                                 } else {
@@ -172,7 +184,7 @@ final class CloudFirestore {
                                 }
                             }
                         }
-                    let messageWithImage = Message(image: tempImage, user: user, messageID: messageID ?? "no messageID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
+                    let messageWithImage = Message(image: temporaryImage, user: user, messageID: messageID ?? "no messageID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
                         guard !retrievedMessages.contains(messageWithImage) else { return }
                         retrievedMessages.insert(messageWithImage, at: 0)
                 }
