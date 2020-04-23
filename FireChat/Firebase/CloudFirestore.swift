@@ -121,12 +121,12 @@ final class CloudFirestore {
         
         if requestMostRecent {
             print("This is the first read attempt: mostRecent = true ")
-            databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 5)
+            databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 12)
         } else {
             if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
                 print("This is an additional attemtp: mostRecent = false")
                 if let mostRecentSnapShot = lastSnapShot.last {
-                    databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 5).start(afterDocument: mostRecentSnapShot)
+                    databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 25).start(afterDocument: mostRecentSnapShot)
                 }
             }
         }

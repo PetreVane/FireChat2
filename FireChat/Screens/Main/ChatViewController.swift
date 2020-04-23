@@ -33,6 +33,11 @@ class ChatViewController: BaseConfiguration {
         view.dismissKeyboardOnTap()
         fetchMessages(for: chatRoom, mostRecent: true)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messagesCollectionView.scrollToLastItem()
+    }
 
     // MARK: - Configuration methods
     override func configureMessageCollectionView() {
@@ -73,9 +78,9 @@ class ChatViewController: BaseConfiguration {
         messageInputBar.middleContentViewPadding.right = -38
         
         // bottom right items
-        let bottomItems = [.flexibleSpace, makeCharCounter()]
-        messageInputBar.middleContentViewPadding.bottom = 8
-        messageInputBar.setStackViewItems(bottomItems, forStack: .bottom, animated: false)
+    //        let bottomItems = [.flexibleSpace, makeCharCounter()]
+    //        messageInputBar.middleContentViewPadding.bottom = 8
+    //        messageInputBar.setStackViewItems(bottomItems, forStack: .bottom, animated: false)
         
         // left items
         messageInputBar.leftStackView.alignment = .center
@@ -181,7 +186,7 @@ class ChatViewController: BaseConfiguration {
                 
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToLastItem()
+//                    self.messagesCollectionView.scrollToLastItem()
                 }
             }
         }
@@ -221,7 +226,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 self?.messageInputBar.sendButton.stopAnimating()
                 self?.messageInputBar.inputTextView.placeholder = "Aa"
                 self?.insertMessages(components)
-                self?.messagesCollectionView.scrollToLastItem() //scrollToBottom(animated: true)
+                self?.messagesCollectionView.scrollToLastItem()
             }
         }
     }
@@ -229,7 +234,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     private func insertMessages(_ data: [Any]) {
         for component in data {
             let user = auth.loggedInUser.first!
-            
             if let str = component as? String {
                 let message = Message(text: str, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
@@ -237,6 +241,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 let message = Message(image: img, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
             }
+        }
+         DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToBottom(animated: true)
         }
     }
 }
