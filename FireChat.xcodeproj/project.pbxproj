@@ -52,7 +52,6 @@
 		0BD93C6824179CF20007F8D0 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */; };
 		0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BECFB682430944E00B18195 /* GoogleService-Info.plist */; };
 		0BFADED7244F4AE500D9702A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFADED6244F4AE500D9702A /* CacheManager.swift */; };
-		0BFADEDC24534DC300D9702A /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFADEDB24534DC300D9702A /* AppDelegate+Notifications.swift */; };
 		0BFAE4AC24447DE8007CEF80 /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAE4AB24447DE8007CEF80 /* ChatRoomCell.swift */; };
 		0BFD6C22244E05E700895BAA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD6C21244E05E700895BAA /* ImagePicker.swift */; };
 		9C2202676BC63ECE8FAE47A1 /* libPods-FireChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E0A96E638889ED26E23A28 /* libPods-FireChatTests.a */; };
@@ -119,7 +118,6 @@
 		0BD93C6724179CF20007F8D0 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0BECFB682430944E00B18195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0BFADED6244F4AE500D9702A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		0BFADEDB24534DC300D9702A /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		0BFAE4AB24447DE8007CEF80 /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
 		0BFD6C21244E05E700895BAA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		108EB9734813BFCF4D86559D /* libPods-FireChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,7 +232,6 @@
 				0B90D0152410F5B600BF997F /* UIView+Ext.swift */,
 				0B793253242CEA560028CEAE /* UIViewController+Ext.swift */,
 				0B19F9D72432537A00A0FCB2 /* TableView+Ext.swift */,
-				0BFADEDB24534DC300D9702A /* AppDelegate+Notifications.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -652,7 +649,6 @@
 				0B793258242D27390028CEAE /* Images.swift in Sources */,
 				0BD7B927240FDF7600310F1E /* ChannelsViewController.swift in Sources */,
 				0BD7B95F240FF7B300310F1E /* PasswordResetViewController.swift in Sources */,
-				0BFADEDC24534DC300D9702A /* AppDelegate+Notifications.swift in Sources */,
 				0B08D1B6241007FC00E35794 /* Router.swift in Sources */,
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
 				0B94E6462434A512007868EB /* ChatRoom.swift in Sources */,

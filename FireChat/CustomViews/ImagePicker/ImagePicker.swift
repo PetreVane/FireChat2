@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol ImagePickerDelegate: AnyObject {
     func didSelect(image: UIImage)
@@ -44,7 +45,10 @@ class ImagePicker: NSObject {
         let alertController = UIAlertController(title: "Pick your Image", message: "Select where your image is saved", preferredStyle: .alert)
         
         if let cameraAction = self.selectImageFrom(source: .camera, title: "Camera") {
-            alertController.addAction(cameraAction)
+            
+            if allowedCameraAccess() {
+                 alertController.addAction(cameraAction)
+            }
         }
         
         if let photoLibraryAction = self.selectImageFrom(source: .photoLibrary, title: "Photo Library") {
@@ -67,6 +71,26 @@ class ImagePicker: NSObject {
         controller.dismiss(animated: true, completion: nil)
     }
     
+    func allowedCameraAccess() -> Bool {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            // The user has previously granted access to the camera.
+            case .authorized: return true
+            // The user has not yet been asked for camera access.
+            case .notDetermined:
+                var accessPermited: Bool = false
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted { accessPermited = true }
+                }
+                return accessPermited
+            // The user has previously denied access.
+            case .denied: return false
+            // The user can't grant access due to restrictions.
+            case .restricted: return false
+        @unknown default:
+            print("Unknown case added")
+            return false
+        }
+    }
 }
 
 extension ImagePicker: UIImagePickerControllerDelegate {
