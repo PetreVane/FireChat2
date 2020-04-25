@@ -9,6 +9,15 @@
           "revision": "c5011fdf8c29368a81a47a6bcefbce1324142a34",
           "version": "1.0.0"
         }
+      },
+      {
+        "package": "RemoteNotificationsConfigurator",
+        "repositoryURL": "https://github.com/PetreVane/RemoteNotifications-Configurator.git",
+        "state": {
+          "branch": null,
+          "revision": "d0725b7a669de985690cf7a628f9432897d76294",
+          "version": "1.0.2"
+        }
       }
     ]
   },

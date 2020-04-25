@@ -45,7 +45,7 @@ extension AppDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)        
+        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)
     }
 }
 
