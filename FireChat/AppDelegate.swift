@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 import Firebase
-//import RemoteNotificationsConfigurator
+import RemoteNotificationsConfigurator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // see AppDelegate extension file
-//        NotificationConfigurator.registerForPushNotifications(application: application)
+        NotificationConfigurator.registerForPushNotifications(application: application)
         FirebaseApp.configure()
         return true
     }
@@ -45,9 +45,7 @@ extension AppDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-//        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)
-        
-//        sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)
+        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)        
     }
 }
 
