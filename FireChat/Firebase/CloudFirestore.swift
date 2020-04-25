@@ -10,6 +10,10 @@ import UIKit
 import AVFoundation
 import Firebase
 
+protocol CloudFirebaseDelegate: AnyObject {
+    func shouldReloadMessages()
+}
+
 final class CloudFirestore {
     
     static let shared = CloudFirestore()
@@ -19,6 +23,7 @@ final class CloudFirestore {
     private let auth = FirebaseAuth.shared
     var lastSnapshotForChatRoom: Dictionary<ChatRoom, [QueryDocumentSnapshot]> = [:]
     var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
+    weak var delegate: CloudFirebaseDelegate?
     
     
     //MARK: - Chat rooms
@@ -120,11 +125,9 @@ final class CloudFirestore {
         var databaseQuery: Query?
         
         if requestMostRecent {
-            print("This is the first read attempt: mostRecent = true ")
             databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 12)
         } else {
             if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
-                print("This is an additional attemtp: mostRecent = false")
                 if let mostRecentSnapShot = lastSnapShot.last {
                     databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 25).start(afterDocument: mostRecentSnapShot)
                 }
@@ -136,7 +139,6 @@ final class CloudFirestore {
             guard let snapShot = snapShot else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
             
             if snapShot.documents.count < 1 {
-                print("There are less than 1 documents: \(snapShot.documents.count)")
                 if self.lastSnapshotForChatRoom[chatRoom] != nil {
                     self.lastSnapshotForChatRoom.removeValue(forKey: chatRoom)
                 }
@@ -147,6 +149,13 @@ final class CloudFirestore {
                 snapShots.append(latestSnapShot)
                 self.lastSnapshotForChatRoom.updateValue(snapShots, forKey: chatRoom)
             }
+            
+            let hasPendingWrites = snapShot.metadata.hasPendingWrites
+            if !hasPendingWrites {
+                self.delegate?.shouldReloadMessages()
+            }
+            
+            
             
             let documents = snapShot.documents
             _ = documents.map { document in

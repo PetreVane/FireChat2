@@ -25,6 +25,7 @@ class ChatViewController: BaseConfiguration {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cloudFirestore.delegate = self
         title = chatRoom?.title
         configureMessageCollectionView()
         configureMessageInputBar()
@@ -55,6 +56,7 @@ class ChatViewController: BaseConfiguration {
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
         messageInputBar.inputTextView.tintColor = .systemBlue
+        messageInputBar.inputTextView.textColor = .darkGray
         messageInputBar.inputTextView.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
         messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
@@ -163,7 +165,6 @@ class ChatViewController: BaseConfiguration {
     
     private func fetchMessages(for chatRoom: ChatRoom?, mostRecent: Bool) {
         guard let currentChatRoom = chatRoom else { return }
-        
         cloudFirestore.fetchMessages(for: currentChatRoom, requestMostRecent: mostRecent) { [weak self] result in
             guard let self = self else { return }
             
@@ -186,7 +187,7 @@ class ChatViewController: BaseConfiguration {
                 
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()
-//                    self.messagesCollectionView.scrollToLastItem()
+                    self.messagesCollectionView.scrollToLastItem()
                 }
             }
         }
@@ -207,6 +208,15 @@ extension ChatViewController: ImagePickerDelegate {
         let message = Message(image: image, user: currentlyLoggedInUser!, messageID: UUID().uuidString, date: Date())
         cloudFirestore.upload(message: message, from: chatRoom!)
         print("Image has been selected and upload triggered")
+    }
+}
+
+extension ChatViewController: CloudFirebaseDelegate {
+    func shouldReloadMessages() {
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToLastItem()
+        }
     }
 }
 
