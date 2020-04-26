@@ -28,7 +28,7 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
         return formatter
     }()
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         configureMessageCollectionView()
     }

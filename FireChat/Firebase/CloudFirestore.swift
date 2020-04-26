@@ -11,7 +11,7 @@ import AVFoundation
 import Firebase
 
 protocol CloudFirebaseDelegate: AnyObject {
-    func shouldReloadMessages()
+    func shouldReloadMessages(mostRecent: Bool)
 }
 
 final class CloudFirestore {
@@ -137,26 +137,18 @@ final class CloudFirestore {
         databaseQuery?.addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
 
             guard let snapShot = snapShot else { completion(.failure(ErrorsManager.failedFetchingMessages)); return }
-            
             if snapShot.documents.count < 1 {
                 if self.lastSnapshotForChatRoom[chatRoom] != nil {
                     self.lastSnapshotForChatRoom.removeValue(forKey: chatRoom)
                 }
-                
             } else {
                 guard let latestSnapShot = snapShot.documents.last else { return }
                 var snapShots: [QueryDocumentSnapshot] = []
                 snapShots.append(latestSnapShot)
                 self.lastSnapshotForChatRoom.updateValue(snapShots, forKey: chatRoom)
             }
-            
             let hasPendingWrites = snapShot.metadata.hasPendingWrites
-            if !hasPendingWrites {
-                self.delegate?.shouldReloadMessages()
-            }
-            
-            
-            
+            if !hasPendingWrites { self.delegate?.shouldReloadMessages(mostRecent: requestMostRecent) }
             let documents = snapShot.documents
             _ = documents.map { document in
 
@@ -194,8 +186,8 @@ final class CloudFirestore {
                             }
                         }
                     let messageWithImage = Message(image: temporaryImage, user: user, messageID: messageID ?? "no messageID", date: Date(timeIntervalSinceReferenceDate: timeInterval ?? 00))
-                        guard !retrievedMessages.contains(messageWithImage) else { return }
-                        retrievedMessages.insert(messageWithImage, at: 0)
+                    guard !retrievedMessages.contains(messageWithImage) else { return }
+                    retrievedMessages.insert(messageWithImage, at: 0)
                 }
             }
             self.messagesForChatRoom.updateValue(retrievedMessages, forKey: chatRoom)

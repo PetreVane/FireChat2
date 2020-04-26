@@ -149,6 +149,7 @@ class ChatViewController: BaseConfiguration {
     
     @objc private func didPullToRefresh() {
         fetchMessages(for: chatRoom, mostRecent: false)
+        shouldReloadMessages(mostRecent: false)
     }
         
     private func confirmChatRoomDetails() {
@@ -184,11 +185,7 @@ class ChatViewController: BaseConfiguration {
                 guard !self.messages.contains(chatMessage) else { return }
                 self.messages.insert(chatMessage, at: 0)
                 self.messages.sort { $0.sentDate < $1.sentDate }
-                
-                DispatchQueue.main.async {
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToLastItem()
-                }
+                DispatchQueue.main.async { self.messagesCollectionView.reloadData() }
             }
         }
     }
@@ -212,10 +209,13 @@ extension ChatViewController: ImagePickerDelegate {
 }
 
 extension ChatViewController: CloudFirebaseDelegate {
-    func shouldReloadMessages() {
-        DispatchQueue.main.async {
-            self.messagesCollectionView.reloadData()
-            self.messagesCollectionView.scrollToLastItem()
+    func shouldReloadMessages(mostRecent: Bool) {
+        switch mostRecent {
+            case true:
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem() }
+            case false: DispatchQueue.main.async { self.messagesCollectionView.reloadData() }
         }
     }
 }
@@ -236,7 +236,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 self?.messageInputBar.sendButton.stopAnimating()
                 self?.messageInputBar.inputTextView.placeholder = "Aa"
                 self?.insertMessages(components)
-                self?.messagesCollectionView.scrollToLastItem()
             }
         }
     }
@@ -251,10 +250,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 let message = Message(image: img, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
             }
-        }
-         DispatchQueue.main.async {
-            self.messagesCollectionView.scrollToBottom(animated: true)
-        }
+        }; shouldReloadMessages(mostRecent: true)
     }
 }
 
