@@ -11,7 +11,7 @@ import MessageKit
 
 
 struct User: SenderType, Equatable, Hashable {
-    var senderId: String = ""
+    var senderId: String
     var displayName: String
     let email: String
     let photoURL: URL?
@@ -22,6 +22,7 @@ struct User: SenderType, Equatable, Hashable {
         self.email = email
         self.photoURL = photoURL
         self.provider = provider
+        self.senderId = UUID().uuidString
     }
 }
 
