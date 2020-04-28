@@ -28,7 +28,6 @@
 		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
 		0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793253242CEA560028CEAE /* UIViewController+Ext.swift */; };
 		0B793258242D27390028CEAE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793257242D27390028CEAE /* Images.swift */; };
-		0B8CDEA624587A790005F071 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEA524587A790005F071 /* PushNotificationsManager.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
@@ -90,7 +89,6 @@
 		0B793251242CCB510028CEAE /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0B793253242CEA560028CEAE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		0B793257242D27390028CEAE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		0B8CDEA524587A790005F071 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			children = (
 				0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */,
 				0BFADED6244F4AE500D9702A /* CacheManager.swift */,
-				0B8CDEA524587A790005F071 /* PushNotificationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -646,7 +643,6 @@
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
-				0B8CDEA624587A790005F071 /* PushNotificationsManager.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,
 				0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */,
