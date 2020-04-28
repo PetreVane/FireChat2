@@ -166,7 +166,7 @@ class ChatViewController: BaseConfiguration {
     
     private func fetchMessages(for chatRoom: ChatRoom?, mostRecent: Bool) {
         guard let currentChatRoom = chatRoom else { return }
-        cloudFirestore.fetchMessages(for: currentChatRoom, requestMostRecent: mostRecent) { [weak self] result in
+        cloudFirestore.fetchMessages(for: currentChatRoom, requestedMostRecent: mostRecent) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -253,6 +253,8 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         }; shouldReloadMessages(mostRecent: true)
     }
 }
+
+extension ChatViewController { }
 
 
 
