@@ -19,6 +19,7 @@ final class CloudFirestore {
     static let shared = CloudFirestore()
     private let cache = CacheManager.sharedInstance
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
+    private let tokenDatabase = Firestore.firestore().collection(Collection.tokens)
     private let cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
     var lastSnapshotForChatRoom: Dictionary<ChatRoom, [QueryDocumentSnapshot]> = [:]
@@ -59,6 +60,14 @@ final class CloudFirestore {
             guard error == nil else { completion(.failure(ErrorsManager.failedDeletingChatRoom)); return }
             completion(.success(true))
         }
+    }
+    
+    
+    //MARK: - Device Tokens
+    
+    func saveToken(_ token: String, for device: String) {
+        let documentData = ["Token": token, "Device": device]
+        tokenDatabase.document(device).setData(documentData, merge: true)
     }
     
      //MARK: - Messages
@@ -118,13 +127,13 @@ final class CloudFirestore {
     }
     
     
-    func fetchMessages(for chatRoom: ChatRoom, requestMostRecent: Bool = true, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
+    func fetchMessages(for chatRoom: ChatRoom, requestedMostRecent: Bool = true, completion: @escaping (Result<Dictionary<ChatRoom, [Message]>, ErrorsManager>) -> Void) {
         var retrievedMessages = [Message]()
         let chatRoomMessages = chatRooms.document(chatRoom.title).collection(Collection.chatMessages)
         var temporaryImage: UIImage = UIImage()
         var databaseQuery: Query?
         
-        if requestMostRecent {
+        if requestedMostRecent {
             databaseQuery = chatRoomMessages.order(by: "Date", descending: true).limit(to: 12)
         } else {
             if let lastSnapShot = lastSnapshotForChatRoom[chatRoom] {
@@ -148,7 +157,7 @@ final class CloudFirestore {
                 self.lastSnapshotForChatRoom.updateValue(snapShots, forKey: chatRoom)
             }
             let hasPendingWrites = snapShot.metadata.hasPendingWrites
-            if !hasPendingWrites { self.delegate?.shouldReloadMessages(mostRecent: requestMostRecent) }
+            if !hasPendingWrites { self.delegate?.shouldReloadMessages(mostRecent: requestedMostRecent) }
             let documents = snapShot.documents
             _ = documents.map { document in
 

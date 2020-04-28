@@ -10,15 +10,18 @@ import UIKit
 import UserNotifications
 import Firebase
 import RemoteNotificationsConfigurator
+import DeviceTypes
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // see AppDelegate extension file
         NotificationConfigurator.registerForPushNotifications(application: application)
+        
         FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         return true
     }
 
@@ -36,16 +39,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    private func configureNotifications() {
-        
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        if let token = Messaging.messaging().fcmToken {
+            CloudFirestore.shared.saveToken(token, for: UIDevice.modelName)
+        }
     }
 }
 
 extension AppDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)
+
+//        NotificationConfigurator.sendPushNotification(to: "http://192.168.1.198:9000/api/token", withToken: deviceToken)
     }
+    
 }
 
