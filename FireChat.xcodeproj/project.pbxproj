@@ -29,6 +29,7 @@
 		0B793254242CEA560028CEAE /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793253242CEA560028CEAE /* UIViewController+Ext.swift */; };
 		0B793258242D27390028CEAE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793257242D27390028CEAE /* Images.swift */; };
 		0B8CDEAA2458AEBF0005F071 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */; };
+		0B8CDEAC2459ED7C0005F071 /* AppleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
@@ -91,6 +92,7 @@
 		0B793253242CEA560028CEAE /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		0B793257242D27390028CEAE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
+		0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewController.swift; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				0BD7B958240FF69400310F1E /* LoginViewController.swift */,
 				0BD7B95A240FF6CE00310F1E /* SignUpViewController.swift */,
 				0BD7B95E240FF7B300310F1E /* PasswordResetViewController.swift */,
+				0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8CDEAC2459ED7C0005F071 /* AppleSignInViewController.swift in Sources */,
 				0BFD6C22244E05E700895BAA /* ImagePicker.swift in Sources */,
 				0BD7B956240FF66700310F1E /* ProfileViewController.swift in Sources */,
 				0B08D1B824101CDB00E35794 /* NavigationRouter.swift in Sources */,

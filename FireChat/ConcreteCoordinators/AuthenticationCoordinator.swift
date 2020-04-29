@@ -48,9 +48,19 @@ class AuthenticationCoordinator: Coordinator {
         let passwordResetVC = PasswordResetViewController.instantiate(delegate: self)
         router.present(passwordResetVC, animated: true)
     }
+    
+    func presentAppleSignInVC() {
+        let appleSignInVC = AppleSignInViewController.instantiate(delegate: self)
+        router.present(appleSignInVC, animated: true)
+        appleSignInVC.handleAuthorizationAppleIDButtonPress()
+    }
 }
 
 extension AuthenticationCoordinator: WelcomeVCDelegate {
+    func didPressAppleButton() {
+        presentAppleSignInVC()
+    }
+    
     func didPressGoogleButton() {
         
     }
@@ -87,6 +97,8 @@ extension AuthenticationCoordinator: PasswordResetDelegate {
     }
 }
 
-extension AuthenticationCoordinator {
-    
+extension AuthenticationCoordinator: AppleSignInDelegate {
+    func didCompleteAppleAuthorization() {
+        print("Authorization completed")
+    }
 }
