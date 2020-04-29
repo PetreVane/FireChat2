@@ -17,4 +17,5 @@ enum ErrorsManager: String, Error {
     case failedUploadingImage = "Your image file has not been uploaded to CloudStorage"
     case failedUploadingVideo = "Your video file has not been uploaded to CloudStorage"
     case failedFetchingMessages = "Unable to fetch your messages; make sure you're connected to internet and try again!"
+    case failedRetrievingTokens = "Unable to retrieve device-tokens"
 }

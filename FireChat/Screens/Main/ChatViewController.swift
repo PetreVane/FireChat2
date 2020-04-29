@@ -18,9 +18,11 @@ class ChatViewController: BaseConfiguration {
     weak var delegate: ChatVCDelegate?
     var currentlyLoggedInUser: User?
     var chatRoom: ChatRoom?
+    private var tokens: [String] = []
     
     let refreshControl = UIRefreshControl()
     let cloudFirestore = CloudFirestore.shared
+    let notificationsManager = PushNotificationsManager.shared
     var imagePicker: ImagePicker?
     
     override func viewDidLoad() {
@@ -38,6 +40,7 @@ class ChatViewController: BaseConfiguration {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messagesCollectionView.scrollToLastItem()
+        fetchTokens()
     }
 
     // MARK: - Configuration methods
@@ -246,15 +249,38 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             if let str = component as? String {
                 let message = Message(text: str, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
+                for token in tokens {
+                    notificationsManager.sendPushNotification(to: token, title: "\(user.displayName) said:", body: str)
+                }
+                
             } else if let img = component as? UIImage {
                 let message = Message(image: img, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
             }
-        }; shouldReloadMessages(mostRecent: true)
+        }
+        shouldReloadMessages(mostRecent: true)
     }
 }
 
-extension ChatViewController { }
+// MARK: - Notifications
+
+extension ChatViewController {
+    
+    private func fetchTokens() {
+        cloudFirestore.retrieveTokens {[weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let errors):
+                print("Failed fetching tokens: \(errors)")
+                
+            case .success(let token):
+                print("Fetched token is \(token)")
+                self.tokens.append(token)
+            }
+        }
+    }
+    
+}
 
 
 
