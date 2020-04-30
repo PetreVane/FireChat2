@@ -51,8 +51,7 @@ class AuthenticationCoordinator: Coordinator {
     
     func presentAppleSignInVC() {
         let appleSignInVC = AppleSignInViewController.instantiate(delegate: self)
-        router.present(appleSignInVC, animated: true)
-        appleSignInVC.handleAuthorizationAppleIDButtonPress()
+        router.present(appleSignInVC, animated: false)
     }
 }
 
@@ -98,6 +97,10 @@ extension AuthenticationCoordinator: PasswordResetDelegate {
 }
 
 extension AuthenticationCoordinator: AppleSignInDelegate {
+    func didCompleteAppleAuthorizationWithError() {
+        router.navigationController.popViewController(animated: false)
+    }
+    
     func didCompleteAppleAuthorization() {
         print("Authorization completed")
     }
