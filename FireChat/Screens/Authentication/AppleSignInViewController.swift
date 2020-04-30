@@ -9,50 +9,33 @@
 import UIKit
 import AuthenticationServices
 
+
 protocol AppleSignInDelegate: AnyObject {
     func didCompleteAppleAuthorization()
+    func didCompleteAppleAuthorizationWithError()
 }
 
 class AppleSignInViewController: UIViewController {
     
     weak var delegate: AppleSignInDelegate?
-    private let label = FireLabel(textAlignment: .center, fontSize: 20)
     
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        configureLabel()
-        performExistingAccountSetupFlows()
+        handleAuthorizationAppleIDButtonPress()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    
-    
-    private func configureLabel() {
-        let padding: CGFloat = 50
-        view.addSubview(label)
-        label.text = "Waiting for Apple Sign In Authorization ..."
-        
-        label.backgroundColor = .systemBackground
-        
-        NSLayoutConstraint.activate([
-        
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            label.heightAnchor.constraint(equalToConstant: padding)
-        ])
-    }
-    
-    
+    //MARK: - Private methods
+ 
     // - Tag: perform_appleid_password_request
     /// Prompts the user if an existing iCloud Keychain credential or Apple ID credential is found.
-    func performExistingAccountSetupFlows() {
+    private func performExistingAccountSetupFlows() {
         print("Called performExistingAccountSetupFlows ...")
         // Prepare requests for both Apple ID and password providers.
         let requests = [ASAuthorizationAppleIDProvider().createRequest(), ASAuthorizationPasswordProvider().createRequest()]
@@ -69,11 +52,22 @@ class AppleSignInViewController: UIViewController {
     @objc func handleAuthorizationAppleIDButtonPress() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
+        
+        // request full name and email from the user's Apple ID
         request.requestedScopes = [.fullName, .email]
         
+        // pass the request to the initializer of the controller
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
+        
+        // similar to delegate, this will ask the view controller
+        // which window to present the ASAuthorizationController
         authorizationController.presentationContextProvider = self
+     
+        // delegate functions will be called when user data is
+        // successfully retrieved or error occured
+        authorizationController.delegate = self
+        
+        // show the Sign-in with Apple dialog
         authorizationController.performRequests()
     }
 }
@@ -83,37 +77,42 @@ extension AppleSignInViewController: ASAuthorizationControllerDelegate {
     /// - Tag: did_complete_authorization
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
-        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            case let appleIDCredential as ASAuthorizationAppleIDCredential:
             
-            // Create an account in your system.
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            print("UserIdentifier: \(userIdentifier)")
-            print("Full Name: \(String(describing: fullName))")
-            print("Email address: \(String(describing: email))")
-            // For the purpose of this demo app, store the `userIdentifier` in the keychain.
-//            self.saveUserInKeychain(userIdentifier)
+                // Create an account in your system.
+                let userIdentifier = appleIDCredential.user
+                let fullName = appleIDCredential.fullName
+                let email = appleIDCredential.email
+                print("UserIdentifier: \(userIdentifier)")
+                print("Full Name: \(String(describing: fullName))")
+                print("Email address: \(String(describing: email))")
             
-            // For the purpose of this demo app, show the Apple ID credential information in the `ResultViewController`.
-//            self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
+            case let passwordCredential as ASPasswordCredential:
         
-        case let passwordCredential as ASPasswordCredential:
-        
-            // Sign in using an existing iCloud Keychain credential.
-            let username = passwordCredential.user
-            let password = passwordCredential.password
-            print("Username: \(username) and password: \(password)")
-            
-            // For the purpose of this demo app, show the password credential as an alert.
-            DispatchQueue.main.async {
-//                self.showPasswordCredentialAlert(username: username, password: password)
-            }
-            
+                // Sign in using an existing iCloud Keychain credential.
+                let username = passwordCredential.user
+                let password = passwordCredential.password
+                print("Username: \(username) and password: \(password)")
+                
+                // Pass credentials to Firebase
+                DispatchQueue.main.async { }
         default:
             break
         }
      }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Authorization completed with error: \(error.localizedDescription)")
+        delegate?.didCompleteAppleAuthorizationWithError()
+    }
+    
+//    private func saveUserInKeychain(_ userIdentifier: String) {
+//        do {
+//            try KeychainItem(service: "com.example.apple-samplecode.juice", account: "userIdentifier").saveItem(userIdentifier)
+//        } catch {
+//            print("Unable to save userIdentifier to keychain.")
+//        }
+//    }
     
 }
 
