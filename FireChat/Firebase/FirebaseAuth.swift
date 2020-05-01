@@ -59,6 +59,21 @@ final class FirebaseAuth {
         }
     }
     
+    func authenticateUser(with oathCredential: OAuthCredential, fullName: String?, completion: @escaping (Result<Bool, ErrorsManager>) ->Void) {
+        
+        Auth.auth().signIn(with: oathCredential) { [weak self] (authUser, error) in
+            guard self != nil else { return }
+            guard error == nil else { completion(.failure(ErrorsManager.failedAuthentication)); return }
+            
+            if let changeCredentialsRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                changeCredentialsRequest.displayName = fullName
+                changeCredentialsRequest.commitChanges { (requestError) in
+                    guard requestError == nil else { completion(.failure(ErrorsManager.failedUpdatingUserDetails)); return }
+                }; completion(.success(true))
+            }
+        }
+    }
+    
     func checkIfSignedIn(completion: @escaping (Bool) -> Void) {
 
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in

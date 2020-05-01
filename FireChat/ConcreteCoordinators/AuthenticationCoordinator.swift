@@ -102,6 +102,7 @@ extension AuthenticationCoordinator: AppleSignInDelegate {
     }
     
     func didCompleteAppleAuthorization() {
-        print("Authorization completed")
+        parentCoordinator?.isUserAuthorized = true
+        parentCoordinator?.removeCoordinator(self)
     }
 }

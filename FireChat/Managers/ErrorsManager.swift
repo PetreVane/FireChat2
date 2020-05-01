@@ -10,12 +10,14 @@ import Foundation
 
 
 enum ErrorsManager: String, Error {
+    case failesCreatingFirebaseAccount = "Your Firebase account could not be created"
     case failedAuthentication = "There were some problems signing you in."
-    case failedFetchingChatRooms = "Failed fetching the list of available chat rooms"
+    case failedUpdatingUserDetails = "There were some problems when trying to update your Firebase account."
+    case failedFetchingChatRooms = "Failed fetching the list of available chat rooms."
     case failedDeletingChatRoom = "Chat room could not be deleted at this momment. Try again later!"
-    case failedUploadingAudio = "Your audio file has not been uploaded to CloudStorage"
-    case failedUploadingImage = "Your image file has not been uploaded to CloudStorage"
-    case failedUploadingVideo = "Your video file has not been uploaded to CloudStorage"
+    case failedUploadingAudio = "Your audio file has not been uploaded to CloudStorage."
+    case failedUploadingImage = "Your image file has not been uploaded to CloudStorage."
+    case failedUploadingVideo = "Your video file has not been uploaded to CloudStorage."
     case failedFetchingMessages = "Unable to fetch your messages; make sure you're connected to internet and try again!"
-    case failedRetrievingTokens = "Unable to retrieve device-tokens"
+    case failedRetrievingTokens = "Unable to retrieve device-tokens."
 }
