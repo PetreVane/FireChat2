@@ -20,7 +20,7 @@ final class CloudFirestore {
     private let cache = CacheManager.sharedInstance
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     private let tokenDatabase = Firestore.firestore().collection(Collection.tokens)
-    private let cloudStorage = CloudStorage.shared
+    private lazy var cloudStorage = CloudStorage.shared
     private let auth = FirebaseAuth.shared
     var lastSnapshotForChatRoom: Dictionary<ChatRoom, [QueryDocumentSnapshot]> = [:]
     var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
