@@ -74,8 +74,6 @@ final class CloudFirestore {
         tokenDatabase.getDocuments { (snapShot, error) in
             guard error == nil else {print("Error fetching device-tokens: \(error!.localizedDescription)"); return }
             _ = snapShot?.documents.map({ document in
-                let device = document.documentID
-                print("Device is \(device)")
                 let documentContent = document.data()
                 documentContent.forEach { (key, _) in
                     if let token = documentContent[key] as? String {

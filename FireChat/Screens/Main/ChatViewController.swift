@@ -267,15 +267,16 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
 extension ChatViewController {
     
     private func fetchTokens() {
-        cloudFirestore.retrieveTokens {[weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .failure(let errors):
-                print("Failed fetching tokens: \(errors)")
-                
-            case .success(let token):
-                print("Fetched token is \(token)")
-                self.tokens.append(token)
+        if let savedToken = UserDefaults.standard.object(forKey: "NotificationToken") as? String {
+            self.tokens.append(savedToken)
+        } else {
+            cloudFirestore.retrieveTokens {[weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                    case .failure(let errors): print("Failed fetching tokens: \(errors)")
+                    case .success(let token): self.tokens.append(token)
+                        UserDefaults.standard.set(token, forKey: "NotificationToken")
+                }
             }
         }
     }
