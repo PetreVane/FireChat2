@@ -18,11 +18,15 @@
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
 		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
-		0B4516CE2454A61700D9106E /* RemoteNotificationsConfigurator in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */; };
+		0B4516CE2454A61700D9106E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */; };
+		0B466BD3245F2601004D224D /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD1245F2600004D224D /* success.json */; };
+		0B466BD4245F2601004D224D /* failed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD2245F2601004D224D /* failed.json */; };
+		0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B466BD5245F265D004D224D /* AnimationsManager.swift */; };
+		0B466BD9245F2E5B004D224D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */; };
 		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
 		0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */; };
 		0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B575D4B243C91ED000E3C5B /* CloudStorage.swift */; };
-		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
+		0B66C85B2435DF5200C04B58 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
 		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
@@ -82,6 +86,9 @@
 		0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsManager.swift; sourceTree = "<group>"; };
 		0B3D84BB242FBE8900ACF706 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B3D98B12436566E00A417D7 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
+		0B466BD1245F2600004D224D /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		0B466BD2245F2601004D224D /* failed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = failed.json; sourceTree = "<group>"; };
+		0B466BD5245F265D004D224D /* AnimationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsManager.swift; sourceTree = "<group>"; };
 		0B48FB81243B42D4005F16F5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		0B575D4A243B9346000E3C5B /* FireChatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChatRelease.entitlements; sourceTree = "<group>"; };
@@ -137,9 +144,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */,
-				0B4516CE2454A61700D9106E /* RemoteNotificationsConfigurator in Frameworks */,
+				0B66C85B2435DF5200C04B58 /* BuildFile in Frameworks */,
+				0B4516CE2454A61700D9106E /* BuildFile in Frameworks */,
 				AEC1FFD9FEC705FB9936BA07 /* libPods-FireChat.a in Frameworks */,
+				0B466BD9245F2E5B004D224D /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,8 +206,18 @@
 				0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */,
 				0BFADED6244F4AE500D9702A /* CacheManager.swift */,
 				0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */,
+				0B466BD5245F265D004D224D /* AnimationsManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		0B466BD0245F25D9004D224D /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0B466BD1245F2600004D224D /* success.json */,
+				0B466BD2245F2601004D224D /* failed.json */,
+			);
+			path = LottieFiles;
 			sourceTree = "<group>";
 		};
 		0B48FB80243B413B005F16F5 /* MessageConfigurator */ = {
@@ -315,6 +333,7 @@
 		0BD7B949240FE12700310F1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B466BD0245F25D9004D224D /* LottieFiles */,
 				0BD7B930240FDF7C00310F1E /* Info.plist */,
 				0BD7B92B240FDF7C00310F1E /* Assets.xcassets */,
 			);
@@ -447,7 +466,6 @@
 				0BD7B91C240FDF7600310F1E /* Frameworks */,
 				0BD7B91D240FDF7600310F1E /* Resources */,
 				DDF32288C5682C713706C4BB /* [CP] Copy Pods Resources */,
-				1BB587D94AFB9E276C5DC315 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -455,8 +473,9 @@
 			);
 			name = FireChat;
 			packageProductDependencies = (
-				0B66C85A2435DF5200C04B58 /* DeviceTypes */,
-				0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */,
+				0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */,
+				0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */,
+				0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */,
 			);
 			productName = FireChat;
 			productReference = 0BD7B91F240FDF7600310F1E /* FireChat.app */;
@@ -510,8 +529,9 @@
 			);
 			mainGroup = 0BD7B916240FDF7600310F1E;
 			packageReferences = (
-				0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */,
-				0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */,
+				0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */,
+				0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */,
+				0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 0BD7B920240FDF7600310F1E /* Products */;
 			projectDirPath = "";
@@ -532,6 +552,8 @@
 				0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */,
 				0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */,
 				0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */,
+				0B466BD4245F2601004D224D /* failed.json in Resources */,
+				0B466BD3245F2601004D224D /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,23 +567,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BB587D94AFB9E276C5DC315 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		670D227F2E5BFE8F5AA767B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -650,6 +655,7 @@
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
+				0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */,
 				0B8CDEAA2458AEBF0005F071 /* PushNotificationsManager.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,
@@ -827,6 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = FireChat/FireChat.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 9W3WH25P2R;
 				INFOPLIST_FILE = FireChat/Resources/Info.plist;
@@ -850,6 +857,7 @@
 				CODE_SIGN_ENTITLEMENTS = FireChat/FireChatRelease.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 9W3WH25P2R;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -945,7 +953,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */ = {
+		0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PetreVane/RemoteNotifications-Configurator.git";
 			requirement = {
@@ -953,7 +961,15 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */ = {
+		0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.8;
+			};
+		};
+		0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PetreVane/DeviceTypes.git";
 			requirement = {
@@ -964,14 +980,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */ = {
+		0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */;
+			package = 0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */;
 			productName = RemoteNotificationsConfigurator;
 		};
-		0B66C85A2435DF5200C04B58 /* DeviceTypes */ = {
+		0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */;
+			package = 0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */;
+			productName = Lottie;
+		};
+		0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */;
 			productName = DeviceTypes;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -283,7 +283,6 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - Reveal-SDK (24)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -291,7 +290,6 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - MessageKit
-  - Reveal-SDK
 
 SPEC REPOS:
   trunk:
@@ -321,7 +319,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
-    - Reveal-SDK
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -350,8 +347,7 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  Reveal-SDK: 5d7e56b8f018c0a88b3a2c10bf68d598bbd3b071
 
-PODFILE CHECKSUM: 6b5693940dba2cf1d168a490ab68de62f65c8857
+PODFILE CHECKSUM: 860cb048a370765e5b59e793d049bef85c1316ab
 
 COCOAPODS: 1.8.4

@@ -14,7 +14,7 @@ target 'FireChat' do
  pod 'Firebase/Messaging'
  pod 'Firebase/Firestore'
  pod 'Firebase/Storage'
- pod 'Reveal-SDK', :configurations => ['Debug']
+ #pod 'Reveal-SDK', :configurations => ['Debug']
  pod 'MessageKit'
 
   target 'FireChatTests' do

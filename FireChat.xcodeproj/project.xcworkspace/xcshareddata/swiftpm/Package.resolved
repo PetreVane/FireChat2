@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DeviceTypes",
+        "repositoryURL": "https://github.com/PetreVane/DeviceTypes.git",
+        "state": {
+          "branch": null,
+          "revision": "15c89992a6c21f18aa54ce9235fbc603af620154",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
+          "version": "3.1.8"
+        }
+      },
+      {
+        "package": "RemoteNotificationsConfigurator",
+        "repositoryURL": "https://github.com/PetreVane/RemoteNotifications-Configurator.git",
+        "state": {
+          "branch": null,
+          "revision": "d0725b7a669de985690cf7a628f9432897d76294",
+          "version": "1.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
