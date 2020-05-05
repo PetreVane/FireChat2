@@ -58,6 +58,7 @@ class ProfileViewController: UIViewController {
     
     @objc private func didPressLogout() {
         firebase.signOut()
+        UserDefaults.standard.removeObject(forKey: "NotificationToken")
         delegate?.didPressLogout()
     }
 

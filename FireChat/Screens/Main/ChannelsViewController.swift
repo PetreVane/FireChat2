@@ -131,6 +131,7 @@ extension ChannelsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChannelCell.identifier, for: indexPath) as? ChannelCell
               else { return UITableViewCell() }
+        cell.selectionStyle = .none
         let chatRoom = chatRooms[indexPath.row]
         cell.titleLabel.text = chatRoom.title
         cell.channelDescription.text = chatRoom.description
@@ -142,8 +143,8 @@ extension ChannelsViewController: UITableViewDataSource {
 extension ChannelsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tappedChatRoom = chatRooms[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: false)
+        let tappedChatRoom = chatRooms[indexPath.row]
         delegate?.didPressChatRoom(tappedChatRoom)
     }
     
