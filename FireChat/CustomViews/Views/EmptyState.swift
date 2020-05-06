@@ -65,12 +65,10 @@ class EmptyState: UIView {
 
         
         NSLayoutConstraint.activate([
-        
             messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding / 2),
             messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             messageLabel.heightAnchor.constraint(equalToConstant: 30)
-            
         ])
     }
     

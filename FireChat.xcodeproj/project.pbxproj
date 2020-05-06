@@ -18,15 +18,15 @@
 		0B3D84BA242FB07D00ACF706 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */; };
 		0B3D84BC242FBE8900ACF706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D84BB242FBE8900ACF706 /* User.swift */; };
 		0B3D98B22436566E00A417D7 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D98B12436566E00A417D7 /* KeyWindow.swift */; };
-		0B4516CE2454A61700D9106E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */; };
+		0B4516CE2454A61700D9106E /* RemoteNotificationsConfigurator in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */; };
 		0B466BD3245F2601004D224D /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD1245F2600004D224D /* success.json */; };
 		0B466BD4245F2601004D224D /* failed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD2245F2601004D224D /* failed.json */; };
 		0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B466BD5245F265D004D224D /* AnimationsManager.swift */; };
-		0B466BD9245F2E5B004D224D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */; };
+		0B466BD9245F2E5B004D224D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0B466BD8245F2E5B004D224D /* Lottie */; };
 		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
 		0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */; };
 		0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B575D4B243C91ED000E3C5B /* CloudStorage.swift */; };
-		0B66C85B2435DF5200C04B58 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */; };
+		0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 0B66C85A2435DF5200C04B58 /* DeviceTypes */; };
 		0B79324E242CCA9C0028CEAE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324D242CCA9C0028CEAE /* AlertController.swift */; };
 		0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79324F242CCAB90028CEAE /* EmptyState.swift */; };
 		0B793252242CCB510028CEAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793251242CCB510028CEAE /* AlertView.swift */; };
@@ -34,6 +34,11 @@
 		0B793258242D27390028CEAE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B793257242D27390028CEAE /* Images.swift */; };
 		0B8CDEAA2458AEBF0005F071 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */; };
 		0B8CDEAC2459ED7C0005F071 /* AppleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */; };
+		0B8E9F912461ED4F00BF91B3 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E9F902461ED4F00BF91B3 /* LoadingState.swift */; };
+		0B8E9F952461F0C000BF91B3 /* loadingCircle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F932461F0C000BF91B3 /* loadingCircle.json */; };
+		0B8E9F9A246309B300BF91B3 /* cubeLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F99246309B300BF91B3 /* cubeLoading.json */; };
+		0B8E9F9C24630D2B00BF91B3 /* isometricCube.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */; };
+		0B8E9F9E2463173C00BF91B3 /* TestAnimations in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F9D2463173B00BF91B3 /* TestAnimations */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
@@ -100,6 +105,12 @@
 		0B793257242D27390028CEAE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewController.swift; sourceTree = "<group>"; };
+		0B8E9F902461ED4F00BF91B3 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		0B8E9F932461F0C000BF91B3 /* loadingCircle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingCircle.json; sourceTree = "<group>"; };
+		0B8E9F982462C01500BF91B3 /* animatedLock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = animatedLock.json; path = ../../../../../lottieAnimations/animatedLock.json; sourceTree = "<group>"; };
+		0B8E9F99246309B300BF91B3 /* cubeLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cubeLoading.json; sourceTree = "<group>"; };
+		0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = isometricCube.json; sourceTree = "<group>"; };
+		0B8E9F9D2463173B00BF91B3 /* TestAnimations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestAnimations; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
@@ -144,10 +155,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B66C85B2435DF5200C04B58 /* BuildFile in Frameworks */,
-				0B4516CE2454A61700D9106E /* BuildFile in Frameworks */,
+				0B66C85B2435DF5200C04B58 /* DeviceTypes in Frameworks */,
+				0B4516CE2454A61700D9106E /* RemoteNotificationsConfigurator in Frameworks */,
 				AEC1FFD9FEC705FB9936BA07 /* libPods-FireChat.a in Frameworks */,
-				0B466BD9245F2E5B004D224D /* BuildFile in Frameworks */,
+				0B466BD9245F2E5B004D224D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +225,11 @@
 		0B466BD0245F25D9004D224D /* LottieFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0B8E9F9D2463173B00BF91B3 /* TestAnimations */,
+				0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */,
+				0B8E9F99246309B300BF91B3 /* cubeLoading.json */,
+				0B8E9F982462C01500BF91B3 /* animatedLock.json */,
+				0B8E9F932461F0C000BF91B3 /* loadingCircle.json */,
 				0B466BD1245F2600004D224D /* success.json */,
 				0B466BD2245F2601004D224D /* failed.json */,
 			);
@@ -235,6 +251,7 @@
 				0B79324D242CCA9C0028CEAE /* AlertController.swift */,
 				0B793251242CCB510028CEAE /* AlertView.swift */,
 				0B79324F242CCAB90028CEAE /* EmptyState.swift */,
+				0B8E9F902461ED4F00BF91B3 /* LoadingState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,9 +490,9 @@
 			);
 			name = FireChat;
 			packageProductDependencies = (
-				0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */,
-				0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */,
-				0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */,
+				0B66C85A2435DF5200C04B58 /* DeviceTypes */,
+				0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */,
+				0B466BD8245F2E5B004D224D /* Lottie */,
 			);
 			productName = FireChat;
 			productReference = 0BD7B91F240FDF7600310F1E /* FireChat.app */;
@@ -529,9 +546,9 @@
 			);
 			mainGroup = 0BD7B916240FDF7600310F1E;
 			packageReferences = (
-				0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */,
-				0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */,
-				0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */,
+				0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */,
+				0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */,
+				0B466BD7245F2E5B004D224D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 0BD7B920240FDF7600310F1E /* Products */;
 			projectDirPath = "";
@@ -550,8 +567,12 @@
 			files = (
 				0BD7B92F240FDF7C00310F1E /* LaunchScreen.storyboard in Resources */,
 				0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */,
+				0B8E9F952461F0C000BF91B3 /* loadingCircle.json in Resources */,
 				0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */,
+				0B8E9F9C24630D2B00BF91B3 /* isometricCube.json in Resources */,
 				0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */,
+				0B8E9F9A246309B300BF91B3 /* cubeLoading.json in Resources */,
+				0B8E9F9E2463173C00BF91B3 /* TestAnimations in Resources */,
 				0B466BD4245F2601004D224D /* failed.json in Resources */,
 				0B466BD3245F2601004D224D /* success.json in Resources */,
 			);
@@ -667,6 +688,7 @@
 				0BD7B96A240FFF5000310F1E /* AuthenticationCoordinator.swift in Sources */,
 				0B94E6462434A512007868EB /* ChatRoom.swift in Sources */,
 				0BFAE4AC24447DE8007CEF80 /* ChatRoomCell.swift in Sources */,
+				0B8E9F912461ED4F00BF91B3 /* LoadingState.swift in Sources */,
 				0B94E6482434A871007868EB /* FirebaseEnums.swift in Sources */,
 				0B793250242CCAB90028CEAE /* EmptyState.swift in Sources */,
 				0BD7B923240FDF7600310F1E /* AppDelegate.swift in Sources */,
@@ -953,7 +975,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */ = {
+		0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PetreVane/RemoteNotifications-Configurator.git";
 			requirement = {
@@ -961,7 +983,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */ = {
+		0B466BD7245F2E5B004D224D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -969,7 +991,7 @@
 				minimumVersion = 3.1.8;
 			};
 		};
-		0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */ = {
+		0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PetreVane/DeviceTypes.git";
 			requirement = {
@@ -980,19 +1002,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0B4516CD2454A61700D9106E /* SwiftPackageProductDependency */ = {
+		0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0B4516CC2454A61700D9106E /* RemoteSwiftPackageReference */;
+			package = 0B4516CC2454A61700D9106E /* XCRemoteSwiftPackageReference "RemoteNotifications-Configurator" */;
 			productName = RemoteNotificationsConfigurator;
 		};
-		0B466BD8245F2E5B004D224D /* SwiftPackageProductDependency */ = {
+		0B466BD8245F2E5B004D224D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0B466BD7245F2E5B004D224D /* RemoteSwiftPackageReference */;
+			package = 0B466BD7245F2E5B004D224D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		0B66C85A2435DF5200C04B58 /* SwiftPackageProductDependency */ = {
+		0B66C85A2435DF5200C04B58 /* DeviceTypes */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0B66C8592435DF5200C04B58 /* RemoteSwiftPackageReference */;
+			package = 0B66C8592435DF5200C04B58 /* XCRemoteSwiftPackageReference "DeviceTypes" */;
 			productName = DeviceTypes;
 		};
 /* End XCSwiftPackageProductDependency section */

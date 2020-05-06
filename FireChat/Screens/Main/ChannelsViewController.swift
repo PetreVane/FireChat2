@@ -28,7 +28,7 @@ class ChannelsViewController: UIViewController {
         configureTableView()
         addBarButton()
         welcomeMessage()
-        title = "Channels View Controller"
+        title = "ChatRooms"
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -17,4 +17,6 @@ enum Images {
     static let hashtag = UIImage(named: "hashtag")!
     static let airplane = UIImage(named: "send1")!
     static let arrow = UIImage(named: "arrow")!
+    static let tabBarMessage = UIImage(named: "messageTabBar")!
+    static let tabBarUser = UIImage(named: "userTabBar")!
 }
