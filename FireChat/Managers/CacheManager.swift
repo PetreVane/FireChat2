@@ -11,8 +11,10 @@ import UIKit
 
 final class CacheManager {
     
-    static let sharedInstance = CacheManager()
+    static let shared = CacheManager()
     static let cache = NSCache<NSString, UIImage>()
+    
+    private init() { }
     
     /// Save images to cache
     /// - Parameters:

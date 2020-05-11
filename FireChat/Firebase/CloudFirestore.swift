@@ -17,7 +17,7 @@ protocol CloudFirebaseDelegate: AnyObject {
 final class CloudFirestore {
     
     static let shared = CloudFirestore()
-    private let cache = CacheManager.sharedInstance
+    private let cache = CacheManager.shared
     private let chatRooms = Firestore.firestore().collection(Collection.chatRooms)
     private let tokenDatabase = Firestore.firestore().collection(Collection.tokens)
     private lazy var cloudStorage = CloudStorage.shared
@@ -26,6 +26,7 @@ final class CloudFirestore {
     var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
     weak var delegate: CloudFirebaseDelegate?
     
+    private init() { }
     
     //MARK: - Chat rooms
     

@@ -36,9 +36,9 @@
 		0B8CDEAC2459ED7C0005F071 /* AppleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */; };
 		0B8E9F912461ED4F00BF91B3 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E9F902461ED4F00BF91B3 /* LoadingState.swift */; };
 		0B8E9F952461F0C000BF91B3 /* loadingCircle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F932461F0C000BF91B3 /* loadingCircle.json */; };
-		0B8E9F9A246309B300BF91B3 /* cubeLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F99246309B300BF91B3 /* cubeLoading.json */; };
 		0B8E9F9C24630D2B00BF91B3 /* isometricCube.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */; };
-		0B8E9F9E2463173C00BF91B3 /* TestAnimations in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9F9D2463173B00BF91B3 /* TestAnimations */; };
+		0B8E9FA024631DEF00BF91B3 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E9F9F24631DEF00BF91B3 /* GoogleSignInViewController.swift */; };
+		0B8E9FA22463253500BF91B3 /* cubeLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E9FA12463253400BF91B3 /* cubeLoading.json */; };
 		0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0152410F5B600BF997F /* UIView+Ext.swift */; };
 		0B90D0192411050400BF997F /* FireTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B90D0182411050400BF997F /* FireTextField.swift */; };
 		0B94E64424348DD0007868EB /* CloudFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B94E64324348DD0007868EB /* CloudFirestore.swift */; };
@@ -108,9 +108,9 @@
 		0B8E9F902461ED4F00BF91B3 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		0B8E9F932461F0C000BF91B3 /* loadingCircle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingCircle.json; sourceTree = "<group>"; };
 		0B8E9F982462C01500BF91B3 /* animatedLock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = animatedLock.json; path = ../../../../../lottieAnimations/animatedLock.json; sourceTree = "<group>"; };
-		0B8E9F99246309B300BF91B3 /* cubeLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cubeLoading.json; sourceTree = "<group>"; };
 		0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = isometricCube.json; sourceTree = "<group>"; };
-		0B8E9F9D2463173B00BF91B3 /* TestAnimations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestAnimations; sourceTree = "<group>"; };
+		0B8E9F9F24631DEF00BF91B3 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
+		0B8E9FA12463253400BF91B3 /* cubeLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cubeLoading.json; path = ../../../../../lottieAnimations/cubeLoading.json; sourceTree = "<group>"; };
 		0B90D0152410F5B600BF997F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0B90D0182411050400BF997F /* FireTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTextField.swift; sourceTree = "<group>"; };
 		0B94E64324348DD0007868EB /* CloudFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFirestore.swift; sourceTree = "<group>"; };
@@ -225,9 +225,8 @@
 		0B466BD0245F25D9004D224D /* LottieFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0B8E9F9D2463173B00BF91B3 /* TestAnimations */,
+				0B8E9FA12463253400BF91B3 /* cubeLoading.json */,
 				0B8E9F9B24630D2B00BF91B3 /* isometricCube.json */,
-				0B8E9F99246309B300BF91B3 /* cubeLoading.json */,
 				0B8E9F982462C01500BF91B3 /* animatedLock.json */,
 				0B8E9F932461F0C000BF91B3 /* loadingCircle.json */,
 				0B466BD1245F2600004D224D /* success.json */,
@@ -373,6 +372,7 @@
 				0BD7B95A240FF6CE00310F1E /* SignUpViewController.swift */,
 				0BD7B95E240FF7B300310F1E /* PasswordResetViewController.swift */,
 				0B8CDEAB2459ED7C0005F071 /* AppleSignInViewController.swift */,
+				0B8E9F9F24631DEF00BF91B3 /* GoogleSignInViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -566,13 +566,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BD7B92F240FDF7C00310F1E /* LaunchScreen.storyboard in Resources */,
+				0B8E9FA22463253500BF91B3 /* cubeLoading.json in Resources */,
 				0BD7B92C240FDF7C00310F1E /* Assets.xcassets in Resources */,
 				0B8E9F952461F0C000BF91B3 /* loadingCircle.json in Resources */,
 				0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */,
 				0B8E9F9C24630D2B00BF91B3 /* isometricCube.json in Resources */,
 				0BECFB692430944E00B18195 /* GoogleService-Info.plist in Resources */,
-				0B8E9F9A246309B300BF91B3 /* cubeLoading.json in Resources */,
-				0B8E9F9E2463173C00BF91B3 /* TestAnimations in Resources */,
 				0B466BD4245F2601004D224D /* failed.json in Resources */,
 				0B466BD3245F2601004D224D /* success.json in Resources */,
 			);
@@ -677,6 +676,7 @@
 				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
 				0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */,
+				0B8E9FA024631DEF00BF91B3 /* GoogleSignInViewController.swift in Sources */,
 				0B8CDEAA2458AEBF0005F071 /* PushNotificationsManager.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
 				0B90D0192411050400BF997F /* FireTextField.swift in Sources */,

@@ -16,6 +16,8 @@ final class CloudStorage {
     private let databaseReference = Storage.storage().reference()
     private let metaData = StorageMetadata()
     
+    private init() { }
+    
     func createStorage(forChatRoom chatRoom: ChatRoom, completion: @escaping(Result<URL, ErrorsManager>) -> Void) {
         let title = chatRoom.title
         let date = Date()

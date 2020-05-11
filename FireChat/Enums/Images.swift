@@ -19,4 +19,5 @@ enum Images {
     static let arrow = UIImage(named: "arrow")!
     static let tabBarMessage = UIImage(named: "messageTabBar")!
     static let tabBarUser = UIImage(named: "userTabBar")!
+    static let tabBarFemale = UIImage(named: "accountFemale")!
 }

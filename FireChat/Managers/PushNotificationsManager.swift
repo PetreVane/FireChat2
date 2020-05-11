@@ -13,6 +13,7 @@ final class PushNotificationsManager {
     static let shared = PushNotificationsManager()
     private let firebaseStringURL = "https://fcm.googleapis.com/fcm/send"
     
+    private init() { }
     
     func sendPushNotification(to token: String, title: String, body: String) {
         let firebaseURL = URL(string: firebaseStringURL)!

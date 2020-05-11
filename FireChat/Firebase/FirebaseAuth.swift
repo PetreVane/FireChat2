@@ -16,6 +16,8 @@ final class FirebaseAuth {
     var loggedInUser: Set<User> = []
     typealias handler = ((Bool, String) -> Void)
     
+    private init() { }
+    
     //MARK: TO DO [Replace handler parameters types with Result<Bool, Error> type]
     
     func createUser(withUserName username: String, email: String, password: String, completion: @escaping handler) {

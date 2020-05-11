@@ -39,7 +39,7 @@ class MainAppCoordinator: NSObject, Coordinator {
     
     private func startProfileViewController() -> UINavigationController {
         let profileVC = ProfileViewController.instantiate(delegate: self)
-        profileVC.tabBarItem = UITabBarItem(title: "Your account", image: Images.tabBarUser, tag: 1) 
+        profileVC.tabBarItem = UITabBarItem(title: "Your account", image: Images.tabBarFemale, tag: 1) 
         return UINavigationController(rootViewController: profileVC)
     }
     
