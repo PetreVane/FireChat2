@@ -14,7 +14,7 @@ protocol CloudFirebaseDelegate: AnyObject {
     func shouldReloadMessages(mostRecent: Bool)
 }
 
-final class CloudFirestore {
+final class CloudFirestore: BlockOperation {
     
     static let shared = CloudFirestore()
     private let cache = CacheManager.shared
@@ -26,7 +26,7 @@ final class CloudFirestore {
     var messagesForChatRoom: Dictionary<ChatRoom, [Message]> = [:]
     weak var delegate: CloudFirebaseDelegate?
     
-    private init() { }
+    private override init() { }
     
     //MARK: - Chat rooms
     
