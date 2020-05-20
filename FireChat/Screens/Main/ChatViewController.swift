@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import MessageKit
 import InputBarAccessoryView
 
@@ -34,13 +35,13 @@ class ChatViewController: BaseConfiguration {
         configureImagePicker()
         confirmChatRoomDetails()
         view.dismissKeyboardOnTap()
-        fetchMessages(for: chatRoom, mostRecent: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messagesCollectionView.scrollToLastItem()
         fetchTokens()
+        fetchMessages(for: chatRoom, mostRecent: true)
     }
 
     // MARK: - Configuration methods
@@ -161,11 +162,9 @@ class ChatViewController: BaseConfiguration {
         guard chatRoom != nil else { return }
     }
     
-  
     private func showNoMessagesState() {
         messages.count == 0 ? showEmptyState(withTitle: "Ops, no messages yet", message: "Start typing to add a new message!") : print("There are some messages to be shown! 🤭")
     }
-    
     
     private func fetchMessages(for chatRoom: ChatRoom?, mostRecent: Bool) {
         guard let currentChatRoom = chatRoom else { return }
@@ -188,7 +187,8 @@ class ChatViewController: BaseConfiguration {
                 guard !self.messages.contains(chatMessage) else { return }
                 self.messages.insert(chatMessage, at: 0)
                 self.messages.sort { $0.sentDate < $1.sentDate }
-                DispatchQueue.main.async { self.messagesCollectionView.reloadData() }
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData() }
             }
         }
     }
@@ -250,7 +250,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 let message = Message(text: str, user: user, messageID: UUID().uuidString, date: Date())
                 cloudFirestore.upload(message: message, from: chatRoom!)
                 for token in tokens {
-                    notificationsManager.sendPushNotification(to: token, title: "\(user.displayName) said:", body: str)
+                    notificationsManager.sendPushNotification(to: token, title: "\(user.displayName):", body: str)
                 }
                 
             } else if let img = component as? UIImage {
@@ -265,7 +265,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
 // MARK: - Notifications
 
 extension ChatViewController {
-    
     private func fetchTokens() {
         if let savedToken = UserDefaults.standard.object(forKey: "NotificationToken") as? String {
             self.tokens.append(savedToken)
@@ -280,8 +279,12 @@ extension ChatViewController {
             }
         }
     }
-    
 }
 
+//MARK: - SwiftUI Animation Preview
 
-
+extension ChatViewController: PreviewProvider {
+    static var previews: some View {
+       ModalView()
+    }
+}

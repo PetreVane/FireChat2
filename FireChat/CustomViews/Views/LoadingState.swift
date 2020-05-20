@@ -6,46 +6,48 @@
 //  Copyright © 2020 Petre Vane. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import Lottie
 
-class LoadingState: UIView {
+struct LoadingState: UIViewRepresentable {
+
+    let animationView = AnimationView()
+    var fileName: String
+
+    init(animationName: String) {
+        self.fileName = animationName
+    }
     
     private let loadingCircle = AnimationView(name: "loadingCircle")
     private let animatedLock = AnimationView(name: "animatedLock")
     private let cubeLoading = AnimationView(name: "cubeLoading")
     private let isometricCube = AnimationView(name: "isometricCube")
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureAnimationView(animationView: loadingCircle)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configureAnimationView(animationView: AnimationView) {
-        addSubview(animationView)
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .systemBackground
-        
-        NSLayoutConstraint.activate([
-        
-            animationView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            animationView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            animationView.widthAnchor.constraint(equalToConstant: 305),
-            animationView.heightAnchor.constraint(equalToConstant: 305)
-        ])
-    }
-    
-    
+
     func playLoadingAnimation() {
         loadingCircle.play()
     }
-    
+
     func stopPlayingLoadingAnimation() {
         loadingCircle.stop()
     }
+    
+        func makeUIView(context: UIViewRepresentableContext<LoadingState>) -> some UIView {
+            let view = UIView()
+            animationView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(animationView)
+    
+            let widthAnchor = animationView.widthAnchor.constraint(equalTo: view.heightAnchor)
+            let heightAnchor = animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            NSLayoutConstraint.activate([widthAnchor, heightAnchor])
+    
+            let animation = Animation.named(fileName)
+            animationView.animation = animation
+            animationView.contentMode = .scaleAspectFit
+            animationView.play()
+            return view
+        }
+    
+    
+        func updateUIView(_ uiView: UIViewType, context: Context) { }
 }
+

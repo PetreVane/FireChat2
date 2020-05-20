@@ -32,14 +32,14 @@ class MainAppCoordinator: NSObject, Coordinator {
     
     func startChannelViewController() -> UINavigationController {
         let channelsVC = ChannelsViewController.instantiate(delegate: self)
-        channelsVC.tabBarItem = UITabBarItem(title: "ChatRooms", image: Images.tabBarMessage, tag: 0)
+        channelsVC.tabBarItem = UITabBarItem(title: "ChatRooms", image: Images.tabBarMessage.withRenderingMode(.alwaysOriginal), tag: 0)
         router.navigationController.setViewControllers([channelsVC], animated: false)
         return router.navigationController
     }
     
     private func startProfileViewController() -> UINavigationController {
         let profileVC = ProfileViewController.instantiate(delegate: self)
-        profileVC.tabBarItem = UITabBarItem(title: "Your account", image: Images.tabBarFemale, tag: 1) 
+        profileVC.tabBarItem = UITabBarItem(title: "Your account", image: Images.tabBarFemale.withRenderingMode(.alwaysOriginal), tag: 1)
         return UINavigationController(rootViewController: profileVC)
     }
     
