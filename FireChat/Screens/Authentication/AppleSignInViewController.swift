@@ -165,17 +165,6 @@ extension AppleSignInViewController: ASAuthorizationControllerDelegate {
         
         return hashString
     }
-
-
-    
-//    private func saveUserInKeychain(_ userIdentifier: String) {
-//        do {
-//            try KeychainItem(service: "com.example.apple-samplecode.juice", account: "userIdentifier").saveItem(userIdentifier)
-//        } catch {
-//            print("Unable to save userIdentifier to keychain.")
-//        }
-//    }
-    
 }
 
 extension AppleSignInViewController: ASAuthorizationControllerPresentationContextProviding {
