@@ -15,34 +15,62 @@ protocol ProfileVCDelegate: AnyObject {
 class ProfileViewController: UIViewController {
 
     weak var delegate: ProfileVCDelegate?
-    private let label = FireLabel(textAlignment: .center, fontSize: 25)
+    private let label = FireLabel(textAlignment: .center, fontSize: 15)
     private let logoutButton = FireButton(backgroundColor: .systemRed, title: "Log out")
+    private let profileImageView = UIImageView()
+    private let changeProfileImageButton = FireButton(backgroundColor: .secondarySystemBackground, title: "Update profile image")
     private let padding: CGFloat = 50
     private let firebase = FirebaseAuth.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureProfileImageView()
+        configureProfileImageButton()
         configureLabel()
         configureLogOutButton()
         title = "Your account"
     }
     
+    private func configureProfileImageView() {
+        view.addSubview(profileImageView)
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.backgroundColor = .cyan
+        profileImageView.layer.cornerRadius = 30
+        
+        let topAnchor = profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding)
+        let leadingAnchor = profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let widthAnchor = profileImageView.widthAnchor.constraint(equalToConstant: padding * 3)
+        let heightAnchor = profileImageView.heightAnchor.constraint(equalToConstant: padding * 3)
+        NSLayoutConstraint.activate([topAnchor, leadingAnchor, widthAnchor, heightAnchor])
+    }
+    
+    private func configureProfileImageButton() {
+        view.addSubview(changeProfileImageButton)
+        changeProfileImageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        changeProfileImageButton.setTitleColor(.secondaryLabel, for: .normal)
+        let topAnchor = changeProfileImageButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: padding / 2)
+        let leadingAnchor = changeProfileImageButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor)
+        let widthAnchor = changeProfileImageButton.widthAnchor.constraint(equalTo: profileImageView.widthAnchor)
+        let heightAnchor = changeProfileImageButton.heightAnchor.constraint(equalToConstant: padding / 2)
+        NSLayoutConstraint.activate([topAnchor, leadingAnchor, widthAnchor, heightAnchor])
+    }
 
     private func configureLabel() {
         view.addSubview(label)
-        label.text = "Welcome to Profile ViewController"
-        
-        label.backgroundColor = .systemBackground
+        guard let firebaseUser = firebase.loggedInUser.first else { return }
+        label.text = "You're logged in as \(firebaseUser.displayName)"
+        label.backgroundColor = .tertiarySystemBackground
         
         NSLayoutConstraint.activate([
         
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            label.topAnchor.constraint(equalTo: changeProfileImageButton.bottomAnchor, constant: padding / 2),
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             label.heightAnchor.constraint(equalToConstant: padding)
         ])
     }
+    
     
     private func configureLogOutButton() {
         view.addSubview(logoutButton)
