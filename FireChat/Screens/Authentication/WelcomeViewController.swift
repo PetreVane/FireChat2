@@ -12,7 +12,6 @@ import AuthenticationServices
 // adopted by AuthenticationCoordinator
 protocol WelcomeVCDelegate: AnyObject {
     func didPressEmailButton()
-    func didPressGoogleButton()
     func didPressNewAccountButton()
     func didPressAppleButton()
 }
@@ -22,7 +21,6 @@ class WelcomeViewController: UIViewController {
     weak var delegate: WelcomeVCDelegate?
     let welcomeLabel = FireLabel(textAlignment: .center, fontSize: 30)
     let emailButton = FireButton(backgroundColor: .systemOrange, title: "Sign in with email")
-    let googleButton = FireButton(backgroundColor: .systemBlue, title: "Sign in with Google")
     let newAccountButton = FireButton(backgroundColor: .systemYellow, title: "Create new account")
     let appleButton = ASAuthorizationAppleIDButton()
     
@@ -55,7 +53,7 @@ class WelcomeViewController: UIViewController {
     
     private func configureButtons() {
         let padding: CGFloat = 50
-        let buttons = [appleButton, newAccountButton, googleButton, emailButton]
+        let buttons = [appleButton, newAccountButton, emailButton]
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         for button in buttons {
             view.addSubview(button)
@@ -68,24 +66,18 @@ class WelcomeViewController: UIViewController {
         }
         
         emailButton.addTarget(self, action: #selector(didPressEmailButton), for: .touchUpInside)
-        googleButton.addTarget(self, action: #selector(didPressGoogleButton), for: .touchUpInside)
         appleButton.addTarget(self, action: #selector(didPressAppleButton), for: .touchUpInside)
         newAccountButton.addTarget(self, action: #selector(didPressNewAccountButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             emailButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding), // newAccountButton
-            googleButton.bottomAnchor.constraint(equalTo: emailButton.topAnchor, constant: -15),
-            appleButton.bottomAnchor.constraint(equalTo: googleButton.topAnchor, constant: -15),
+            appleButton.bottomAnchor.constraint(equalTo: emailButton.topAnchor, constant: -15),
             newAccountButton.bottomAnchor.constraint(equalTo: appleButton.topAnchor, constant: -15) // emailButton
         ])
     }
     
     @objc private func didPressEmailButton() {
         delegate?.didPressEmailButton()
-    }
-    
-    @objc private func didPressGoogleButton() {
-        delegate?.didPressGoogleButton()
     }
     
     @objc private func didPressNewAccountButton() {

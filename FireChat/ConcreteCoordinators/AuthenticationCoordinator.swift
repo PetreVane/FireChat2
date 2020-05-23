@@ -60,10 +60,6 @@ extension AuthenticationCoordinator: WelcomeVCDelegate {
         presentAppleSignInVC()
     }
     
-    func didPressGoogleButton() {
-        
-    }
-    
     func didPressNewAccountButton() {
         presentSignUPVC()
     }
