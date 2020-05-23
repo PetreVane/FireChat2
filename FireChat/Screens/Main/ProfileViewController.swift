@@ -35,8 +35,11 @@ class ProfileViewController: UIViewController {
     private func configureProfileImageView() {
         view.addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.backgroundColor = .cyan
         profileImageView.layer.cornerRadius = 30
+        profileImageView.image = Images.defaultProfileImage
+        profileImageView.contentMode = .scaleAspectFit
+        profileImageView.backgroundColor = .secondarySystemBackground
+        
         
         let topAnchor = profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding)
         let leadingAnchor = profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -49,6 +52,8 @@ class ProfileViewController: UIViewController {
         view.addSubview(changeProfileImageButton)
         changeProfileImageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         changeProfileImageButton.setTitleColor(.secondaryLabel, for: .normal)
+        changeProfileImageButton.addTarget(self, action: #selector(getImages), for: .touchUpInside)
+        
         let topAnchor = changeProfileImageButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: padding / 2)
         let leadingAnchor = changeProfileImageButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor)
         let widthAnchor = changeProfileImageButton.widthAnchor.constraint(equalTo: profileImageView.widthAnchor)
@@ -58,8 +63,8 @@ class ProfileViewController: UIViewController {
 
     private func configureLabel() {
         view.addSubview(label)
-        guard let firebaseUser = firebase.loggedInUser.first else { return }
-        label.text = "You're logged in as \(firebaseUser.displayName)"
+        let firebaseUser = firebase.loggedInUser.first ?? User(name: "Stranger", email: "hidden email address", photoURL: nil, provider: nil)
+        label.text = "Your user name is \(firebaseUser.displayName)"
         label.backgroundColor = .tertiarySystemBackground
         
         NSLayoutConstraint.activate([
@@ -88,6 +93,11 @@ class ProfileViewController: UIViewController {
         firebase.signOut()
         UserDefaults.standard.removeObject(forKey: "NotificationToken")
         delegate?.didPressLogout()
+    }
+    
+    @objc
+    private func getImages() {
+     
     }
 
 }

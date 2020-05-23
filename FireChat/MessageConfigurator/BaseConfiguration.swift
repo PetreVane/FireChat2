@@ -85,7 +85,8 @@ class BaseConfiguration: MessagesViewController, MessagesDataSource {
 // MARK: - MessagesDataSource
     
     func currentSender() -> SenderType {
-        return auth.loggedInUser.first!
+        guard let authenticatedUser = auth.loggedInUser.first else { return User(name: "", email: "", photoURL: nil, provider: nil) }
+        return authenticatedUser
     }
     
     func isFromCurrentSender(message: MessageType) -> Bool {

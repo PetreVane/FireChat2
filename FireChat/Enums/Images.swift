@@ -20,4 +20,5 @@ enum Images {
     static let tabBarMessage = UIImage(named: "messageTabBar")!
     static let tabBarUser = UIImage(named: "userTabBar")!
     static let tabBarFemale = UIImage(named: "accountFemale")!
+    static let defaultProfileImage = UIImage(named: "cookie_monster")!
 }
