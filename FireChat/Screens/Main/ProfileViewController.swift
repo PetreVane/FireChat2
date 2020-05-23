@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
     private let label = FireLabel(textAlignment: .center, fontSize: 15)
     private let logoutButton = FireButton(backgroundColor: .systemRed, title: "Log out")
     private let profileImageView = UIImageView()
-    private let changeProfileImageButton = FireButton(backgroundColor: .secondarySystemBackground, title: "Update profile image")
     private let padding: CGFloat = 50
     private let firebase = FirebaseAuth.shared
     
@@ -26,7 +25,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureProfileImageView()
-        configureProfileImageButton()
         configureLabel()
         configureLogOutButton()
         title = "Your account"
@@ -48,19 +46,6 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([topAnchor, leadingAnchor, widthAnchor, heightAnchor])
     }
     
-    private func configureProfileImageButton() {
-        view.addSubview(changeProfileImageButton)
-        changeProfileImageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        changeProfileImageButton.setTitleColor(.secondaryLabel, for: .normal)
-        changeProfileImageButton.addTarget(self, action: #selector(getImages), for: .touchUpInside)
-        
-        let topAnchor = changeProfileImageButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: padding / 2)
-        let leadingAnchor = changeProfileImageButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor)
-        let widthAnchor = changeProfileImageButton.widthAnchor.constraint(equalTo: profileImageView.widthAnchor)
-        let heightAnchor = changeProfileImageButton.heightAnchor.constraint(equalToConstant: padding / 2)
-        NSLayoutConstraint.activate([topAnchor, leadingAnchor, widthAnchor, heightAnchor])
-    }
-
     private func configureLabel() {
         view.addSubview(label)
         let firebaseUser = firebase.loggedInUser.first ?? User(name: "Stranger", email: "hidden email address", photoURL: nil, provider: nil)
@@ -69,7 +54,7 @@ class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            label.topAnchor.constraint(equalTo: changeProfileImageButton.bottomAnchor, constant: padding / 2),
+            label.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: padding / 2),
             label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             label.heightAnchor.constraint(equalToConstant: padding)
@@ -95,10 +80,6 @@ class ProfileViewController: UIViewController {
         delegate?.didPressLogout()
     }
     
-    @objc
-    private func getImages() {
-     
-    }
 
 }
 
