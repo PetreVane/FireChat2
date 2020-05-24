@@ -21,7 +21,6 @@
 		0B4516CE2454A61700D9106E /* RemoteNotificationsConfigurator in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4516CD2454A61700D9106E /* RemoteNotificationsConfigurator */; };
 		0B466BD3245F2601004D224D /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD1245F2600004D224D /* success.json */; };
 		0B466BD4245F2601004D224D /* failed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B466BD2245F2601004D224D /* failed.json */; };
-		0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B466BD5245F265D004D224D /* AnimationsManager.swift */; };
 		0B466BD9245F2E5B004D224D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0B466BD8245F2E5B004D224D /* Lottie */; };
 		0B48FB82243B42D4005F16F5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48FB81243B42D4005F16F5 /* AudioController.swift */; };
 		0B575D49243B9313000E3C5B /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */; };
@@ -93,7 +92,6 @@
 		0B3D98B12436566E00A417D7 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
 		0B466BD1245F2600004D224D /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		0B466BD2245F2601004D224D /* failed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = failed.json; sourceTree = "<group>"; };
-		0B466BD5245F265D004D224D /* AnimationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsManager.swift; sourceTree = "<group>"; };
 		0B48FB81243B42D4005F16F5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		0B575D48243B9312000E3C5B /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		0B575D4A243B9346000E3C5B /* FireChatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireChatRelease.entitlements; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				0B3D84B9242FB07D00ACF706 /* ErrorsManager.swift */,
 				0BFADED6244F4AE500D9702A /* CacheManager.swift */,
 				0B8CDEA92458AEBF0005F071 /* PushNotificationsManager.swift */,
-				0B466BD5245F265D004D224D /* AnimationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -675,7 +672,6 @@
 				0B90D0162410F5B600BF997F /* UIView+Ext.swift in Sources */,
 				0B575D4C243C91ED000E3C5B /* CloudStorage.swift in Sources */,
 				0BD7B954240FF64B00310F1E /* ChatViewController.swift in Sources */,
-				0B466BD6245F265D004D224D /* AnimationsManager.swift in Sources */,
 				0B8E9FA024631DEF00BF91B3 /* GoogleSignInViewController.swift in Sources */,
 				0B8CDEAA2458AEBF0005F071 /* PushNotificationsManager.swift in Sources */,
 				0BD7B959240FF69500310F1E /* LoginViewController.swift in Sources */,
