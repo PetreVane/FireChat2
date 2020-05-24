@@ -22,6 +22,6 @@ enum CloudStorageDirectory {
 }
 
 enum ProjectCredentials {
-    static let serverKey = "key=AAAAMT2uHDY:APA91bGWNilCGGGZDmaVY0QGfyAinU-RCTOGaTM-aAKrCvfv1EHblUVAcaRgl370S0fXzdtoJselxoZjNpichOcPR3oMQzB-6YJzMFMdRs95IFEXIMKtrJbjoTZ0Vsw1sLARbJVe16zA"
-    static let senderID = "211488218166"
+    static let serverKey = "keychOcPR3oMQzB-6YJzMFMdRs95IFEXIMKtrJbjoTZ0Vsw1sLARbJVe16zA"
+    static let senderID = "45849343943094309430439430943094039403943"
 }
