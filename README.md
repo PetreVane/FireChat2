@@ -1,5 +1,5 @@
 # FireChat2
-Simple iOS chat app which uses FireBase as backend
+An iOS chat app which uses FireBase as backend
 
 This project is built using:
 
